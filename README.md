@@ -5,3 +5,6 @@
     ENVIRONMENT
         python3 -m venv environment
         source environment/bin/activate
+    INSTALL
+        pip install Flask-SQLAlchemy
+        pip install Flask-Login
