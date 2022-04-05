@@ -1,9 +1,16 @@
 import './App.css';
-import FormRegister from "./components/FormRegister";
+import Signup from "./components/Signup";
+import Login from './components/Login';
+import PostSpecies from './components/PostSpecies';
 function App() {
   return (
     <div className="App">
-      <FormRegister/>
+      {
+        //<Signup/>
+        //<Login/>
+      }
+      <PostSpecies/>
+
     </div>
   );
 }
