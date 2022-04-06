@@ -1,18 +1,39 @@
 import styled from "styled-components";
 
+const theme = {
+  fontColor: null,
+  backgroundColor: null,
+  activeB: null,
+  borderRadius:null,
+  width_: null,
+  height_: null,
+};
+
 export const Button = styled.button`
-    width: 200px;
-    height: 30px;
-    border-radius: 25px;
-    outline: none;
-    border: none;
-    background-color: #0236fb;
-    font-size: 20px;
-    color: white;
-    font-weight: 600px;
-    text-transform: capitalize;
-    //$(props => props.variant ==='orange' ? 'background': '#Fb4802');
-    &:active{
-        background-color: #014a97;
-    }
+  height: ${(props) => props.theme.height_};//30px
+  width: ${(props) => props.theme.width_}; //200px
+  border-radius: ${(props) => props.theme.borderRadius};//25px
+  outline: none;
+  border: none;
+  font-size: 20px;
+  color: ${(props) => props.theme.fontColor};
+  background-color: ${(props) => props.theme.backgroundColor};
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &:active {
+    background-color: ${(props) => props.theme.activeB};
+  }
 `;
+
+Button.defaultProps = {
+    theme: {
+        height_: "35px",
+        width_: "200px",
+        borderRadius: "25px",
+        fontColor: "#fff",
+        backgroundColor: "#0318f7",
+        activeB: "#0211ad",
+    }
+}
+

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Input, Textarea, FileDiv, FileInput } from "../style/input";
+import { Input, Textarea, FileInput } from "../style/input";
 import { Button } from "../style/button";
-import { DivCenterElement, DivBoxRegister } from "../style/div";
+import { DivCenterElement, DivBoxRegister, FileDiv } from "../style/div";
+import { colorDark, colorLight, fontSize } from "../style/variables";
+import { Label } from "../style/text";
 
 export default function PostSpecies() {
   const [name, setName] = useState(null);
@@ -35,37 +37,51 @@ export default function PostSpecies() {
       <h1>Animal registration</h1>
       <form /*onSubmit={handleSubmit_}*/>
         <div>
+          <Label theme={{ fontSize: fontSize.medium }}>Name</Label>
           <Input
             name="name"
             type="text"
-            placeholder="Name"
             onChange={(e) => {
               setName(e.target.value);
             }}
+            theme={{ height: "35px", width: "250px", borderRadius: "10px" }}
           />
         </div>
         <div>
+          <Label theme={{ fontSize: fontSize.medium }}>Scientific name</Label>
           <Input
             name="scientificName"
             type="text"
-            placeholder="Scientific name"
             onChange={(e) => {
               setScientificName(e.target.value);
             }}
+            theme={{ height: "35px", width: "250px", borderRadius: "10px" }}
           />
         </div>
         <div>
+          <Label theme={{ fontSize: fontSize.medium }}>Location</Label>
+          <Input
+            name="location"
+            type="text"
+            onChange={(e) => {
+              setScientificName(e.target.value);
+            }}
+            theme={{ height: "35px", width: "250px", borderRadius: "10px" }}
+          />
+        </div>
+        <div>
+          <Label theme={{ fontSize: fontSize.medium }}>Description</Label>
           <Textarea
             type="text"
-            placeholder="Description"
             name="description"
             onChange={(e) => {
               setDescription(e.target.value);
             }}
+            theme={{ height: "60px", width: "250px", borderRadius: "10px" }}
           ></Textarea>
         </div>
         <DivCenterElement>
-          <FileDiv>
+          <FileDiv theme={{width: "200px", height:"35px", borderRadius: "10px"}}>
             <FileInput
               type="file"
               accept="image/png, image/jpeg, image/jpg"
@@ -75,6 +91,7 @@ export default function PostSpecies() {
               }}
             />
             <span>
+            <Label theme={{fontSize:fontSize.medium}}>Add phpto</Label>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -93,7 +110,7 @@ export default function PostSpecies() {
             </span>
           </FileDiv>
 
-          <FileDiv>
+          <FileDiv theme={{width: "200px", height:"35px", borderRadius: "10px"}}>
             <FileInput
               type="file"
               accept="audio/mp3"
@@ -103,6 +120,8 @@ export default function PostSpecies() {
               }}
             />
             <span>
+            
+              <Label theme={{fontSize:fontSize.medium}}>Add sound</Label>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -119,10 +138,23 @@ export default function PostSpecies() {
                   d="M 20.347656 4.761719 L 20.328125 3.457031 L 8.746094 5.207031 L 8.765625 6.402344 L 8.753906 6.402344 L 8.753906 15.300781 C 8.039062 14.871094 7.109375 14.71875 6.164062 14.945312 C 4.425781 15.371094 3.3125 16.945312 3.679688 18.457031 C 4.050781 19.96875 5.761719 20.855469 7.503906 20.433594 C 8.945312 20.082031 9.960938 18.9375 10.046875 17.6875 L 10.054688 17.6875 L 10.054688 8.394531 L 19.089844 7.027344 L 19.089844 13.660156 C 18.375 13.230469 17.441406 13.074219 16.496094 13.304688 C 14.761719 13.726562 13.644531 15.300781 14.015625 16.8125 C 14.386719 18.332031 16.09375 19.214844 17.835938 18.792969 C 19.28125 18.441406 20.292969 17.292969 20.378906 16.046875 L 20.390625 16.046875 L 20.390625 4.761719 Z M 20.347656 4.761719 "
                 />
               </svg>
+              
             </span>
           </FileDiv>
         </DivCenterElement>
-        <Button variant="orange" type="submit">Register</Button>
+        <Button
+          theme={{
+            fontColor: colorLight.white,
+            backgroundColor: colorLight.violet,
+            activeB: colorDark.violet,
+            borderRadius: "10px",
+            width_: "250px",
+            height_: "35px",
+          }}
+          type="submit"
+        >
+          Register
+        </Button>
       </form>
     </DivBoxRegister>
   );
