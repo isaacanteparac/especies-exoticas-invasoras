@@ -39,6 +39,7 @@ export const Textarea = styled.textarea`
   overflow: auto;
   box-sizing: border-box;
   resize: none;
+  margin: auto;
   height: ${(props) => props.theme.height}; //60px
 `;
 

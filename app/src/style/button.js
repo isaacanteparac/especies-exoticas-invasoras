@@ -5,13 +5,13 @@ const theme = {
   backgroundColor: null,
   activeB: null,
   borderRadius:null,
-  width_: null,
-  height_: null,
+  width: null,
+  height: null,
 };
 
 export const Button = styled.button`
-  height: ${(props) => props.theme.height_};//30px
-  width: ${(props) => props.theme.width_}; //200px
+  height: ${(props) => props.theme.height};//30px
+  width: ${(props) => props.theme.width}; //200px
   border-radius: ${(props) => props.theme.borderRadius};//25px
   outline: none;
   border: none;
@@ -28,8 +28,8 @@ export const Button = styled.button`
 
 Button.defaultProps = {
     theme: {
-        height_: "35px",
-        width_: "200px",
+        height: "35px",
+        width: "200px",
         borderRadius: "25px",
         fontColor: "#fff",
         backgroundColor: "#0318f7",

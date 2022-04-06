@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { Input, Textarea, FileInput } from "../style/input";
 import { Button } from "../style/button";
-import { DivCenterElement, DivBoxRegister, FileDiv } from "../style/div";
+import {
+  DivColumnCenterElement,
+  DivBoxRegister,
+  FileDiv,
+  DivColumnLeft,
+} from "../style/div";
 import { colorDark, colorLight, fontSize } from "../style/variables";
-import { Label } from "../style/text";
+import { Label, H2 } from "../style/text";
+import { Svg } from "../style/icon";
 
 export default function PostSpecies() {
   const [name, setName] = useState(null);
@@ -34,54 +40,110 @@ export default function PostSpecies() {
 
   return (
     <DivBoxRegister>
-      <h1>Animal registration</h1>
+      <H2 theme={{ color: colorLight.eilish }}>
+        REGISTRA LA ESPECIE
+        <Svg
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          theme={{ left: "5px", color: colorLight.eilish }}
+        >
+          <path
+            fill="currentcolor"
+            d="M11.954 11c3.33 0 7.057 6.123 7.632 8.716.575 2.594-.996 4.729-3.484 4.112-1.092-.271-3.252-1.307-4.102-1.291-.925.016-2.379.836-3.587 1.252-2.657.916-4.717-1.283-4.01-4.073.774-3.051 4.48-8.716 7.551-8.716zm10.793-4.39c1.188.539 1.629 2.82.894 5.27-.704 2.341-2.33 3.806-4.556 2.796-1.931-.877-2.158-3.178-.894-5.27 1.274-2.107 3.367-3.336 4.556-2.796zm-21.968.706c-1.044.729-1.06 2.996.082 5.215 1.092 2.12 2.913 3.236 4.868 1.87 1.696-1.185 1.504-3.433-.082-5.215-1.596-1.793-3.824-2.599-4.868-1.87zm15.643-7.292c1.323.251 2.321 2.428 2.182 5.062-.134 2.517-1.405 4.382-3.882 3.912-2.149-.407-2.938-2.657-2.181-5.061.761-2.421 2.559-4.164 3.881-3.913zm-10.295.058c-1.268.451-1.92 2.756-1.377 5.337.519 2.467 2.062 4.114 4.437 3.269 2.06-.732 2.494-3.077 1.377-5.336-1.125-2.276-3.169-3.721-4.437-3.27z"
+          />
+        </Svg>
+      </H2>
       <form /*onSubmit={handleSubmit_}*/>
-        <div>
-          <Label theme={{ fontSize: fontSize.medium }}>Name</Label>
+        <DivColumnLeft theme={{ width: "300px" }}>
+          <Label
+            theme={{
+              fontSize: fontSize.medium,
+              weight: "600",
+              color: colorDark.eilish,
+            }}
+          >
+            Nombre común
+          </Label>
           <Input
             name="name"
             type="text"
             onChange={(e) => {
               setName(e.target.value);
             }}
-            theme={{ height: "35px", width: "250px", borderRadius: "10px" }}
+            theme={{ height: "35px", width: "295px", borderRadius: "10px" }}
           />
-        </div>
-        <div>
-          <Label theme={{ fontSize: fontSize.medium }}>Scientific name</Label>
+        </DivColumnLeft>
+        <DivColumnLeft theme={{ width: "300px" }}>
+          <Label
+            theme={{
+              fontSize: fontSize.medium,
+              weight: "600",
+              color: colorDark.eilish,
+            }}
+          >
+            Nombre científico
+          </Label>
           <Input
             name="scientificName"
             type="text"
             onChange={(e) => {
               setScientificName(e.target.value);
             }}
-            theme={{ height: "35px", width: "250px", borderRadius: "10px" }}
+            theme={{ height: "35px", width: "295px", borderRadius: "10px" }}
           />
-        </div>
-        <div>
-          <Label theme={{ fontSize: fontSize.medium }}>Location</Label>
+        </DivColumnLeft>
+        <DivColumnLeft theme={{ width: "300px" }}>
+          <Label
+            theme={{
+              fontSize: fontSize.medium,
+              weight: "600",
+              color: colorDark.eilish,
+            }}
+          >
+            Ubicación
+          </Label>
           <Input
             name="location"
             type="text"
             onChange={(e) => {
-              setScientificName(e.target.value);
+              setLocation(e.target.value);
             }}
-            theme={{ height: "35px", width: "250px", borderRadius: "10px" }}
+            theme={{ height: "35px", width: "295px", borderRadius: "10px" }}
           />
-        </div>
-        <div>
-          <Label theme={{ fontSize: fontSize.medium }}>Description</Label>
+        </DivColumnLeft>
+        <DivColumnLeft theme={{ width: "300px" }}>
+          <Label
+            theme={{
+              fontSize: fontSize.medium,
+              weight: "600",
+              color: colorDark.eilish,
+            }}
+          >
+            Description
+          </Label>
           <Textarea
             type="text"
             name="description"
             onChange={(e) => {
               setDescription(e.target.value);
             }}
-            theme={{ height: "60px", width: "250px", borderRadius: "10px" }}
+            theme={{ height: "60px", width: "295px", borderRadius: "10px" }}
           ></Textarea>
-        </div>
-        <DivCenterElement>
-          <FileDiv theme={{width: "200px", height:"35px", borderRadius: "10px"}}>
+        </DivColumnLeft>
+        <DivColumnCenterElement theme={{ width: "300px" }}>
+          <FileDiv
+            theme={{
+              width: "250px",
+              height: "35px",
+              borderRadius: "10px",
+              background: colorLight.blue,
+              backgroundHover: colorDark.blue,
+              color: "" + colorLight.white,
+            }}
+          >
             <FileInput
               type="file"
               accept="image/png, image/jpeg, image/jpg"
@@ -91,12 +153,15 @@ export default function PostSpecies() {
               }}
             />
             <span>
-            <Label theme={{fontSize:fontSize.medium}}>Add phpto</Label>
-              <svg
+              <Label theme={{ fontSize: fontSize.medium, weight: "600" }}>
+                Agrega Foto
+              </Label>
+              <Svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
+                theme={{ color: colorLight.white, top: "5px", left: "10px" }}
               >
                 <path
                   fill="currentcolor"
@@ -106,11 +171,20 @@ export default function PostSpecies() {
                   fill="currentcolor"
                   d="M 12.753906 8.941406 C 12.882812 8.976562 13.015625 8.992188 13.148438 8.992188 C 13.910156 8.992188 14.570312 8.476562 14.75 7.734375 C 14.96875 6.851562 14.425781 5.957031 13.542969 5.738281 C 13.414062 5.707031 13.28125 5.691406 13.148438 5.691406 C 12.386719 5.691406 11.726562 6.207031 11.546875 6.945312 C 11.328125 7.832031 11.871094 8.726562 12.753906 8.941406 Z M 12.753906 8.941406 "
                 />
-              </svg>
+              </Svg>
             </span>
           </FileDiv>
 
-          <FileDiv theme={{width: "200px", height:"35px", borderRadius: "10px"}}>
+          <FileDiv
+            theme={{
+              width: "250px",
+              height: "35px",
+              borderRadius: "10px",
+              background: colorLight.blue,
+              backgroundHover: colorDark.blue,
+              color: "" + colorLight.white,
+            }}
+          >
             <FileInput
               type="file"
               accept="audio/mp3"
@@ -120,13 +194,15 @@ export default function PostSpecies() {
               }}
             />
             <span>
-            
-              <Label theme={{fontSize:fontSize.medium}}>Add sound</Label>
-              <svg
+              <Label theme={{ fontSize: fontSize.medium, weight: "600" }}>
+                Agrega sonido
+              </Label>
+              <Svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
+                theme={{ color: colorLight.white, top: "5px", left: "10px" }}
               >
                 <path
                   fill="currentcolor"
@@ -137,23 +213,22 @@ export default function PostSpecies() {
                   fill="currentcolor"
                   d="M 20.347656 4.761719 L 20.328125 3.457031 L 8.746094 5.207031 L 8.765625 6.402344 L 8.753906 6.402344 L 8.753906 15.300781 C 8.039062 14.871094 7.109375 14.71875 6.164062 14.945312 C 4.425781 15.371094 3.3125 16.945312 3.679688 18.457031 C 4.050781 19.96875 5.761719 20.855469 7.503906 20.433594 C 8.945312 20.082031 9.960938 18.9375 10.046875 17.6875 L 10.054688 17.6875 L 10.054688 8.394531 L 19.089844 7.027344 L 19.089844 13.660156 C 18.375 13.230469 17.441406 13.074219 16.496094 13.304688 C 14.761719 13.726562 13.644531 15.300781 14.015625 16.8125 C 14.386719 18.332031 16.09375 19.214844 17.835938 18.792969 C 19.28125 18.441406 20.292969 17.292969 20.378906 16.046875 L 20.390625 16.046875 L 20.390625 4.761719 Z M 20.347656 4.761719 "
                 />
-              </svg>
-              
+              </Svg>
             </span>
           </FileDiv>
-        </DivCenterElement>
+        </DivColumnCenterElement>
         <Button
           theme={{
             fontColor: colorLight.white,
-            backgroundColor: colorLight.violet,
-            activeB: colorDark.violet,
+            backgroundColor: colorLight.orange,
+            activeB: colorDark.orange,
             borderRadius: "10px",
-            width_: "250px",
-            height_: "35px",
+            width: "295px",
+            height: "40px",
           }}
           type="submit"
         >
-          Register
+          Registra
         </Button>
       </form>
     </DivBoxRegister>
