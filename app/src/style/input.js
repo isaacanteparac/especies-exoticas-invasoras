@@ -4,6 +4,7 @@ const theme = {
   width: null,
   height: null,
   borderRadius: null,
+  outline: null,
 }
 
 
@@ -18,6 +19,7 @@ export const Input = styled.input`
   color: black;
   font-size: 15px;
   font-weight: 500;
+  outline-color: ${(props) => props.theme.outline};
 `;
 
 Input.defaultProps = {
@@ -25,6 +27,7 @@ Input.defaultProps = {
       height: "30px",
       width: "200px",
       borderRadius: "10px",
+      outline: "blue"
   }
 };
 
@@ -34,13 +37,14 @@ export const Textarea = styled.textarea`
   border: 1px solid gray;
   border-radius: ${(props) => props.theme.borderRadius};
   color: black;
-  width: ${(props) => props.theme.width}; //200px
+  width: ${(props) => props.theme.width};
   font-size: 15px;
   overflow: auto;
   box-sizing: border-box;
   resize: none;
   margin: auto;
-  height: ${(props) => props.theme.height}; //60px
+  height: ${(props) => props.theme.height};
+  outline-color: ${(props) => props.theme.outline};
 `;
 
 Textarea.defaultProps = {
@@ -48,6 +52,7 @@ Textarea.defaultProps = {
       height: "60px",
       width: "200px",
       borderRadius: "10px",
+      outline: "blue",
   }
 };
 

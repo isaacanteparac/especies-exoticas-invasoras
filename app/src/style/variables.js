@@ -19,5 +19,6 @@ export const colorDark = {
 export const fontSize = {
     small: "15px",
     medium: "20px",
+    big: "25px"
 }
 

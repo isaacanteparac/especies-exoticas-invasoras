@@ -73,7 +73,7 @@ export default function PostSpecies() {
             onChange={(e) => {
               setName(e.target.value);
             }}
-            theme={{ height: "35px", width: "295px", borderRadius: "10px" }}
+            theme={{ height: "35px", width: "295px", borderRadius: "10px", outline: colorLight.eilish }}
           />
         </DivColumnLeft>
         <DivColumnLeft theme={{ width: "300px" }}>
@@ -92,7 +92,7 @@ export default function PostSpecies() {
             onChange={(e) => {
               setScientificName(e.target.value);
             }}
-            theme={{ height: "35px", width: "295px", borderRadius: "10px" }}
+            theme={{ height: "35px", width: "295px", borderRadius: "10px", outline: colorLight.eilish }}
           />
         </DivColumnLeft>
         <DivColumnLeft theme={{ width: "300px" }}>
@@ -111,7 +111,7 @@ export default function PostSpecies() {
             onChange={(e) => {
               setLocation(e.target.value);
             }}
-            theme={{ height: "35px", width: "295px", borderRadius: "10px" }}
+            theme={{ height: "35px", width: "295px", borderRadius: "10px", outline: colorLight.eilish }}
           />
         </DivColumnLeft>
         <DivColumnLeft theme={{ width: "300px" }}>
@@ -130,7 +130,7 @@ export default function PostSpecies() {
             onChange={(e) => {
               setDescription(e.target.value);
             }}
-            theme={{ height: "60px", width: "295px", borderRadius: "10px" }}
+            theme={{ height: "60px", width: "295px", borderRadius: "10px", outline: colorLight.eilish }}
           ></Textarea>
         </DivColumnLeft>
         <DivColumnCenterElement theme={{ width: "300px" }}>
