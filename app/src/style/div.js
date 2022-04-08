@@ -12,7 +12,7 @@ const theme = {
   bottom: null,
   left: null,
   right: null,
-
+  shadow: null,
 };
 
 export const DivColumnCenterElement = styled.div`
@@ -33,7 +33,7 @@ DivColumnCenterElement.defaultProps = {
     width: "200px",
     height: "40px",
     borderRadius: "10px",
-    background: "trasparent"
+    background: "trasparent",
   },
 };
 
@@ -55,14 +55,14 @@ export const DivBoxRegister = styled.div`
 `;
 
 DivBoxRegister.defaultProps = {
-  theme:{
+  theme: {
     position: "relative",
     top: "0",
-    bottom:"0",
+    bottom: "0",
     left: "0",
     right: "0",
-  }
-}
+  },
+};
 
 export const FileDiv = styled.div`
   background: ${(props) => props.theme.background};
@@ -90,7 +90,7 @@ FileDiv.defaultProps = {
     height: "35px",
     borderRadius: "10px",
     background: "trasnparent",
-    top:"0",
+    top: "0",
     bottom: "0",
     left: "0",
     right: "0",
@@ -138,7 +138,7 @@ export const DivGeneral = styled.div`
 `;
 
 DivGeneral.defaultProps = {
-  theme:{
+  theme: {
     width: "300px",
     height: "400px",
     position: "relative",
@@ -147,24 +147,36 @@ DivGeneral.defaultProps = {
     left: "0",
     right: "0",
     background: "trasnparent",
-  }
-}
+  },
+};
 
 export const DivMenu = styled.div`
-  width: 300px;
+  width: 20%;
   height: 100%;
-  border-top-right-radius: 50px;
-  background-color: ${((props) => props.theme.background)};
+  border-top-right-radius: 30px;
+  background-color: ${(props) => props.theme.background};
   margin: 0;
-  box-shadow: 3px 1px 10px ${(props) => props.theme.color};
+  margin-right: 2px;
+  box-shadow: 3px 1px 10px ${(props) => props.theme.shadow};
   position: fixed;
-  bottom: 1px;
+  border: none;
 `;
 
 export const Hr = styled.hr`
-  width: ${((props) => props.theme.background)};
+  width: ${(props) => props.theme.background};
 `;
 
-Hr.defaultProps ={
+Hr.defaultProps = {
   width: "250px",
-}
+};
+
+export const DivContent = styled.div`
+  width: 78%;
+  height: 100%;
+  background-color: white;
+  margin: 0;
+  margin-left: 21%;
+  border-radius: 30px;
+
+  
+`;

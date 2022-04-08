@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import pandaImg from '../../icons/panda.jpeg'
-import userImg from '../../icons/user.png'
 export default function SpeciesCard(){
     return (
       <div >
           <div>
-              <img src={userImg}/>
+      
               <label>username</label>
           </div>
           <div>

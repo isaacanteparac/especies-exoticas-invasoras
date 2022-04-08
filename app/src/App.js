@@ -4,6 +4,8 @@ import Login from './components/Login';
 import PostSpecies from './components/PostSpecies';
 import ViewPost from './components/viewPost/Index';
 import Menu from './components/Menu';
+import { DivMenu, DivContent } from './style/div';
+import {colorLight} from './style/variables';
 function App() {
   return (
     <div className="App">
@@ -15,8 +17,15 @@ function App() {
         //<ViewPost/>
       }
       
-      <PostSpecies/>
-      <Menu/>
+      <DivMenu theme={{ shadow: colorLight.grayL, background: colorLight.white }}>
+        <Menu/>
+      </DivMenu>
+      
+      <DivContent>
+        <PostSpecies/>
+      </DivContent>
+      
+   
       
 
     </div>

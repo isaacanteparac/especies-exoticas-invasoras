@@ -6,6 +6,8 @@ export const colorLight = {
     grayL: "#cccccc",
     orange: "#Ff5100",
     eilish: "#0fee7e",
+    pictonBlue: "#48bae2",
+
 };
 
 export const colorDark = {
