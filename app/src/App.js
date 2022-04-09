@@ -1,11 +1,9 @@
 import './App.css';
-import Signup from "./components/Signup";
-import Login from './components/Login';
-import PostSpecies from './components/PostSpecies';
-import ViewPost from './components/viewPost/Index';
-import Menu from './components/Menu';
-import { DivMenu, DivContent } from './style/div';
-import {colorLight} from './style/variables';
+import Signup from "./components/registerUser/Signup";
+import Login from './components/registerUser/Login';
+import RegisterAnimal from './components/registerAnimal/RegisterAnimal';
+
+
 function App() {
   return (
     <div className="App">
@@ -15,17 +13,20 @@ function App() {
         //<Login/>
         //<PostSpecies/>
         //<ViewPost/>
+        /*<DivMenu theme={{ shadow: colorLight.grayL, background: colorLight.white }}>
+        <Menu/>
+        </DivMenu>
+         <Login/>*/
+        
       }
       
-      <DivMenu theme={{ shadow: colorLight.grayL, background: colorLight.white }}>
-        <Menu/>
-      </DivMenu>
       
-      <DivContent>
-        <PostSpecies/>
-      </DivContent>
+  
       
-   
+      
+
+      <RegisterAnimal/>
+  
       
 
     </div>
