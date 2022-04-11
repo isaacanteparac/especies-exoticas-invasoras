@@ -1,34 +1,20 @@
-import './App.css';
-import Signup from "./components/registerUser/Signup";
-import Login from './components/registerUser/Login';
-import RegisterAnimal from './components/registerAnimal/RegisterAnimal';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import "./App.css";
+import Login from "./components/registerUser/Login";
+import Signup from "./components/registerUser/Signup";
+import RegisterAnimal from "./components/registerAnimal/RegisterAnimal";
 
 function App() {
   return (
     <div className="App">
-      {
-        //http://paintonline.editaraudio.com/
-        //<Signup/>
-        //<Login/>
-        //<PostSpecies/>
-        //<ViewPost/>
-        /*<DivMenu theme={{ shadow: colorLight.grayL, background: colorLight.white }}>
-        <Menu/>
-        </DivMenu>
-         <Login/>*/
-        
-      }
-      
-      
-  
-      
-      
-
-      <RegisterAnimal/>
-  
-      
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/register-animal" element={<RegisterAnimal />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

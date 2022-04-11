@@ -133,13 +133,13 @@ export default function Signup() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, marginTop:"10px" }}
             >
               Registrate
             </Button>
             <Grid container>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/" variant="body2">
                   {"¿tienes una cuenta? Login"}
                 </Link>
               </Grid>

@@ -126,6 +126,17 @@ export default function RegisterAnimal() {
                 setDescription(e.target.value);
               }}
             />
+            <TextField
+              //id="outlined-textarea"
+              label="Agregar foto"
+              margin="normal"
+              fullWidth
+              typeof="file"
+ 
+              onChange={(e) => {
+                setPhoto(e.target.value);
+              }}
+            />
         
 
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -8,7 +9,6 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
@@ -31,6 +31,7 @@ export default function Login() {
     .then((res) => console.log("success", res));
 
   return (
+    
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -93,7 +94,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"¿No tienes una cuenta? Resgistrate"}
                 </Link>
               </Grid>
@@ -102,5 +103,6 @@ export default function Login() {
         </Box>
       </Container>
     </ThemeProvider>
+
   );
 }
