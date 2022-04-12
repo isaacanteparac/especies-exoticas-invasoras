@@ -2,11 +2,22 @@ const newRegisterAnimalCtrl = {};
 
 const db = require("../../../database");
 
-
+/*
+{
+    "name":"tigre",
+    "scientificName": "felino",
+    "location":"sauces",
+    "description":"color azul",
+    "photo":"none.png",
+    "sound":"none.mp4",
+    "id_ctlg_type_specie":1,
+    "id_users":1
+}
+*/
 
 newRegisterAnimalCtrl.getRegister = async (req, res) => {
-  const allFile = await db.query("SELECT * FROM register_animal");
-  res.json(allFile);
+  const allanimal = await db.query("SELECT * FROM register_animal");
+  res.json(allanimal);
 };
 
 newRegisterAnimalCtrl.postRegister = async (req, res) => {
@@ -17,7 +28,8 @@ newRegisterAnimalCtrl.postRegister = async (req, res) => {
     sound,
     description,
     scientificName,
-    typeSpecie,
+    id_ctlg_type_specie,
+    id_users,
   } = req.body;
   const newRegisterAnimal = {
     name,
@@ -26,16 +38,24 @@ newRegisterAnimalCtrl.postRegister = async (req, res) => {
     sound,
     description,
     scientificName,
-    typeSpecie,
+    id_ctlg_type_specie,
+    id_users,
   };
-
-  console.log(newRegisterAnimal.media_content);
   await db.query("INSERT INTO register_animal set ?", [newRegisterAnimal]);
-  console.log("create: successful PUBLIACTIONN");
+  res.json({ message: "Post animal" });
 };
 
 newRegisterAnimalCtrl.deleteIdRegister = async (req, res) => {
-  console.log("delete: successful");
+  await db.query("DELETE FROM register_animal WHERE id = ?", [req.params.id]);
+  res.json({ message: "Delete id Animal" });
+};
+
+newRegisterAnimalCtrl.getIdRegister = async (req, res) => {
+  const idanimal = await db.query(
+    "SELECT * FROM register_animal WHERE id = ?",
+    [req.params.id]
+  );
+  res.json(idanimal);
 };
 
 module.exports = newRegisterAnimalCtrl;

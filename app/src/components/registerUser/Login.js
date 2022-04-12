@@ -88,11 +88,11 @@ export default function Login() {
               Login
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/*<Grid item xs>
                 <Link href="#" variant="body2">
                   Olvidó la contraseña?
                 </Link>
-              </Grid>
+              </Grid>*/}
               <Grid item>
                 <Link href="/signup" variant="body2">
                   {"¿No tienes una cuenta? Resgistrate"}
