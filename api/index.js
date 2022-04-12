@@ -13,7 +13,7 @@ const types_specie = require("./src/Routes/Catalogue/types_specie");
 const app = express();
 
 //settings
-app.set("port", process.env.PORT || 6000);
+app.set("port", process.env.PORT || 6060);
 
 //MIDDLEWARES
 app.use(
@@ -32,8 +32,8 @@ app.use(
   })
 );
 
-//app.use(express.urlencoded({ extended: false }));
-//app.use(express.json());
+
+app.use(express.json());
 
 app.use(BodyParser.json({ limit: "15mb" }));
 app.use(

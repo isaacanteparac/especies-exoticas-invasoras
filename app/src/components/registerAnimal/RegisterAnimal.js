@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -6,21 +6,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
-
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
-
-const currencies = [
-  {
-    value: "1",
-    label: "mamifero",
-  },
-  {
-    value: "2",
-    label: "reptil",
-  },
-];
 
 export default function RegisterAnimal() {
   const [name, setName] = useState(null);
@@ -31,8 +21,8 @@ export default function RegisterAnimal() {
   const [description, setDescription] = useState(null);
   const [typeSpecie, setTypeSpecie] = useState(null);
   const [allTypesSpecie, setAllTypesSpecie] = useState([]);
-  const url_api = "/i/register-animal";
-  const url_api_types_specie = "/i/ctlg/types-specie";
+  const url_api = "http://localhost:6060/i/register-animal";
+  const url_api_types_specie = "http://localhost:6060/i/ctlg/types-specie/";
 
   const data = {
     name,
@@ -44,16 +34,18 @@ export default function RegisterAnimal() {
     typeSpecie,
   };
 
-  async function getTypesSpecie(){
+  async function getTypesSpecie() {
     fetch(url_api_types_specie, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
-      .catch((error) => console.error("error", error))
-      .then(dataTypesSpecies => {setAllTypesSpecie(dataTypesSpecies.total)});
-    console.log(allTypesSpecie);
-}
+      .then((data) => {
+        setAllTypesSpecie(data);
+      }, [allTypesSpecie]);
+      //loop infinito de la api, pide los datos infinitamente y te explota la pc
+
+  }
 
   const addAnimal = (e) => {
     fetch(url_api, {
@@ -85,15 +77,9 @@ export default function RegisterAnimal() {
     e.preventDeaful();
   };
 
-
   useEffect(() => {
-    const componentDidMount = () =>{
-      getTypesSpecie();
-    }
-    
+    getTypesSpecie();
   });
-
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -108,7 +94,11 @@ export default function RegisterAnimal() {
           }}
         >
           <form onSubmit={addAnimal}>
-            <Typography component="h1" variant="h5">
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{ textAlign: "center" }}
+            >
               Registra el animal
             </Typography>
             <Box
@@ -152,9 +142,9 @@ export default function RegisterAnimal() {
                 margin="normal"
                 fullWidth
               >
-                {allTypesSpecie.map((option) => (
-                  <MenuItem key={option.id} value={option.id}>
-                    {option.name}
+                {allTypesSpecie?.map((typesSpecie) => (
+                  <MenuItem key={typesSpecie.id} value={typesSpecie.id}>
+                    {typesSpecie.name}
                   </MenuItem>
                 ))}
               </TextField>
@@ -171,16 +161,20 @@ export default function RegisterAnimal() {
                   setDescription(e.target.value);
                 }}
               />
-              <TextField
-                //id="outlined-textarea"
-                label="Agregar foto"
-                margin="normal"
-                fullWidth
-                typeof="file"
-                onChange={(e) => {
+
+              <Button variant="contained" component="label" fullWidth sx={{marginTop:"15px"}}>
+                Agregar Imagen <AddPhotoAlternateIcon/>
+                <input type="file" accept="image/png, image/jpeg, image/jpg" hidden onChange={(e) => {
                   setPhoto(e.target.value);
-                }}
-              />
+                }}/>
+              </Button>
+
+              <Button variant="contained" component="label" fullWidth sx={{marginTop:"15px"}}>
+                Agregar Sonido <MusicNoteIcon/>
+                <input type="file" accept="audio/mp3" hidden onChange={(e) => {
+                  setPhoto(e.target.value);
+                }}/>
+              </Button>
 
               <Button
                 type="submit"
