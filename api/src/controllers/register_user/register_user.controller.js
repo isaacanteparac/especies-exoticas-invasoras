@@ -18,7 +18,7 @@ user.postUser = async (req, res) => {
     password,
     photo
   } = req.body;
-  password = encryptPassword(password);
+  //password = encryptPassword(password);
   //MIERDA: problema el la funcion encrytPassword no me retorna el hash 
   let newUser = {
     name,

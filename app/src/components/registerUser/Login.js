@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Button from "@mui/material/Button";
@@ -22,7 +22,8 @@ export default function Login() {
     username,
     password,
   };
-  const questUser = async() =>{
+
+  const allUser = async() =>{
     await fetch(url_api, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -32,6 +33,10 @@ export default function Login() {
         setFullUsername(data);
       });
   }
+
+  useEffect(()=>{
+    //allUser();
+  },[])
 
 
   return (
@@ -52,7 +57,7 @@ export default function Login() {
           </Typography>
           <Box
             component="form"
-            onSubmit={questUser}
+            //onSubmit={questUser}
             sx={{ mt: 1 }}
           >
             <TextField
@@ -98,7 +103,7 @@ export default function Login() {
                 </Link>
               </Grid>*/}
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link href="signup" variant="body2">
                   {"¿No tienes una cuenta? Resgistrate"}
                 </Link>
               </Grid>

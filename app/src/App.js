@@ -1,20 +1,40 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import "./App.css";
-import Login from "./components/registerUser/Login";
-import Signup from "./components/registerUser/Signup";
+import NoAuth from "./backend/router/NoAuthRouter";
+import PublicRouter from "./backend/router/PublicRouter";
+import {PrivateRouter} from "../src/backend/router/PrivateRouter";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RegisterAnimal from "./components/registerAnimal/RegisterAnimal";
+import {Context} from "./auth/Context";
 
 function App() {
   return (
     <div className="App">
+      <Context>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/register-animal" element={<RegisterAnimal />} />
-        </Routes>
+        <div>
+          <Routes>
+            <Route
+              path="/free/*"
+              element={
+                <PublicRouter>
+                  <NoAuth />
+                </PublicRouter>
+              }
+            />
+
+            <Route
+              path="/*"
+              element={
+                <PrivateRouter>
+                  <RegisterAnimal />
+                </PrivateRouter>
+              }
+            />
+          </Routes>
+        </div>
       </BrowserRouter>
+      </Context>
+      
     </div>
   );
 }
