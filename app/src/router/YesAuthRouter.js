@@ -1,6 +1,6 @@
 import React from "react";
 import {Navigate, Route, Routes } from "react-router-dom";
-import RegisterAnimal from "../../components/registerAnimal/RegisterAnimal";
+import RegisterAnimal from "../components/registerAnimal/RegisterAnimal";
 
 export default function YesAuthRouter() {
   return (
@@ -8,7 +8,7 @@ export default function YesAuthRouter() {
       
         <Routes>
           <Route path="/register" element={<RegisterAnimal />} />
-          <Route path="*" element={<Navigate to="/register" />} />
+          <Route path="*" element={<Navigate to="/lock/register" />} />
         </Routes>
      
     </>

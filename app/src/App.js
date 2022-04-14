@@ -1,10 +1,9 @@
 import "./App.css";
-import NoAuthRouter from "./backend/router/NoAuthRouter";
-import YesAuthRouter from "./backend/router/YesAuthRouter";
-import PublicRouter from "./backend/router/PublicRouter";
-import {PrivateRouter} from "../src/backend/router/PrivateRouter";
+import NoAuthRouter from "./router/NoAuthRouter";
+import YesAuthRouter from "./router/YesAuthRouter";
+import PublicRouter from "./router/PublicRouter";
+import PrivateRouter from "../src/router/PrivateRouter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import RegisterAnimal from "./components/registerAnimal/RegisterAnimal";
 import {Context} from "./auth/Context";
 
 function App() {
@@ -24,10 +23,10 @@ function App() {
             />
 
             <Route
-              path="*"
+              path="/lock/*"
               element={
                 <PrivateRouter>
-                  <RegisterAnimal />
+                  <YesAuthRouter />
                 </PrivateRouter>
               }
             />
