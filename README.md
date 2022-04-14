@@ -4,6 +4,6 @@
 
 # RUN
     API
-        uvicorn main:app --reload
+        npm run dev
     APP
         npm start
