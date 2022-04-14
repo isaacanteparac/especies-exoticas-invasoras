@@ -34,21 +34,19 @@ export default function RegisterAnimal() {
     typeSpecie,
   };
 
-  async function getTypesSpecie() {
-    fetch(url_api_types_specie, {
+  const getTypesSpecie = async () =>{
+    await fetch(url_api_types_specie, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
       .then((res) => res.json())
       .then((data) => {
         setAllTypesSpecie(data);
-      }, [allTypesSpecie]);
-      //loop infinito de la api, pide los datos infinitamente y te explota la pc
-
+      });
   }
 
-  const addAnimal = (e) => {
-    fetch(url_api, {
+  const addAnimal = async (e) => {
+    await fetch(url_api, {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
@@ -57,15 +55,6 @@ export default function RegisterAnimal() {
       .catch((error) => console.error("error", error))
       .then((res) => console.log("success", res));
 
-    console.log(
-      name,
-      photo,
-      location,
-      sound,
-      description,
-      scientificName,
-      typeSpecie
-    );
     setName(null);
     setDescription(null);
     setLocation(null);
@@ -79,7 +68,7 @@ export default function RegisterAnimal() {
 
   useEffect(() => {
     getTypesSpecie();
-  });
+  },[]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,7 +82,6 @@ export default function RegisterAnimal() {
             alignItems: "center",
           }}
         >
-          <form onSubmit={addAnimal}>
             <Typography
               component="h1"
               variant="h5"
@@ -103,7 +91,7 @@ export default function RegisterAnimal() {
             </Typography>
             <Box
               component="form"
-              /*onSubmit={handleSubmit}*/ noValidate
+              onSubmit={addAnimal}
               sx={{ mt: 1 }}
             >
               <TextField
@@ -185,7 +173,6 @@ export default function RegisterAnimal() {
                 Registrar
               </Button>
             </Box>
-          </form>
         </Box>
       </Container>
     </ThemeProvider>

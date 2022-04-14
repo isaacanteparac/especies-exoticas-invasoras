@@ -2,18 +2,6 @@ const newRegisterAnimalCtrl = {};
 
 const db = require("../../../database");
 
-/*
-{
-    "name":"tigre",
-    "scientificName": "felino",
-    "location":"sauces",
-    "description":"color azul",
-    "photo":"none.png",
-    "sound":"none.mp4",
-    "id_ctlg_type_specie":1,
-    "id_users":1
-}
-*/
 
 newRegisterAnimalCtrl.getRegister = async (req, res) => {
   const allanimal = await db.query("SELECT * FROM register_animal");

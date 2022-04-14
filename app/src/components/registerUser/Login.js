@@ -15,20 +15,24 @@ const theme = createTheme();
 export default function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const url_api = "ruta de api";
+  const [fullUsername, setFullUsername] = useState([]);
+  const url_api = "http://localhost:6060/i/users";
 
   const data = {
     username,
     password,
   };
+  const questUser = async() =>{
+    await fetch(url_api, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setFullUsername(data);
+      });
+  }
 
-  fetch(url_api, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" },
-  })
-    .then((res) => res.json().cath((error) => console.error("error", error)))
-    .then((res) => console.log("success", res));
 
   return (
     
@@ -48,7 +52,7 @@ export default function Login() {
           </Typography>
           <Box
             component="form"
-            /*onSubmit={handleSubmit}*/ noValidate
+            onSubmit={questUser}
             sx={{ mt: 1 }}
           >
             <TextField

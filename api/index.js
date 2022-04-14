@@ -2,15 +2,18 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const session = require("express-session");
-const flash = require("connect-flash");
 const MySQLStore = require("express-mysql-session")(session);
 const { database } = require("./keys");
 const BodyParser = require("body-parser");
 
-const register_animal = require("./src/Routes/register_animal/register_animal.route");
-const types_specie = require("./src/Routes/Catalogue/types_specie");
+const register_animal = require("./src/routes/register_animal/register_animal.route");
+const register_user = require("./src/routes/register_user/register_user.route");
+const types_specie = require("./src/routes/Catalogue/types_specie");
+
+
 //INITALIZATIONS
 const app = express();
+
 
 //settings
 app.set("port", process.env.PORT || 6060);
@@ -42,26 +45,23 @@ app.use(
     extended: true,
   })
 );
-//app.use(flash());
 app.use(morgan("dev"));
-//app.use(passport.initialize());
-//app.use(passport.session());
+
+
 
 //GLOBAL VARIABLES
 
 //ROUTES
+app.use("/i/users", register_user);
 app.use("/i/register-animal", register_animal);
-
 app.use("/i/ctlg/types-specie", types_specie);
-// PUBLIC
+
 
 //STARTING THE SERVER
 async function main() {
   console.clear();
-  console.log("\n▀█▀ ");
-  console.log("▄█▄SAAC");
   await app.listen(app.get("port"));
-  console.log("\nSERVER ON PORT " + app.get("port"));
+  console.log("\API ON PORT " + app.get("port"));
 }
 
 main();
