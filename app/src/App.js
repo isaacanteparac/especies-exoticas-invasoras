@@ -1,5 +1,6 @@
 import "./App.css";
-import NoAuth from "./backend/router/NoAuthRouter";
+import NoAuthRouter from "./backend/router/NoAuthRouter";
+import YesAuthRouter from "./backend/router/YesAuthRouter";
 import PublicRouter from "./backend/router/PublicRouter";
 import {PrivateRouter} from "../src/backend/router/PrivateRouter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -17,13 +18,13 @@ function App() {
               path="/free/*"
               element={
                 <PublicRouter>
-                  <NoAuth />
+                  <NoAuthRouter />
                 </PublicRouter>
               }
             />
 
             <Route
-              path="/*"
+              path="*"
               element={
                 <PrivateRouter>
                   <RegisterAnimal />

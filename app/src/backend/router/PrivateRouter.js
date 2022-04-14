@@ -4,10 +4,10 @@ import {Context} from '../../auth/Context';
 
 
 export const PrivateRouter = ({children}) =>{
-const {auth_} = useContext(Context);
+const auth = useContext(Context);
 
 
-  return auth_.isLogin? children:<Navigate to="/free"/>;
+  return auth? children:<Navigate to="/free"/>;
       
 }
 
