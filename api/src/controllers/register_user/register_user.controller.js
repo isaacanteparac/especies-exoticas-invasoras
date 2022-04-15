@@ -1,49 +1,76 @@
 const user = {};
 
 const db = require("../../../database");
-const {encryptPassword} = require("../../lib/helpers");
-
+const { encryptPassword, decryptPassword } = require("../../lib/helpers");
 
 user.getUser = async (req, res) => {
   const allUser = await db.query("SELECT * FROM users");
   res.json(allUser);
 };
 
+user.getIdUser = async (req, res) => {
+  const idUser = await db.query("SELECT * FROM users WHERE id = ?", [
+    req.params.id,
+  ]);
+  res.json(idUser);
+};
+
 user.postUser = async (req, res) => {
-  let {
-    name,
-    lastname,
+  let { name, lastname, email, username, password, photo } = req.body;
+
+  const verifyEmail = await db.query("SELECT * FROM users WHERE email = ?", [
     email,
-    username,
-    password,
-    photo
-  } = req.body;
-  //password = encryptPassword(password);
-  //MIERDA: problema el la funcion encrytPassword no me retorna el hash 
-  let newUser = {
-    name,
-    lastname,
-    email,
-    username,
-    password,
-    photo
-  };
-  await db.query("INSERT INTO users set ?", [newUser]);
-  res.json({ message: "Post user" });
+  ]);
+  const verifyUsername = await db.query(
+    "SELECT * FROM users WHERE username = ?",
+    [username]
+  );
+
+  if (verifyEmail.length < 1) {
+    if (verifyUsername.length < 1) {
+      password = await encryptPassword(password);
+      let newUser = {
+        name,
+        lastname,
+        email,
+        username,
+        password,
+        photo,
+      };
+      await db.query("INSERT INTO users set ?", [newUser]);
+      res.status(200).json({ message: "Post user" });
+    } else {
+      res.status(400).json({ message: "Username ya existe" });
+    }
+  } else {
+    res.status(400).json({ message: "Email ya existe" });
+  }
 };
 
 user.deleteIdUser = async (req, res) => {
   await db.query("DELETE FROM users WHERE id = ?", [req.params.id]);
-  res.json({ message: "Delete id user" });
+  res.status(200).json({ message: "Delete id user" });
 };
 
-user.getIdUser = async (req, res) => {
-  const idUser = await db.query(
-    "SELECT * FROM users WHERE id = ?",
-    [req.params.id]
-  );
-  res.json(idUser);
+user.verifyUser = async (req, res) => {
+  const { username, password } = req.body;
+  const dataUser = await db.query("SELECT * FROM users WHERE username = ?", [
+    username,
+  ]);
+  console.log("kjhkhk");
+  console.log(dataUser);
+  if (dataUser > 0) {
+    console.log(dataUser.password);
+    const verifyPassword = decryptPassword(dataUser.password);
+    console.log(verifyPassword);
+    if (password == verifyPassword) {
+      res.status(200).json(dataUser);
+    } else {
+      res.status(400).json({ message: "password incorrecto" });
+    }
+  } else {
+    res.status(400).json({ message: "ususario incorrecto" });
+  }
 };
-
 
 module.exports = user;

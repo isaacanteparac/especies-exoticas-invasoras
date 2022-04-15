@@ -20,6 +20,3 @@ helpers.decryptPassword = async(password, hashPassword) =>{
 }
 
 module.exports = helpers;
-
-
-

@@ -16,7 +16,7 @@ export default function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [fullUsername, setFullUsername] = useState([]);
-  const url_api = "http://localhost:6060/i/users";
+  const url_api = "http://localhost:6060/i/users/verify-user";
 
   const data = {
     username,
@@ -32,11 +32,9 @@ export default function Login() {
       .then((data) => {
         setFullUsername(data);
       });
+    alert(fullUsername);
   }
 
-  useEffect(()=>{
-    allUser();
-  },[])
 
 
   return (
@@ -53,11 +51,11 @@ export default function Login() {
           }}
         >
           <Typography component="h1" variant="h5">
-            Login
+            Login {fullUsername}
           </Typography>
           <Box
             component="form"
-            //onSubmit={questUser}
+            onSubmit={allUser}
             sx={{ mt: 1 }}
           >
             <TextField

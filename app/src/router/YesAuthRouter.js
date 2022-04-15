@@ -5,10 +5,9 @@ import RegisterAnimal from "../components/registerAnimal/RegisterAnimal";
 export default function YesAuthRouter() {
   return (
     <>
-      
         <Routes>
-          <Route path="/register" element={<RegisterAnimal />} />
-          <Route path="*" element={<Navigate to="/lock/register" />} />
+          <Route path="register" element={<RegisterAnimal />} />
+          <Route path="*" element={<Navigate to="/register" />} />
         </Routes>
      
     </>

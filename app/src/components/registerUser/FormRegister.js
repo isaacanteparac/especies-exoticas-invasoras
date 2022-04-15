@@ -13,6 +13,7 @@ export default function FormRegister(props) {
   const [password, setPassword] = useState(null);
   const url_api = "http://localhost:6060/i/users";
 
+
   const data = {
     name,
     lastname,
@@ -21,7 +22,10 @@ export default function FormRegister(props) {
     password,
   };
 
+
+
   const addUser = async (e) => {
+
     await fetch(url_api, {
       method: "POST",
       body: JSON.stringify(data),

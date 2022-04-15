@@ -7,7 +7,7 @@ const {
   postUser,
   getUser,
   getIdUser,
-  getUsernameUser
+  verifyUser
 } = require("../../controllers/register_user/register_user.controller");
 
 
@@ -18,5 +18,7 @@ router.route("/").post(postUser);
 router.route("/:id").delete(deleteIdUser);
 
 router.route("/:id").get(getIdUser);
+
+router.route("/verify-user").get(verifyUser);
 
 module.exports = router;

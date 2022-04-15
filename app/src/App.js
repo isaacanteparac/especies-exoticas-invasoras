@@ -23,7 +23,7 @@ function App() {
             />
 
             <Route
-              path="/lock/*"
+              path="/*"
               element={
                 <PrivateRouter>
                   <YesAuthRouter />
