@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Button from "@mui/material/Button";
@@ -15,7 +15,7 @@ const theme = createTheme();
 export default function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const [fullUsername, setFullUsername] = useState([]);
+  const [dataUser, setDataUser] = useState([]);
   const url_api = "http://localhost:6060/i/users/verify-user";
 
   const data = {
@@ -23,16 +23,20 @@ export default function Login() {
     password,
   };
 
-  const allUser = async() =>{
+  const verifyUser = async(e) =>{
     await fetch(url_api, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json())
-      .then((data) => {
-        setFullUsername(data);
-      });
-    alert(fullUsername);
+      .catch((error) => console.error("error", error))
+      .then((data_) => {setDataUser(data_)});
+      alert(dataUser);
+    e.preventDeaful();
+    
   }
 
 
@@ -51,11 +55,11 @@ export default function Login() {
           }}
         >
           <Typography component="h1" variant="h5">
-            Login {fullUsername}
+            Login
           </Typography>
           <Box
             component="form"
-            onSubmit={allUser}
+            onSubmit={verifyUser}
             sx={{ mt: 1 }}
           >
             <TextField

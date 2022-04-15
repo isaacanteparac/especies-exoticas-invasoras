@@ -25,7 +25,6 @@ export default function FormRegister(props) {
 
 
   const addUser = async (e) => {
-
     await fetch(url_api, {
       method: "POST",
       body: JSON.stringify(data),

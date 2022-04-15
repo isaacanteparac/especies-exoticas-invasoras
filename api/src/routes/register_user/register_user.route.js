@@ -19,6 +19,6 @@ router.route("/:id").delete(deleteIdUser);
 
 router.route("/:id").get(getIdUser);
 
-router.route("/verify-user").get(verifyUser);
+router.route("/verify-user").post(verifyUser);
 
 module.exports = router;

@@ -57,14 +57,15 @@ user.verifyUser = async (req, res) => {
   const dataUser = await db.query("SELECT * FROM users WHERE username = ?", [
     username,
   ]);
-  console.log("kjhkhk");
-  console.log(dataUser);
-  if (dataUser > 0) {
-    console.log(dataUser.password);
-    const verifyPassword = decryptPassword(dataUser.password);
-    console.log(verifyPassword);
-    if (password == verifyPassword) {
-      res.status(200).json(dataUser);
+
+  if (dataUser.length > 0) {
+    const verifyPassword = await decryptPassword(
+      password,
+      dataUser[0].password
+    );
+    if (verifyPassword) {
+      console.log(dataUser[0]);
+      res.status(200).json(dataUser[0]);
     } else {
       res.status(400).json({ message: "password incorrecto" });
     }
