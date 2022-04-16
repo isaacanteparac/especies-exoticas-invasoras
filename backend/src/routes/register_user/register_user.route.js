@@ -4,16 +4,15 @@ const router = express.Router();
 
 const {
   deleteIdUser,
-  postUser,
   getUser,
   getIdUser,
-  verifyUser
 } = require("../../controllers/register_user/register_user.controller");
 
+const {verifyUser, createUser} = require("../../controllers/register_user/auth_user");
 
 router.route("/").get(getUser);
 
-router.route("/").post(postUser);
+router.route("/").post(createUser);
 
 router.route("/:id").delete(deleteIdUser);
 

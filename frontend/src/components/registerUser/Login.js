@@ -16,7 +16,6 @@ const theme = createTheme();
 export default function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const [dataUser, setDataUser] = useState([]);
   const { login } = useContext(AuthContext);
 
   const data = {

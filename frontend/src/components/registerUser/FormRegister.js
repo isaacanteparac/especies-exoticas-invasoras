@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import { AuthContext } from "../../auth/Context";
 
 export default function FormRegister(props) {
   const [name, setName] = useState(null);
@@ -11,8 +12,7 @@ export default function FormRegister(props) {
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const url_api = "http://localhost:6060/i/users";
-
+  const {signup} = useContext(AuthContext);
 
   const data = {
     name,
@@ -22,16 +22,8 @@ export default function FormRegister(props) {
     password,
   };
 
-
-
   const addUser = async () => {
-    await fetch(url_api, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    const ok = await signup(data.name. data.lastname, data.email, data.username, data.password);
   };
 
   return (
