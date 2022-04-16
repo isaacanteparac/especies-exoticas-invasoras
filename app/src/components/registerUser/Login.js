@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Button from "@mui/material/Button";
@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { AuthContext } from "../../auth/Context";
 
 const theme = createTheme();
 
@@ -16,33 +17,19 @@ export default function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
   const [dataUser, setDataUser] = useState([]);
-  const url_api = "http://localhost:6060/i/users/verify-user";
+  const { login } = useContext(AuthContext);
 
   const data = {
     username,
     password,
   };
 
-  const verifyUser = async(e) =>{
-    await fetch(url_api, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .catch((error) => console.error("error", error))
-      .then((data_) => {setDataUser(data_)});
-      alert(dataUser);
-    e.preventDeaful();
+  const verifyUser = async () => {
+    const ok = login(data.username, data.password);
     
-  }
-
-
+  };
 
   return (
-    
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -57,11 +44,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Login
           </Typography>
-          <Box
-            component="form"
-            onSubmit={verifyUser}
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" onSubmit={verifyUser} sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -114,6 +97,5 @@ export default function Login() {
         </Box>
       </Container>
     </ThemeProvider>
-
   );
 }

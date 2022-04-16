@@ -47,17 +47,24 @@ user.postUser = async (req, res) => {
   }
 };
 
+
+
 user.deleteIdUser = async (req, res) => {
   await db.query("DELETE FROM users WHERE id = ?", [req.params.id]);
   res.status(200).json({ message: "Delete id user" });
 };
 
+
+
 user.verifyUser = async (req, res) => {
   const { username, password } = req.body;
+  
   const dataUser = await db.query("SELECT * FROM users WHERE username = ?", [
     username,
   ]);
-
+  console.log(username);
+  console.log(dataUser);
+  
   if (dataUser.length > 0) {
     const verifyPassword = await decryptPassword(
       password,
@@ -65,7 +72,7 @@ user.verifyUser = async (req, res) => {
     );
     if (verifyPassword) {
       console.log(dataUser[0]);
-      res.status(200).json(dataUser[0]);
+      res.status(200).json({messa:"YTF"});
     } else {
       res.status(400).json({ message: "password incorrecto" });
     }

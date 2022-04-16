@@ -45,7 +45,7 @@ export default function RegisterAnimal() {
       });
   }
 
-  const addAnimal = async (e) => {
+  const addAnimal = async () => {
     await fetch(url_api, {
       method: "POST",
       body: JSON.stringify(data),
@@ -63,7 +63,7 @@ export default function RegisterAnimal() {
     setSound(null);
     setScientificName(null);
 
-    e.preventDeaful();
+
   };
 
   useEffect(() => {

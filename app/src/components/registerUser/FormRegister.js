@@ -24,7 +24,7 @@ export default function FormRegister(props) {
 
 
 
-  const addUser = async (e) => {
+  const addUser = async () => {
     await fetch(url_api, {
       method: "POST",
       body: JSON.stringify(data),
@@ -32,10 +32,6 @@ export default function FormRegister(props) {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
-      .catch((error) => console.error("error", error))
-      .then((res) => console.log("success", res));
-    e.preventDeaful();
   };
 
   return (
