@@ -12,7 +12,7 @@ export default function FormRegister(props) {
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
-  const {signup} = useContext(AuthContext);
+  const {sign_up} = useContext(AuthContext);
 
   const data = {
     name,
@@ -22,12 +22,13 @@ export default function FormRegister(props) {
     password,
   };
 
-  const addUser = async () => {
-    const ok = await signup(data.name. data.lastname, data.email, data.username, data.password);
+  const createUser = async () => {
+    const ok = sign_up(data.name, data.lastname, data.email, data.username, data.password);
   };
 
+
   return (
-    <Box component="form" onSubmit={addUser} sx={{ mt: 1 , display:props.display}}>
+    <Box component="form" onSubmit={createUser} sx={{ mt: 1 , display:props.display}}>
       <TextField
         margin="normal"
         required

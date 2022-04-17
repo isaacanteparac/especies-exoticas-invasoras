@@ -1,33 +1,31 @@
 const userAuth = {};
 const db = require("../../../database");
-const { encryptPassword, decryptPassword } = require("../../lib/helpers");
+const { encryptPassword, decryptPassword } = require("../../helpers/password");
+const { generateToken } = require("../../helpers/token");
 
-userAuth.verifyUser = async (req, res) => {
+userAuth.verificationUser = async (req, res) => {
   const { username, password } = req.body;
 
   const dataUser = await db.query("SELECT * FROM users WHERE username = ?", [
     username,
   ]);
 
-  if (dataUser.length > 0) {
+  if (dataUser.length > 0 ) {
     const verifyPassword = await decryptPassword(
       password,
       dataUser[0].password
     );
     if (verifyPassword) {
-      console.log(dataUser[0]);
+      await generateToken(username);
       res.status(200).json({ messa: "ok" });
-    } else {
-      res.status(400).json({ message: "password incorrecto" });
     }
   } else {
-    res.status(400).json({ message: "ususario incorrecto" });
+    res.status(401).json({ message: "Wrong username or password" });
   }
 };
 
 userAuth.createUser = async (req, res) => {
   let { name, lastname, email, username, password } = req.body;
-
   const verifyEmail = await db.query("SELECT * FROM users WHERE email = ?", [
     email,
   ]);
@@ -36,8 +34,7 @@ userAuth.createUser = async (req, res) => {
     [username]
   );
 
-  if (verifyEmail.length < 1) {
-    if (verifyUsername.length < 1) {
+  if (verifyEmail.length < 1 && verifyUsername.length < 1) {
       password = await encryptPassword(password);
       let newUser = {
         name,
@@ -47,13 +44,15 @@ userAuth.createUser = async (req, res) => {
         password,
       };
       await db.query("INSERT INTO users set ?", [newUser]);
-      res.status(200).json({ message: "Post user" });
-    } else {
-      res.status(400).json({ message: "Username ya existe" });
-    }
+      const dataToken = {name, lastname, email, username};
+      await generateToken(dataToken);
+
+      res.status(200).json({ message: "ok" });
   } else {
-    res.status(400).json({ message: "Email ya existe" });
+    res.status(401).json({ message: "email or username already exist" });
   }
 };
+
+
 
 module.exports = userAuth;

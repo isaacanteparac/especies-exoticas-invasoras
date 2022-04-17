@@ -8,16 +8,16 @@ const {
   getIdUser,
 } = require("../../controllers/register_user/register_user.controller");
 
-const {verifyUser, createUser} = require("../../controllers/register_user/auth_user");
+const {verificationUser, createUser} = require("../../controllers/register_user/auth_user");
 
 router.route("/").get(getUser);
 
-router.route("/").post(createUser);
+router.route("/create").post(createUser);
 
 router.route("/:id").delete(deleteIdUser);
 
 router.route("/:id").get(getIdUser);
 
-router.route("/verify-user").post(verifyUser);
+router.route("/verify-user").post(verificationUser);
 
 module.exports = router;

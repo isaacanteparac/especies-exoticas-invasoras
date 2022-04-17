@@ -59,9 +59,8 @@ app.use("/i/ctlg/types-specie", types_specie);
 
 //STARTING THE SERVER
 async function main() {
-  console.clear();
   await app.listen(app.get("port"));
-  console.log("\API ON PORT " + app.get("port"));
+  console.log("ON PORT " + app.get("port"));
 }
 
 main();
