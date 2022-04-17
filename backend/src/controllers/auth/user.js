@@ -1,7 +1,7 @@
 const userAuth = {};
 const db = require("../../../database");
 const { encryptPassword, decryptPassword } = require("../../helpers/password");
-const { generateToken } = require("../../helpers/token");
+const { generateToken, validationToken } = require("../../helpers/token");
 
 userAuth.verificationUser = async (req, res) => {
   const { username, password } = req.body;
@@ -16,13 +16,15 @@ userAuth.verificationUser = async (req, res) => {
       dataUser[0].password
     );
     if (verifyPassword) {
-      await generateToken(username);
+      console.log(await generateToken(username));
       res.status(200).json({ messa: "ok" });
     }
   } else {
     res.status(401).json({ message: "Wrong username or password" });
   }
 };
+
+
 
 userAuth.createUser = async (req, res) => {
   let { name, lastname, email, username, password } = req.body;
@@ -44,14 +46,20 @@ userAuth.createUser = async (req, res) => {
         password,
       };
       await db.query("INSERT INTO users set ?", [newUser]);
-      const dataToken = {name, lastname, email, username};
-      await generateToken(dataToken);
+      await generateToken(username);
 
       res.status(200).json({ message: "ok" });
   } else {
     res.status(401).json({ message: "email or username already exist" });
   }
 };
+
+
+userAuth.authenticateToken = async (req, res) =>{
+  await validationToken(req, res);
+  await generateToken(req, res);
+  res.status(200).json({message:"ok"});
+}
 
 
 

@@ -6,16 +6,13 @@ token.generateToken = async (data) =>{
     return await jwt.sign(data, key);
 }
 
-token.validationToken = async (req, res, next) =>{
+token.validationToken = async (req, res, next) => {
     const xToken = req.header("x-token");
     if(!xToken){
         return res.status(401).json({message:"no token"});
     }
     try{
-        const { name, lastname, email, username} = await jwt.verify(xToken, key);
-        req.name = name;
-        req.lastname = lastname;
-        req.email = email;
+        const { username} = await jwt.verify(xToken, key);
         req.username = username;
     }
     catch(error){
@@ -23,5 +20,7 @@ token.validationToken = async (req, res, next) =>{
     }
     next();
 }
+
+
 
 module.exports = token;

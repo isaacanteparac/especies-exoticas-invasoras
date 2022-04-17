@@ -18,9 +18,8 @@ export const Context = ({ children }) => {
 
   const login = async (username, password) => {
     const data = { username, password };
-    const resp = await postFetch("users/verify-user", data);
+    const resp = await postFetch("users/auth/verification", data);
     if (resp.ok) {
-      
       const { user } = resp;
       setAuth({
         isLogin: true,
@@ -36,7 +35,7 @@ export const Context = ({ children }) => {
 
   const sign_up = async (name, lastname, email, username, password) => {
     const data = { name, lastname, email, username, password };
-    const resp = await postFetch("users/create", data);
+    const resp = await postFetch("users/auth/create", data);
     if (resp.ok) {
       const { user } = resp;
       setAuth({

@@ -6,8 +6,9 @@ const MySQLStore = require("express-mysql-session")(session);
 const { database } = require("./keys");
 const BodyParser = require("body-parser");
 
-const register_animal = require("./src/routes/register_animal/register_animal.route");
-const register_user = require("./src/routes/register_user/register_user.route");
+const animal = require("./src/routes/register/animal");
+const user = require("./src/routes/register/user");
+const userAuth = require("./src/routes/auth/user");
 const types_specie = require("./src/routes/Catalogue/types_specie");
 
 
@@ -52,8 +53,9 @@ app.use(morgan("dev"));
 //GLOBAL VARIABLES
 
 //ROUTES
-app.use("/i/users", register_user);
-app.use("/i/register-animal", register_animal);
+app.use("/i/users", user);
+app.use("/i/users/auth", userAuth);
+app.use("/i/register-animal", animal);
 app.use("/i/ctlg/types-specie", types_specie);
 
 

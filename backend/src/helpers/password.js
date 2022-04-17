@@ -5,7 +5,6 @@ const helpers = {}
 helpers.encryptPassword = async(password) =>{
     const salt = await bcryptjs.genSalt(10);
     const hash = await bcryptjs.hash(password, salt);
-    console.log(hash);
     return hash;
 };
 
