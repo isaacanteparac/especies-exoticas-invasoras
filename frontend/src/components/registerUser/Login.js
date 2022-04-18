@@ -24,7 +24,7 @@ export default function Login() {
   };
 
   const verifyUser = async () => {
-    const ok = login(data.username, data.password);
+    await login(username, password);
   };
 
   return (

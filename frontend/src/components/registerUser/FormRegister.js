@@ -23,7 +23,7 @@ export default function FormRegister(props) {
   };
 
   const createUser = async () => {
-    const ok = sign_up(data.name, data.lastname, data.email, data.username, data.password);
+    sign_up(data.name, data.lastname, data.email, data.username, data.password);
   };
 
 

@@ -3,18 +3,7 @@ const key = "iii1iiii1iiii1iii1";
 const token = {};
 
 token.generateToken = async (data) => {
-  return await jwt.sign(
-    data,
-    key,
-    {
-      expiresIn: "2h",
-    },
-    (err) => {
-      if (err) {
-        console.log(err);
-      }
-    }
-  );
+  return await jwt.sign(data, key);
 };
 
 token.validationToken = async (req, res, next) => {
@@ -23,7 +12,10 @@ token.validationToken = async (req, res, next) => {
     return res.status(401).json({ message: "no token" });
   }
   try {
-    const { username } = await jwt.verify(xToken, key);
+    const { name, lastname, email, username } = await jwt.verify(xToken, key);
+    req.name = name;
+    req.lastname = lastname;
+    req.email = email;
     req.username = username;
   } catch (error) {
     return res.status(401).json({ message: "tokenless validation" });

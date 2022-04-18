@@ -1,5 +1,3 @@
-import {generateToken} from "./token";
-
 const baseUrl = "http://localhost:6060/i";
 
 export const notoken = async (endponit, data) => {
@@ -15,6 +13,17 @@ export const notoken = async (endponit, data) => {
   return await resp.json();
 };
 
-export const yesToken = async (endponit, data, method="GET") => {
-  generateToken(data.username);
+export const yesToken = async (endponit) => {
+  const verificationToken= [];
+  const url = `${baseUrl}/${endponit}`;
+  const resp = await fetch(url, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      verificationToken(data);
+    });
+  console.log(verificationToken);
+  return await resp.json();
 }
