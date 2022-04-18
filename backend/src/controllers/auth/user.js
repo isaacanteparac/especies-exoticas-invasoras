@@ -16,7 +16,7 @@ userAuth.verificationUser = async (req, res) => {
       dataUser[0].password
     );
     if (verifyPassword) {
-      console.log(await generateToken(username));
+      await generateToken(username);
       res.status(200).json({ messa: "ok" });
     }
   } else {

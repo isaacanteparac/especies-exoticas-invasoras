@@ -1,6 +1,6 @@
 
 import React, { createContext, useState } from "react";
-import { postFetch } from "../helpers/crud_fetch";
+import { notoken } from "../helpers/crud_fetch";
 
 export const AuthContext = createContext();
 
@@ -18,7 +18,7 @@ export const Context = ({ children }) => {
 
   const login = async (username, password) => {
     const data = { username, password };
-    const resp = await postFetch("users/auth/verification", data);
+    const resp = await notoken("users/auth/verification", data, "POST");
     if (resp.ok) {
       const { user } = resp;
       setAuth({
@@ -35,7 +35,7 @@ export const Context = ({ children }) => {
 
   const sign_up = async (name, lastname, email, username, password) => {
     const data = { name, lastname, email, username, password };
-    const resp = await postFetch("users/auth/create", data);
+    const resp = await notoken("users/auth/create", data, "POST");
     if (resp.ok) {
       const { user } = resp;
       setAuth({

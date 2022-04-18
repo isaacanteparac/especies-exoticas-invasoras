@@ -1,6 +1,8 @@
+import {generateToken} from "./token";
+
 const baseUrl = "http://localhost:6060/i";
 
-export const postFetch = async (endponit, data) => {
+export const notoken = async (endponit, data) => {
   const url = `${baseUrl}/${endponit}`;
   const resp = await fetch(url, {
     method: "POST",
@@ -12,3 +14,7 @@ export const postFetch = async (endponit, data) => {
 
   return await resp.json();
 };
+
+export const yesToken = async (endponit, data, method="GET") => {
+  generateToken(data.username);
+}
