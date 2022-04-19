@@ -16,6 +16,7 @@ const theme = createTheme();
 export default function Login() {
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
+  const [m, setm] = useState([]);
   const { login } = useContext(AuthContext);
 
   const data = {
@@ -23,8 +24,13 @@ export default function Login() {
     password,
   };
 
-  const verifyUser = async () => {
-    await login(username, password);
+  const verifyUser = async (e) => {
+    e.preventDefault();
+		const ok = await login(username, password);
+		if (!ok) {
+			alert("Verifique el usuario y contraseña");
+		}
+ 
   };
 
   return (
@@ -51,6 +57,7 @@ export default function Login() {
               label="Username"
               name="username"
               autoComplete="username"
+              value={username}
               autoFocus
               type="text"
               onChange={(e) => {
@@ -63,6 +70,7 @@ export default function Login() {
               fullWidth
               name="password"
               label="Contraseña"
+              value={password}
               type="password"
               id="password"
               autoComplete="current-password"

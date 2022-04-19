@@ -37,6 +37,7 @@ export default function FormRegister(props) {
         label="Nombre"
         type="text"
         name="name"
+        value={name}
         helperText="Por favor, escriba su nombre"
         onChange={(e) => {
           setName(e.target.value);
@@ -49,6 +50,7 @@ export default function FormRegister(props) {
         name="lastname"
         label="Apellido"
         id="lastname"
+        value={lastname}
         type="text"
         helperText="Por favor, escriba su apellido"
         onChange={(e) => {
@@ -63,6 +65,7 @@ export default function FormRegister(props) {
         name="email"
         label="Email"
         id="email"
+        value={email}
         type="email"
         onChange={(e) => {
           setEmail(e.target.value);
@@ -76,6 +79,7 @@ export default function FormRegister(props) {
         name="username"
         label="Username"
         id="username"
+        value={username}
         type="text"
         onChange={(e) => {
           setUsername(e.target.value);
@@ -89,6 +93,7 @@ export default function FormRegister(props) {
         name="password"
         label="Contraseña"
         id="password"
+        value={password}
         type="password"
         helperText="Minimo 8 caracteres"
         onChange={(e) => {

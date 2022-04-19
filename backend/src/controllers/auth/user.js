@@ -1,6 +1,3 @@
-
-
-
 const { encryptPassword, decryptPassword } = require("../../helpers/password");
 const { generateToken } = require("../../helpers/token");
 const db = require("../../../database");
@@ -19,19 +16,20 @@ userAuth.login = async (req, res) => {
         dataUser[0].password
       );
       if (verifyPassword) {
-        const userToken = {
-          name: dataUser.name,
-          lastname: dataUser.lastname,
-          username: dataUser.username,
-          email: dataUser.email,
+        const user = {
+          id: dataUser[0].id,
+          name: dataUser[0].name,
+          lastname: dataUser[0].lastname,
+          username: dataUser[0].username,
+          email: dataUser[0].email,
         };
-        const token = generateToken(userToken);
-        res.status(200).json({ message: "ok", token: token, user: userToken });
+        const token = await generateToken(user);
+        return res.status(200).json({ ok: true, token: token, user: user });
       }
     }
   } catch (error) {
     console.log(error);
-    res.status(401).json({ message: "Wrong username or password" });
+    res.status(401).json({ ok: false, message: "Wrong username or password" });
   }
 };
 
@@ -55,32 +53,36 @@ userAuth.createUser = async (req, res) => {
         password,
       };
       await db.query("INSERT INTO users set ?", [newUser]);
-      const userToken = {
+      //TITLE: HACER CONSULTA PARA TRAER EL ID 
+      const user = {
         name,
         lastname,
         email,
         username,
       };
-      const token = generateToken(userToken);
-
-      res.status(200).json({ message: "ok", token: token, user:userToken });
+      const token = await generateToken(user);
+      res.status(200).json({ ok: true, token: token, user: user });
     }
   } catch (error) {
     console.log(error);
-    res.status(401).json({ message: "email or username already exist" });
+    res.status(401).json({ ok: false, message: "email or username already exist" });
   }
 };
 
-userAuth.revalidationToken =  (req, res) => {
-  const userToken = {
-    name: req.name,
-    lastname: req.lastname,
-    username: req.username,
-    email: req.email,
-  };
-  const token = generateToken(userToken);
-  res(200).json({message:"ok", token: token, user:userToken });
-}
-
+userAuth.revalidationToken = async (req, res) => {
+  try {
+    const userToken = {
+      name: req.name,
+      lastname: req.lastname,
+      username: req.username,
+      email: req.email,
+    };
+    const token = await generateToken(userToken);
+    res(200).json({ ok: true, token: token, user: userToken });
+    
+  } catch (error) {
+    res(401).json({ ok: false, message: "no revalidation"});
+  }
+};
 
 module.exports = userAuth;

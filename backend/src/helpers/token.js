@@ -17,8 +17,15 @@ token.validationToken = async (req, res, next) => {
     req.lastname = lastname;
     req.email = email;
     req.username = username;
+    const user = {
+      name: req.name,
+      lastname: req.lastname,
+      email: req.email,
+      username: req.username,
+    };
+    return res.status(200).json({ ok: true, message: "yes token", user: user });
   } catch (error) {
-    return res.status(401).json({ message: "tokenless validation" });
+    return res.status(401).json({ ok: false, message: "tokenless validation" });
   }
   next();
 };

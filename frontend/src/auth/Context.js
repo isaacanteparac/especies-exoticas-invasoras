@@ -18,7 +18,7 @@ export const Context = ({ children }) => {
 
   const login = async (username, password) => {
     const data = { username, password };
-    const resp = await notoken("users/auth/verification-user", data, "POST");
+    const resp = await notoken("users/auth/verification-user", data);
     if (resp.ok) {
       localStorage.setItem("token", resp.token);
       const { user } = resp;
@@ -28,8 +28,9 @@ export const Context = ({ children }) => {
         email: user.email,
         username: user.username,
         name: user.name,
-        lastname: user.lastname,
+        lastname: user.lastname
       });
+      return resp.ok;
     }
     return resp.ok;
   };
@@ -39,7 +40,7 @@ export const Context = ({ children }) => {
 
   const sign_up = async (name, lastname, email, username, password) => {
     const data = { name, lastname, email, username, password };
-    const resp = await notoken("users/auth/create", data, "POST");
+    const resp = await notoken("users/auth/create", data);
    
     if (resp.ok) {
       localStorage.setItem("token", resp.token);
