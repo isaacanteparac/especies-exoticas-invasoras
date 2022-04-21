@@ -15,7 +15,7 @@ const {
 //TITLE: types-specie
 router.route("/types-specie").get(getTypesSpecie);
 
-router.route("/scientific-name/:id").get(getIdScientificName);
+router.route("/types-specie/:id").get(getIdTypesSpecie);
 
 //TITLE: scientific-name
 router.route("/scientific-name").get(getAllScientificName);

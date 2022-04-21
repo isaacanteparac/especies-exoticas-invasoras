@@ -33,7 +33,7 @@ export default function CardAnimal(props) {
   };
 
   return (
-    <Card sx={{ width:"90%", height:"442px",borderRadius:"20px" }}>
+    <Card sx={{ width:"90%", height:"455px",borderRadius:"20px",boxShadow:"5px 5px 5px #999", border:"1px solid #999" }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -53,7 +53,7 @@ export default function CardAnimal(props) {
         height="194"
         image={props.animalPhoto}
       />
-      <CardContent>
+      <CardContent sx={{height:"136px"}}>
         <Typography gutterBottom variant="h5" component="div">
           {props.nameAnimal}
         </Typography>

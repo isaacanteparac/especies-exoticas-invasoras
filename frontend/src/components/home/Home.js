@@ -7,7 +7,6 @@ export default function Home(props) {
   const url_animales = "http://localhost:6060/i/animal";
   const url_user = "http://localhost:6060/i/users/";
   const [allAnimal, setAllAnimal] = useState([]);
-  const [user, setUser] = useState([]);
 
   const viewAnimal = async () => {
     await fetch(url_animales, {
@@ -17,18 +16,6 @@ export default function Home(props) {
       .then((res) => res.json())
       .then((data) => {
         setAllAnimal(data);
-      });
-  };
-
-  const viewUser = async (id) => {
-    const userid = url_user + ":" + id;
-    await fetch(userid, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data);
       });
   };
 

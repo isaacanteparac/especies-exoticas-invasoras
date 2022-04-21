@@ -6,7 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Items() {
   return (
@@ -20,9 +20,9 @@ export default function Items() {
 
       <ListItemButton>
         <ListItemIcon>
-          <PlaylistAddIcon />
+          <AccountCircleIcon />
         </ListItemIcon>
-        <ListItemText primary="Registrar Animal" />
+        <ListItemText primary="Perfil" />
       </ListItemButton>
     </List>
   );

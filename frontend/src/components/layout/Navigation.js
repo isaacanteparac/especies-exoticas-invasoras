@@ -7,6 +7,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
 
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -21,6 +22,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ContentComponent from "./ContentComponent";
 import Items from "./Items";
 import User from "../user/User";
+import RegisterAnimal from "../animal/RegisterAnimal";
 
 const drawerWidth = 240;
 
@@ -74,14 +76,14 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [nameOptions, setNameOptions] = useState("Home");
-
-
 
   const toggleDrawer = () => {
     setOpen(!open);
   };
+
+  
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -121,8 +123,8 @@ function DashboardContent() {
             >
               {nameOptions}
             </Typography>
-                <User/>
-            
+            <RegisterAnimal/>
+            <User />
           </Toolbar>
         </AppBar>
 
@@ -162,7 +164,7 @@ function DashboardContent() {
           </Toolbar>
 
           <Divider />
-              <Items/>
+          <Items />
         </Drawer>
 
         <Box
@@ -177,8 +179,8 @@ function DashboardContent() {
             overflow: "auto",
           }}
         >
-        <Toolbar />
-          <ContentComponent/>
+          <Toolbar />
+          <ContentComponent />
         </Box>
       </Box>
     </ThemeProvider>

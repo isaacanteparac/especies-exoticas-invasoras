@@ -4,7 +4,7 @@ const db = require("../../../database");
 
 scientific_name.getAllScientificName = async (req, res) => {
   try {
-    const allspecie = await db.query("SELECT * FROM ctlg_scientific_name");
+    const allspecie = await db.query("SELECT * FROM ctlg_scientific_name_animal");
     res.status(200).json(allspecie);
   } catch (error) {
     res.status(400).json({ message: error });
@@ -14,7 +14,7 @@ scientific_name.getAllScientificName = async (req, res) => {
 scientific_name.getIdScientificName = async (req, res) => {
   try {
     const idtype = await db.query(
-      "SELECT * FROM ctlg_scientific_name WHERE id = ?",
+      "SELECT * FROM ctlg_scientific_name_animal WHERE id = ?",
       [req.params.id]
     );
     res.status(200).json(idtype);
