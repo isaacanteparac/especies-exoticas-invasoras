@@ -1,0 +1,48 @@
+const newRegisterAnimalCtrl = {};
+
+const db = require("../../../database");
+
+
+
+
+newRegisterAnimalCtrl.postRegister = async (req, res) => {
+  const {
+    name,
+    photo,
+    location,
+    sound,
+    description,
+    scientificName,
+    id_ctlg_type_specie,
+    id_users,
+  } = req.body;
+  try{
+    const newRegisterAnimal = {
+      name,
+      photo,
+      location,
+      sound,
+      description,
+      scientificName,
+      id_ctlg_type_specie,
+      id_users,
+    };
+    await db.query("INSERT INTO animals set ?", [newRegisterAnimal]);
+    res.status(200).json({ message: true });
+  }
+  catch(error){
+    res.status(400).json({message:error});
+  }
+  
+};
+
+newRegisterAnimalCtrl.deleteIdRegister = async (req, res) => {
+  try {
+    await db.query("DELETE FROM animals WHERE id = ?", [req.params.id]);
+    res.status(200).json({ message: true });
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+};
+
+module.exports = newRegisterAnimalCtrl;

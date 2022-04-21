@@ -7,11 +7,7 @@ export const AuthContext = createContext();
 export const Context = ({ children }) => {
   const initial = {
     isLogin: false,
-    id: null,
-    email: null,
-    username: null,
-    name: null,
-    lastname: null,
+    user: null
   };
 
   const [auth, setAuth] = useState(initial);
@@ -24,11 +20,7 @@ export const Context = ({ children }) => {
       const { user } = resp;
       setAuth({
         isLogin: true,
-        id: user.id,
-        email: user.email,
-        username: user.username,
-        name: user.name,
-        lastname: user.lastname
+        user: user
       });
       return resp.ok;
     }

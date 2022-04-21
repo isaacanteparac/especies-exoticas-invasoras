@@ -1,12 +1,14 @@
 USE natilus_zone;
 
-CREATE TABLE ctlg_scientific_name_animal (
+CREATE TABLE comments (
     id INT(11) NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    scientific_name VARCHAR(255) NOT NULL,
-    location VARCHAR(255) NOT NULL,
+    comment VARCHAR(255) NOT NULL,
+    id_users INT(11) NOT NULL,
+    id_animal INT(11) NOT NULL,
     create_  timestamp NOT NULL DEFAULT current_timestamp,
     update_ timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
     delete_  timestamp NOT NULL DEFAULT current_timestamp,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_users) REFERENCES users(id),
+    FOREIGN KEY (id_animal) REFERENCES animals(id)
 );

@@ -9,7 +9,7 @@ CREATE TABLE users (
     email VARCHAR(100) NOT NULL,
     photo LONGTEXT NULL,
     create_  timestamp NOT NULL DEFAULT current_timestamp,
-    updatee_ timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
+    update_ timestamp NOT NULL DEFAULT current_timestamp ON UPDATE CURRENT_TIMESTAMP,
     delete_  timestamp NOT NULL DEFAULT current_timestamp,
     PRIMARY KEY (id)
 );

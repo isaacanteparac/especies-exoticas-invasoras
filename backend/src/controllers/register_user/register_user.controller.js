@@ -1,5 +1,5 @@
 const user = {};
-
+const db = require("../../../database");
 
 user.getUser = async (req, res) => {
   const allUser = await db.query("SELECT * FROM users");

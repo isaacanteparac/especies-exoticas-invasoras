@@ -6,10 +6,14 @@ const MySQLStore = require("express-mysql-session")(session);
 const { database } = require("./keys");
 const BodyParser = require("body-parser");
 
-const animal = require("./src/routes/register/animal");
+const animal = require("./src/routes/animals/animal");
+const animalRegister = require("./src/routes/animals/register");
+const comment = require("./src/routes/animals/commet");
+
 const user = require("./src/routes/register/user");
 const userAuth = require("./src/routes/auth/user");
-const types_specie = require("./src/routes/Catalogue/types_specie");
+
+const catalogue = require("./src/routes/catalogue/index");
 
 
 //INITALIZATIONS
@@ -54,9 +58,16 @@ app.use(morgan("dev"));
 
 //ROUTES
 app.use("/i/users", user);
+
 app.use("/i/users/auth", userAuth);
-app.use("/i/register-animal", animal);
-app.use("/i/ctlg/types-specie", types_specie);
+
+app.use("/i/animal", animal);
+
+app.use("/i/animal/register", animalRegister);
+
+app.use("/i/comment", comment);
+
+app.use("/i/ctlg", catalogue);
 
 
 //STARTING THE SERVER

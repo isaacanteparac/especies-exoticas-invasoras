@@ -4,6 +4,7 @@ import YesAuthRouter from "./YesAuthRouter";
 import PublicRouter from "./PublicRouter";
 import PrivateRouter from "./PrivateRouter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navigation from "../components/layout/Navigation";
 
 
 export default function AppRouter() {
@@ -24,7 +25,7 @@ export default function AppRouter() {
             path="/*"
             element={
               <PrivateRouter>
-                <YesAuthRouter />
+                <Navigation/>
               </PrivateRouter>
             }
           />

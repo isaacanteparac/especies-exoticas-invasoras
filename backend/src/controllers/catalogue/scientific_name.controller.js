@@ -1,20 +1,20 @@
-const types_specie = {};
+const scientific_name = {};
 
 const db = require("../../../database");
 
-types_specie.getTypesSpecie = async (req, res) => {
+scientific_name.getAllScientificName = async (req, res) => {
   try {
-    const allspecie = await db.query("SELECT * FROM ctlg_type_specie");
+    const allspecie = await db.query("SELECT * FROM ctlg_scientific_name");
     res.status(200).json(allspecie);
   } catch (error) {
     res.status(400).json({ message: error });
   }
 };
 
-types_specie.getIdTypesSpecie = async (req, res) => {
+scientific_name.getIdScientificName = async (req, res) => {
   try {
     const idtype = await db.query(
-      "SELECT * FROM ctlg_type_specie WHERE id = ?",
+      "SELECT * FROM ctlg_scientific_name WHERE id = ?",
       [req.params.id]
     );
     res.status(200).json(idtype);
@@ -23,4 +23,4 @@ types_specie.getIdTypesSpecie = async (req, res) => {
   }
 };
 
-module.exports = types_specie;
+module.exports = scientific_name;

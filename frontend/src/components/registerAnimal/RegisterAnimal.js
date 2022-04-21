@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -9,10 +9,10 @@ import MenuItem from "@mui/material/MenuItem";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import {AuthContext} from "../../auth/Context";
 const theme = createTheme();
 
-export default function RegisterAnimal() {
+export default function RegisterAnimal(props) {
   const [name, setName] = useState(null);
   const [scientificName, setScientificName] = useState(null);
   const [photo, setPhoto] = useState(null);
@@ -21,8 +21,11 @@ export default function RegisterAnimal() {
   const [description, setDescription] = useState(null);
   const [typeSpecie, setTypeSpecie] = useState(null);
   const [allTypesSpecie, setAllTypesSpecie] = useState([]);
-  const url_api = "http://localhost:6060/i/register-animal";
-  const url_api_types_specie = "http://localhost:6060/i/ctlg/types-specie/";
+  const [allScientificName, setAllScientificName] = useState([]);
+
+  const url_api = "http://localhost:6060/i/animal/register";
+  const url_api_types_specie = "http://localhost:6060/i/ctlg/types-specie";
+  const url_api_scientific_name = "http://localhost:6060/i/ctlg/scientific-name";
 
   const data = {
     name,
@@ -42,6 +45,17 @@ export default function RegisterAnimal() {
       .then((res) => res.json())
       .then((data) => {
         setAllTypesSpecie(data);
+      });
+  }
+
+  const getScientificName = async () =>{
+    await fetch(url_api_scientific_name, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAllScientificName(data);
       });
   }
 
@@ -67,17 +81,15 @@ export default function RegisterAnimal() {
   };
 
   useEffect(() => {
+    getScientificName();
     getTypesSpecie();
   },[]);
 
   return (
-    <ThemeProvider theme={theme}>
+
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
-            display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
@@ -123,7 +135,23 @@ export default function RegisterAnimal() {
                 id="outlined-select-currency"
                 select
                 label="tipos de especies"
-                //value={currency}
+                onChange={(e) => {
+                  setTypeSpecie(e.target.value);
+                }}
+                margin="normal"
+                fullWidth
+              >
+                {allScientificName?.map((scientific_) => (
+                  <MenuItem key={scientific_.id} value={scientific_.id}>
+                    {scientific_.scientific_name}
+                  </MenuItem>
+                ))}
+              </TextField>
+
+              <TextField
+                id="outlined-select-currency"
+                select
+                label="tipos de especies"
                 onChange={(e) => {
                   setTypeSpecie(e.target.value);
                 }}
@@ -175,6 +203,6 @@ export default function RegisterAnimal() {
             </Box>
         </Box>
       </Container>
-    </ThemeProvider>
+   
   );
 }
