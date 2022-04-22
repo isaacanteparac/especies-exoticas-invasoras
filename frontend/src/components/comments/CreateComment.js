@@ -27,25 +27,21 @@ export default function CreateComment(props) {
 
   const addComment = async () => {
     await yesToken("comment", data, "POST");
+    setComment("");
+    getAllComments();
   };
 
   const getAllComments = async () => {
     const getIdAnimal = (await "comment/animal/") + props.id_animal;
     const dataAllComment = await yesToken(getIdAnimal);
-    console.log("const directo: ");
-    console.log(dataAllComment);
-    console.log(id_animal);
-    console.log(props.id_animal);
     setAllComments(dataAllComment);
-    console.log("useSate: ");
-    console.log(allComments);
   };
 
   useEffect(() => {
     setId_users(user.id);
     setId_animal(props.id_animal);
     getAllComments();
-  }, []);
+  });
 
   return (
     <Box sx={styles.boxComment}>
@@ -59,11 +55,13 @@ export default function CreateComment(props) {
             key={comment_.commentId}
             comment_user={comment_.comment}
             username={comment_.username}
+            commentId = {comment_.commentId}
+            userId = {comment_.userId}
           />
         ))}
       </Box>
 
-      <Box component="form" onSubmit={addComment} sx={{marginTop:"15px", padding:"0 5px"}}>
+      <Box sx={{marginTop:"15px", padding:"0 5px"}}>
         <Input
           placeholder="Comenta"
           name="comment"
@@ -77,7 +75,7 @@ export default function CreateComment(props) {
             setComment(e.target.value);
           }}
         />
-        <IconButton type="submit" sx={styles.buttonAddCommment}>
+        <IconButton type="submit" sx={styles.buttonAddCommment} onClick={addComment}>
           <SendIcon sx={{ color: "#fff" }} />
         </IconButton>
       </Box>

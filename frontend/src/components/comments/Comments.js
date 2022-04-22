@@ -51,7 +51,7 @@ export default function Comments(props) {
                 color: "#999",
               }}
             >
-              {user.name} {user.lastname} ({user.username})
+              {props.nameUser} {props.lastnameUser} ({props.usernameUser})
             </Typography>
             <CardMedia component="img" height="250" image={props.animalPhoto} />
             <Box

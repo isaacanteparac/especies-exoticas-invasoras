@@ -18,15 +18,16 @@ export const yesToken = async (endponit, data = "", method = "GET") => {
   const url = `${baseUrl}/${endponit}`;
   const token = localStorage.getItem("token") || "";
 
-  if (method === "GET") {
+  if (method === "GET" || method === "DELETE") {
     const resp = await fetch(url, {
+      method,
       headers: {
         "Content-Type": "application/json",
         "x-token": token,
       },
     });
     return await resp.json();
-  } else {
+  }else {
     const resp = await fetch(url, {
       method,
       headers: {
@@ -35,8 +36,6 @@ export const yesToken = async (endponit, data = "", method = "GET") => {
       },
       body: JSON.stringify(data),
     });
-    
-    console.log(resp);
     return await resp.json();
   }
   

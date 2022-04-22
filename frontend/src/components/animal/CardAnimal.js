@@ -1,11 +1,11 @@
 import * as React from "react";
 import { styles } from "../styles";
-import Box from "@mui/material/Box";
+
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
+
 
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
@@ -67,6 +67,9 @@ export default function CardAnimal(props) {
           typeSpecie={props.typeSpecie}
           location={props.location}
           description={props.description}
+          nameUser = {props.name}
+          lastnameUser = {props.lastname}
+          usernameUser = {props.username}
         />
       </CardContent>
     </Card>

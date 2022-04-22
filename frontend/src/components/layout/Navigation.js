@@ -7,14 +7,16 @@ import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+
+
 import List from "@mui/material/List";
-import HomeIcon from "@mui/icons-material/Home";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import PersonIcon from "@mui/icons-material/Person";
 
-import Typography from "@mui/material/Typography";
+import HomeIcon from "@mui/icons-material/Home";
+import PersonIcon from "@mui/icons-material/Person";
 import IconButton from "@mui/material/IconButton";
 
 //TITLE:ICONS

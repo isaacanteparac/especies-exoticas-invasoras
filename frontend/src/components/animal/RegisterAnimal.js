@@ -95,7 +95,7 @@ export default function BasicModal() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Registra el animal
           </Typography>
-          <Box component="form" onSubmit={addAnimal} sx={{ marginTop: "10px" }}>
+          <Box sx={{ marginTop: "10px" }}>
             <TextField
               label="Nombre comun"
               name="name"
@@ -190,6 +190,7 @@ export default function BasicModal() {
                 type="submit"
                 fullWidth
                 variant="contained"
+                onClick={addAnimal}
                 sx={{ mt: 3, mb: 2, background: "orange", fontWeight: "600" }}
               >
                 Registrar
