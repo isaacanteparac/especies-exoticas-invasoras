@@ -68,6 +68,8 @@ export default function BasicModal() {
   };
 
   const addAnimal = async (e) => {
+    console.log(photo);
+    alert("photo")
     await fetch(url_api, {
       method: "POST",
       body: JSON.stringify(data),
@@ -77,6 +79,10 @@ export default function BasicModal() {
       .catch((error) => console.error("error", error))
       .then((res) => console.log("success", res));
 
+    AllClear();
+    e.preventDefault();
+  };
+  const AllClear = () =>{
     setName(null);
     setDescription(null);
     setLocation(null);
@@ -84,11 +90,13 @@ export default function BasicModal() {
     setPhoto(null);
     setSound(null);
     setId_ctlg_scientic_name(null);
-    e.preventDefault();
-  };
+  }
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false); 
+    AllClear();
+  };
 
   useEffect(() => {
     setId_users(user.id);
@@ -98,7 +106,7 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button variant="contained" sx={styles.buttonWhite} onClick={handleOpen}>
+      <Button variant="contained" sx={styles.buttonRegisterAnimal} onClick={handleOpen}>
       <PlaylistAddIcon />Registrar Animal
       </Button>
       <Modal
@@ -121,6 +129,7 @@ export default function BasicModal() {
               fullWidth
               type="text"
               value={name}
+              sx={styles.inputs}
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -184,17 +193,19 @@ export default function BasicModal() {
                 }}
               />
               <Box direction="row" fullWidth sx={{marginTop:"10px",display: "flex",alignItems: "center", justifyContent: "center"}}>
-               <Button variant="contained" component="label" sx={{fontSize:"13px", fontWeight:"600",borderRadius:"20px", marginRight:"3px"}}>
+               <Button variant="contained" component="label" 
+               sx={{fontSize:"13px", fontWeight:"600",borderRadius:"20px", marginRight:"3px"}}>
                <AddPhotoAlternateIcon/>Agregar Foto
-                <input type="file" accept="image/png, image/jpeg, image/jpg" hidden onChange={(e) => {
-                  setPhoto(e.target.value);
+                <input type="file" accept="image/png, image/jpeg, image/jpg" hidden
+                onChange={(e) => {
+                  setPhoto(e.target.files[0]);
                 }}/>
               </Button>
   
               <Button variant="contained" component="label" sx={{fontSize:"13px", fontWeight:"600", borderRadius:"20px"}}>
               <MusicNoteIcon/>Agregar Sonido
                 <input type="file" accept="audio/mp3" hidden onChange={(e) => {
-                  setPhoto(e.target.value);
+                  setSound(e.target.files[0]);
                 }}/>
               </Button>
             </Box>

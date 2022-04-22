@@ -1,7 +1,7 @@
 const newRegisterAnimalCtrl = {};
-
 const db = require("../../../database");
-
+//const fs = require('fs');
+//const path = require('path');
 
 
 
@@ -17,6 +17,9 @@ newRegisterAnimalCtrl.postRegister = async (req, res) => {
     id_users,
   } = req.body;
   try{
+    //const blobPhoto = fs.readFileSync(path.join(__dirname, '../filesData'+ req.photo.filedname));
+   //photo = blobPhoto;
+    //console.log(photo);
     const newRegisterAnimal = {
       name,
       photo,

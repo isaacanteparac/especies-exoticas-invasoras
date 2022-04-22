@@ -3,13 +3,14 @@ const commentsCtrl = {};
 const db = require("../../../database");
 
 commentsCtrl.addComment = async (req, res) => {
-  const { comment, id_animals, id_users } = req.body;
+  const { comment, id_animal, id_users } = req.body;
   try {
     const newComment = {
       comment,
-      id_animals,
+      id_animal,
       id_users,
     };
+    console.log(newComment);
     await db.query("INSERT INTO comments set ?", [newComment]);
     res.status(200).json({ message: true });
   } catch (error) {

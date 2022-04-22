@@ -7,11 +7,11 @@ import Grid from "@mui/material/Grid";
 import { AuthContext } from "../../auth/Context";
 
 export default function FormRegister(props) {
-  const [name, setName] = useState(null);
-  const [lastname, setLastname] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [name, setName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const {sign_up} = useContext(AuthContext);
 
   const data = {

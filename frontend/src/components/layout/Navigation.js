@@ -7,24 +7,28 @@ import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import HomeIcon from "@mui/icons-material/Home";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import PersonIcon from "@mui/icons-material/Person";
 
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import WidgetsIcon from "@mui/icons-material/Widgets";
 
 //TITLE:ICONS
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import MenuIcon from "@mui/icons-material/Menu";
 
 //TITLE:COMPONETS
 import ContentComponent from "./ContentComponent";
-import Items from "./Items";
+import { styles } from "../styles";
 import User from "../user/User";
 import RegisterAnimal from "../animal/RegisterAnimal";
+import Logo from "./Logo";
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -58,7 +62,8 @@ const Drawer = styled(MuiDrawer, {
     }),
     border: "none",
     boxSizing: "border-box",
-
+    backgroundColor: "#fff",
+    color: "#000",
     ...(!open && {
       overflowX: "hidden",
       transition: theme.transitions.create("width", {
@@ -76,24 +81,26 @@ const Drawer = styled(MuiDrawer, {
 const mdTheme = createTheme();
 
 function DashboardContent() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [nameOptions, setNameOptions] = useState("Home");
 
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
-  
-
   return (
     <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", backgroundColor: "#fff", border: "none" }}>
         <CssBaseline />
-        <AppBar open={open} color="transparent" sx={{ boxShadow: "0 0 0" }}>
+        <AppBar
+          open={open}
+          sx={{ boxShadow: "0 0 0", backgroundColor: "#fff" }}
+        >
           <Toolbar
             sx={{
               pr: "24px",
-              backgroundColor: "#fff",
+              backgroundColor: "#D5DEE7",
+              borderTopLeftRadius: "30px",
             }}
           >
             <IconButton
@@ -106,7 +113,7 @@ function DashboardContent() {
                 ...(open && { display: "none" }),
               }}
             >
-              <WidgetsIcon sx={{ color: "#0fee7e" }} />
+            <MenuIcon sx={{ color: "#0fee7e", fontSize: "30px" }} />
             </IconButton>
 
             <Typography
@@ -118,12 +125,12 @@ function DashboardContent() {
                 flexGrow: 1,
                 fontSize: "25px",
                 fontWeight: "600",
-                color: "#0fee7e",
+                color: "#504b4a",
               }}
             >
               {nameOptions}
             </Typography>
-            <RegisterAnimal/>
+            <RegisterAnimal />
             <User />
           </Toolbar>
         </AppBar>
@@ -147,36 +154,50 @@ function DashboardContent() {
                 flexGrow: 1,
                 fontSize: "25px",
                 fontWeight: "600",
-                color: "#0fee7e",
+                color: "#000",
                 position: "relative",
                 top: "10px",
-                left: "30px",
               }}
             >
-              Natilus Zone
+              <Logo /> Natilus Zone
             </Typography>
-            <IconButton
+            {/*<IconButton
               onClick={toggleDrawer}
-              sx={{ position: "relative", top: "10px" }}
+              sx={{ position: "relative", top: "10px", left:"10px" }}
             >
-              <ChevronLeftIcon />
-            </IconButton>
+              <MenuOpenIcon sx={{color:"#fff"}}/>
+            </IconButton>*/}
           </Toolbar>
 
-          <Divider />
-          <Items />
+          <List component="nav" sx={{ padding: "0 5px" }}>
+            <ListItemButton sx={styles.iconItemsListItemButton} onClick={()=>setNameOptions("Home")}>
+              <ListItemIcon>
+                <HomeIcon sx={styles.iconItems} />
+              </ListItemIcon>
+              <ListItemText primary="Home" sx={styles.iconItemsListItemText} />
+            </ListItemButton>
+
+            <ListItemButton sx={styles.iconItemsListItemButton} onClick={()=>setNameOptions("Perfil")}>
+              <ListItemIcon>
+                <PersonIcon sx={styles.iconItems} />
+              </ListItemIcon>
+              <ListItemText
+                primary="Perfil"
+                sx={styles.iconItemsListItemText}
+              />
+            </ListItemButton>
+          </List>
+          
         </Drawer>
 
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "light"
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
+            backgroundColor: "#D5DEE7",
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",
+            borderBottomLeftRadius: "30px",
           }}
         >
           <Toolbar />

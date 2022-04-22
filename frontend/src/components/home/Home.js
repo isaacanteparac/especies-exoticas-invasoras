@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-import CardAnimal from "./CardAnimal";
+import CardAnimal from "../animal/CardAnimal";
 import Grid from "@mui/material/Grid";
 
 export default function Home(props) {
@@ -32,17 +32,19 @@ export default function Home(props) {
     >
       <Grid container spacing={1}>
         {allAnimal?.map((animal) => (
-          <Grid item xs={4} sx={{ margin: "10px 0" }}>
+          <Grid item xs={4} sx={{ margin: "10px 0" }}  key={animal.id}>
             <CardAnimal
               key={animal.id}
               nameAnimal={animal.nameAnimal}
               scientificName={animal.scientificName}
               description={animal.description}
+              location={animal.location}
               name={animal.name}
               username={animal.username}
               photo={animal.photo}
               animalPhoto = {animal.animalPhoto}
               typeSpecie = {animal.typeSpecie}
+              id_animal = {animal.id}
             />
           </Grid>
         ))}

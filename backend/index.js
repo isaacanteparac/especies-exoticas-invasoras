@@ -6,6 +6,7 @@ const MySQLStore = require("express-mysql-session")(session);
 const { database } = require("./keys");
 const BodyParser = require("body-parser");
 
+
 const animal = require("./src/routes/animals/animal");
 const animalRegister = require("./src/routes/animals/register");
 const comment = require("./src/routes/animals/commet");
@@ -39,6 +40,8 @@ app.use(
     credentials: true,
   })
 );
+
+
 
 
 app.use(express.json());

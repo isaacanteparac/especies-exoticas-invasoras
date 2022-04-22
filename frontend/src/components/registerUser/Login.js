@@ -14,9 +14,8 @@ import { AuthContext } from "../../auth/Context";
 const theme = createTheme();
 
 export default function Login() {
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [m, setm] = useState([]);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
 
   const data = {
