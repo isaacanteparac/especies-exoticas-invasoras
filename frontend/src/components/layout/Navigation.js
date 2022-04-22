@@ -115,38 +115,9 @@ function DashboardContent() {
                 ...(open && { display: "none" }),
               }}
             >
-            <MenuIcon sx={{ color: "#0fee7e", fontSize: "30px" }} />
+            <MenuIcon sx={{ color: "#000",  }} />
             </IconButton>
 
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{
-                flexGrow: 1,
-                fontSize: "25px",
-                fontWeight: "600",
-                color: "#504b4a",
-              }}
-            >
-              {nameOptions}
-            </Typography>
-            <RegisterAnimal />
-            <User />
-          </Toolbar>
-        </AppBar>
-
-        <Drawer variant="permanent" open={open}>
-          <Toolbar
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-              px: [1],
-              margin: "10px 0",
-            }}
-          >
             <Typography
               component="h1"
               variant="h6"
@@ -163,12 +134,44 @@ function DashboardContent() {
             >
               <Logo /> Natilus Zone
             </Typography>
-            {/*<IconButton
+
+            <RegisterAnimal />
+            <User />
+          </Toolbar>
+        </AppBar>
+
+        <Drawer variant="permanent" open={open}>
+          <Toolbar
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              px: [1],
+              margin: "10px 0",
+            }}
+          >
+            {/*<Typography
+              component="h1"
+              variant="h6"
+              color="inherit"
+              noWrap
+              sx={{
+                flexGrow: 1,
+                fontSize: "25px",
+                fontWeight: "600",
+                color: "#000",
+                position: "relative",
+                top: "10px",
+              }}
+            >
+              <Logo /> Natilus Zone
+            </Typography>*/}
+            <IconButton
               onClick={toggleDrawer}
               sx={{ position: "relative", top: "10px", left:"10px" }}
             >
-              <MenuOpenIcon sx={{color:"#fff"}}/>
-            </IconButton>*/}
+              <MenuOpenIcon sx={{color:"#000"}}/>
+            </IconButton>
           </Toolbar>
 
           <List component="nav" sx={{ padding: "0 5px" }}>

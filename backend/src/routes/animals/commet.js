@@ -6,7 +6,8 @@ addComment,
 deleteComment,
 getAllComments,
 getIdCommentAnimal,
-getIdCommentUser
+getIdCommentUser,
+putIdCommentUser
 } = require("../../controllers/animals/comments.controller");
 
 router.route("/").post(addComment);
@@ -18,5 +19,7 @@ router.route("/all").get(getAllComments);
 router.route("/animal/:id").get(getIdCommentAnimal);
 
 router.route("/user/:id").get(getIdCommentUser);
+
+router.route("/update/:id").put(putIdCommentUser)
 
 module.exports = router;

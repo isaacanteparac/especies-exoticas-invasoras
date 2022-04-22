@@ -10,7 +10,6 @@ commentsCtrl.addComment = async (req, res) => {
       id_animal,
       id_users,
     };
-    console.log(newComment);
     await db.query("INSERT INTO comments set ?", [newComment]);
     res.status(200).json({ message: true });
   } catch (error) {
@@ -39,7 +38,7 @@ commentsCtrl.getAllComments = async (req, res) => {
 commentsCtrl.getIdCommentAnimal = async (req, res) => {
   try {
     const idanimal = await db.query(
-      "SELECT comments.comment, comments.id AS commentId"+
+      "SELECT comments.comment, comments.id AS commentId, comments.id_animal"+
       ",users.id AS userId, users.name, users.lastname, users.username"+
       ",users.photo AS userPhoto FROM (comments INNER JOIN users ON comments.id_users = users.id)"+
       "WHERE id_animal = ?",
@@ -61,5 +60,16 @@ commentsCtrl.getIdCommentUser = async (req, res) => {
     res.status(400).json({ message: error });
   }
 };
+
+commentsCtrl.putIdCommentUser = async (req, res) =>{
+  const { comment } = req.body;
+  const id = req.params.id;
+  try {
+    await db.query("UPDATE comments SET comment = ? WHERE id = ?",[comment, id]);
+    return res.status(200).json({ message: true });
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+}
 
 module.exports = commentsCtrl;

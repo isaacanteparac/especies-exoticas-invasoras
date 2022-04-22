@@ -12,7 +12,7 @@ export default function NoAuthRouter() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="view-animal" element={<ViewAnimal />} />
-          <Route path="*" element={<Navigate to="/free/view-animal" />} />
+          <Route path="*" element={<Navigate to="/free/login" />} />
         </Routes>
     </>
   );

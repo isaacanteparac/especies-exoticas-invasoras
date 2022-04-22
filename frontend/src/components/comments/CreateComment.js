@@ -41,7 +41,7 @@ export default function CreateComment(props) {
     setId_users(user.id);
     setId_animal(props.id_animal);
     getAllComments();
-  });
+  },[]);
 
   return (
     <Box sx={styles.boxComment}>
@@ -57,6 +57,7 @@ export default function CreateComment(props) {
             username={comment_.username}
             commentId = {comment_.commentId}
             userId = {comment_.userId}
+            animalId = {comment_.id_animal}
           />
         ))}
       </Box>
@@ -75,7 +76,7 @@ export default function CreateComment(props) {
             setComment(e.target.value);
           }}
         />
-        <IconButton type="submit" sx={styles.buttonAddCommment} onClick={addComment}>
+        <IconButton sx={styles.buttonAddCommment} onClick={addComment}>
           <SendIcon sx={{ color: "#fff" }} />
         </IconButton>
       </Box>
