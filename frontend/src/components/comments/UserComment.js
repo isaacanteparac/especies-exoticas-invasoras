@@ -6,22 +6,24 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 
+import { styles } from "../styles";
+
 export default function UserComment(props) {
   return (
     <ListItem
       alignItems="flex-start"
-      sx={{ backgroundColor: "#D5DEE7", borderRadius: "15px", borderTopLeftRadius:"0" }}
+      sx={styles.oneComment}
     >
       <ListItemAvatar>
         <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
           I
         </Avatar>
       </ListItemAvatar>
-      <ListItemText
+      <ListItemText sx={{overflow:"hidden"}}
         primary={props.username}
         secondary={
           <React.Fragment>
-            {props.comment}
+            {props.comment_user}
           </React.Fragment>
         }
       />

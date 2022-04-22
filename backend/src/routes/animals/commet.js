@@ -15,8 +15,8 @@ router.route("/:id").delete(deleteComment);
 
 router.route("/all").get(getAllComments);
 
-router.route("/animal/:idAnimal").get(getIdCommentAnimal);
+router.route("/animal/:id").get(getIdCommentAnimal);
 
-router.route("/user/:idUser").get(getIdCommentUser);
+router.route("/user/:id").get(getIdCommentUser);
 
 module.exports = router;

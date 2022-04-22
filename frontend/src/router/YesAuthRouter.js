@@ -5,12 +5,12 @@ import Home from "../components/home/Home";
 
 export default function YesAuthRouter() {
   return (
-    <Navigation>
+
        <Routes>
-        <Route path="/home" element={<Home/>} />
+        <Route path="/" element={<Navigation/>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-    </Navigation>
+
      
   );
 }

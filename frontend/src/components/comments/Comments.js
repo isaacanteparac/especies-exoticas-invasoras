@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
-
 import CardMedia from "@mui/material/CardMedia";
 
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
@@ -12,7 +11,6 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ScienceIcon from "@mui/icons-material/Science";
 import PetsIcon from "@mui/icons-material/Pets";
 import Chip from "@mui/material/Chip";
-
 
 import { AuthContext } from "../../auth/Context";
 import CreateComment from "./CreateComment";
@@ -30,6 +28,15 @@ export default function Comments(props) {
 
   return (
     <div>
+      <Box sx={styles.cardBoxDescription}>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          onClick={handleOpen}
+        >
+          {props.description}
+        </Typography>
+      </Box>
       <IconButton aria-label="comentarios" onClick={handleOpen}>
         <ModeCommentIcon />
       </IconButton>
@@ -39,14 +46,18 @@ export default function Comments(props) {
             <Typography gutterBottom variant="h5" sx={{ fontWeight: "600" }}>
               {props.animalName}
             </Typography>
-            <CardMedia component="img" height="250" image={props.animalPhoto} />
-            <Typography   sx={{
-                margin: "5px 0", color:"#36135f", fontWeight:"700"}}>
-              {user.name} {user.lastname}({user.username})
+            <Typography
+              sx={{
+                color: "#999",
+              }}
+            >
+              {user.name} {user.lastname} ({user.username})
             </Typography>
+            <CardMedia component="img" height="250" image={props.animalPhoto} />
             <Box
               sx={{
-                margin: "5px 0"}}
+                margin: "5px 0",
+              }}
             >
               <Chip
                 label={props.typeSpecie}
@@ -69,11 +80,13 @@ export default function Comments(props) {
                 size="small"
               />
             </Box>
-            <Typography variant="body1" color="text.primary">
-              {props.description} {props.id_animal}
-            </Typography>
+            <Box sx={styles.boxDescription}>
+              <Typography variant="body1" color="text.primary">
+                {props.description}
+              </Typography>
+            </Box>
           </Box>
-          <CreateComment id_animal = {props.id_animal}/>
+          <CreateComment id_animal={props.id_animal} />
         </Box>
       </Modal>
     </div>

@@ -203,6 +203,7 @@ function DashboardContent() {
           <Toolbar />
           <ContentComponent />
         </Box>
+    
       </Box>
     </ThemeProvider>
   );

@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
 import { AuthContext } from "../../auth/Context";
+import { yesToken } from "../../helpers/crud_fetch";
 
 export default function CreateComment(props) {
   const { auth } = useContext(AuthContext);
@@ -16,28 +17,34 @@ export default function CreateComment(props) {
   const [comment, setComment] = useState("");
   const [id_users, setId_users] = useState("");
   const [id_animal, setId_animal] = useState("");
-  const url_add_comment = "http://localhost:6060/i/comment";
-  const url_view_comment = "http://localhost:6060/i/comment/user/:idUser";
+  const [allComments, setAllComments] = useState([]);
 
-  const data ={
-      comment,
-      id_users,
-      id_animal
-  }
+  const data = {
+    comment,
+    id_users,
+    id_animal,
+  };
 
-  const addComment = async (e) => {
-    console.log(data);
-    await fetch(url_add_comment, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    })
-    e.preventDefault();
+  const addComment = async () => {
+    await yesToken("comment", data, "POST");
+  };
+
+  const getAllComments = async () => {
+    const getIdAnimal = (await "comment/animal/") + props.id_animal;
+    const dataAllComment = await yesToken(getIdAnimal);
+    console.log("const directo: ");
+    console.log(dataAllComment);
+    console.log(id_animal);
+    console.log(props.id_animal);
+    setAllComments(dataAllComment);
+    console.log("useSate: ");
+    console.log(allComments);
   };
 
   useEffect(() => {
     setId_users(user.id);
     setId_animal(props.id_animal);
+    getAllComments();
   }, []);
 
   return (
@@ -47,15 +54,22 @@ export default function CreateComment(props) {
       </Typography>
 
       <Box sx={styles.boxContentComment}>
-        <UserComment />
+        {allComments?.map((comment_) => (
+          <UserComment
+            key={comment_.commentId}
+            comment_user={comment_.comment}
+            username={comment_.username}
+          />
+        ))}
       </Box>
 
-      <Box component="form" onSubmit={addComment}>
+      <Box component="form" onSubmit={addComment} sx={{marginTop:"15px", padding:"0 5px"}}>
         <Input
           placeholder="Comenta"
           name="comment"
           id="comment"
           type="text"
+          autoComplete="off"
           disableUnderline={true}
           value={comment}
           sx={styles.addCommentTextField}

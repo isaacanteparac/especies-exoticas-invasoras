@@ -1,9 +1,9 @@
-
 export const styles = {
   buttonRegisterAnimal: {
     backgroundColor: "#e6e6e6",
     borderRadius: "20px",
     color: "#000",
+    marginRight: "15px",
     "&:hover": {
       backgroundColor: "#fff",
       color: "#000",
@@ -19,7 +19,7 @@ export const styles = {
     width: 400,
     backgroundColor: "#fff",
     borderRadius: "20px",
-    color:"#000",
+    color: "#000",
     p: 4,
   },
   iconItems: {
@@ -27,15 +27,15 @@ export const styles = {
     border: "none",
     borderRadius: "10px",
     width: "30px",
-    height:"30px",
-    padding:"2px",
-    backgroundColor:"#ccc"/*262323 */
+    height: "30px",
+    padding: "2px",
+    backgroundColor: "#ccc" /*262323 */,
   },
-  iconItemsListItemText:{
+  iconItemsListItemText: {
     color: "#504b4a",
   },
-  iconItemsListItemButton:{
-    borderRadius:"15px",
+  iconItemsListItemButton: {
+    borderRadius: "15px",
     height: "45px",
   },
   commentsModal: {
@@ -44,42 +44,63 @@ export const styles = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 800,
-    height: 550,
+    height: 600,
     backgroundColor: "#fff",
     borderRadius: "20px",
-    color:"#000",
+    color: "#000",
     p: 4,
   },
-  boxComment:{
+  boxComment: {
     borderRadius: "10px",
     width: "50%",
     height: "400px",
     padding: "5px",
     float: "left",
   },
-  chipComment:{
-    backgroundColor:"#e6e6e6",
-    marginRight:"3px",
+  chipComment: {
+    backgroundColor: "#A477cb",
+    marginRight: "3px",
+    color: "#fff",
   },
-  boxContentComment:{
-    height: "400px",
+  boxContentComment: {
+    height: "450px",
+    overflowY: "scroll",
+    padding: "0 5px",
+    borderRadius: "15px",
   },
-  addCommentTextField:{
-    borderRadius:"30px",
+  addCommentTextField: {
+    borderRadius: "30px",
     height: "35px",
     paddingLeft: "5px",
-    color:"#000",
-    width: "315px",
-    backgroundColor:"#D5DEE7"
+    color: "#fff",
+    width: "310px",
+    backgroundColor: "#000",
   },
-  buttonAddCommment:{
-    backgroundColor:"#065dfd",
+  buttonAddCommment: {
+    backgroundColor: "#065dfd",
     height: "35px",
     width: "35px",
-    marginLeft:"3px",
+    marginLeft: "3px",
     "&:hover": {
       backgroundColor: "#043898",
     },
-  }
-
+  },
+  oneComment: {
+    backgroundColor: "#D5DEE7",
+    borderRadius: "15px",
+    marginBottom: "10px",
+    overflow: "hidden",
+  },
+  boxDescription: {
+    height: "150px",
+    marginTop: "10px",
+    padding: "3px 5px",
+    borderRadius: "15px",
+    overflowY: "scroll",
+  },
+  cardBoxDescription: {
+    height: "71px",
+    overflow: "hidden",
+  
+  },
 };

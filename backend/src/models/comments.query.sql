@@ -2,7 +2,7 @@ USE natilus_zone;
 
 CREATE TABLE comments (
     id INT(11) NOT NULL AUTO_INCREMENT,
-    comment VARCHAR(255) NOT NULL,
+    comment MEDIUMTEXT NOT NULL,
     id_users INT(11) NOT NULL,
     id_animal INT(11) NOT NULL,
     create_  timestamp NOT NULL DEFAULT current_timestamp,

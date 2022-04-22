@@ -2,21 +2,14 @@ import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import CardAnimal from "../animal/CardAnimal";
 import Grid from "@mui/material/Grid";
+import {yesToken} from "../../helpers/crud_fetch";
 
 export default function Home(props) {
-  const url_animales = "http://localhost:6060/i/animal";
-  const url_user = "http://localhost:6060/i/users/";
   const [allAnimal, setAllAnimal] = useState([]);
 
   const viewAnimal = async () => {
-    await fetch(url_animales, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAllAnimal(data);
-      });
+    const dataAllAnimal = await yesToken("animal");
+    setAllAnimal(dataAllAnimal);
   };
 
   useEffect(() => {

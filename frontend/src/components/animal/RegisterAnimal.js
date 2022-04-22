@@ -12,6 +12,7 @@ import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 
 import {AuthContext} from "../../auth/Context";
 import { styles } from "../styles";
+import {yesToken} from "../../helpers/crud_fetch";
 
 export default function BasicModal() {
   const {auth} = useContext(AuthContext);
@@ -20,19 +21,15 @@ export default function BasicModal() {
   const [allTypesSpecie, setAllTypesSpecie] = useState([]);
   const [allScientificName, setAllScientificName] = useState([]);
 
-  const [name, setName] = useState(null);
-  const [photo, setPhoto] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [sound, setSound] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [location, setLocation] = useState("");
+  const [sound, setSound] = useState("");
+  const [description, setDescription] = useState("");
 
-  const [id_ctlg_scientic_name, setId_ctlg_scientic_name] = useState(null);
-  const [id_ctlg_type_specie, setId_ctlg_type_specie] = useState(null);
-  const [id_users, setId_users] = useState(null);
-
-  const url_api = "http://localhost:6060/i/animal/register";
-  const url_api_types_specie = "http://localhost:6060/i/ctlg/types-specie";
-  const url_api_scientific_name ="http://localhost:6060/i/ctlg/scientific-name";
+  const [id_ctlg_scientic_name, setId_ctlg_scientic_name] = useState("");
+  const [id_ctlg_type_specie, setId_ctlg_type_specie] = useState("");
+  const [id_users, setId_users] = useState("");
 
   const data = {
     name,
@@ -46,50 +43,29 @@ export default function BasicModal() {
   };
 
   const getTypesSpecie = async () => {
-    await fetch(url_api_types_specie, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAllTypesSpecie(data);
-      });
+    const dataTypesSpecies = await yesToken("ctlg/types-specie");
+    setAllTypesSpecie(dataTypesSpecies);
   };
 
   const getScientificName = async () => {
-    await fetch(url_api_scientific_name, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAllScientificName(data);
-      });
+    const dataScientificName = await yesToken("ctlg/scientific-name");
+    setAllScientificName(dataScientificName);
   };
 
-  const addAnimal = async (e) => {
-    console.log(photo);
-    alert("photo")
-    await fetch(url_api, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .catch((error) => console.error("error", error))
-      .then((res) => console.log("success", res));
-
+  const addAnimal = async () => {
+    await yesToken("animal/register", data, "POST");
+    setOpen(false);
     AllClear();
-    e.preventDefault();
+
   };
   const AllClear = () =>{
-    setName(null);
-    setDescription(null);
-    setLocation(null);
-    setId_ctlg_type_specie(null);
-    setPhoto(null);
-    setSound(null);
-    setId_ctlg_scientic_name(null);
+    setName("");
+    setDescription("");
+    setLocation("");
+    setId_ctlg_type_specie("");
+    setPhoto("");
+    setSound("");
+    setId_ctlg_scientic_name("");
   }
 
   const handleOpen = () => setOpen(true);

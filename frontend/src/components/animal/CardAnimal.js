@@ -1,5 +1,6 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
+import { styles } from "../styles";
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,23 +11,12 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-import Comments from "../comments/Comments";
-import { PowerInputSharp } from "@mui/icons-material";
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+
+import Comments from "../comments/Comments";
+
 
 export default function CardAnimal(props) {
   const [expanded, setExpanded] = React.useState(false);
@@ -41,7 +31,6 @@ export default function CardAnimal(props) {
         height: "455px",
         borderRadius: "20px",
         backgroundColor: "#fafafa",
-        boxShadow: "5px 5px 5px #999",
       }}
     >
       <CardHeader
@@ -64,18 +53,13 @@ export default function CardAnimal(props) {
           gutterBottom
           variant="h5"
           component="div"
-          sx={{ fontWeight: "600" }}
+          
         >
           {props.nameAnimal}
         </Typography>
         <Typography variant="body1" color="text.primary">
           {props.typeSpecie} ({props.scientificName})
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {props.description}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
         <Comments
           id_animal={props.id_animal}
           animalName={props.nameAnimal}
@@ -84,7 +68,7 @@ export default function CardAnimal(props) {
           location={props.location}
           description={props.description}
         />
-      </CardActions>
+      </CardContent>
     </Card>
   );
 }

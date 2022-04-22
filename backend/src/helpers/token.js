@@ -24,7 +24,8 @@ token.validationToken = async (req, res, next) => {
       username: req.username,
     };
     return res.status(200).json({ ok: true, message: "yes token", user: user });
-  } catch (error) {
+  } 
+  catch (error) {
     return res.status(401).json({ ok: false, message: "tokenless validation" });
   }
   next();

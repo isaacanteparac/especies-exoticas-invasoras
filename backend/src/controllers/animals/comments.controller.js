@@ -38,24 +38,28 @@ commentsCtrl.getAllComments = async (req, res) => {
 
 commentsCtrl.getIdCommentAnimal = async (req, res) => {
   try {
-    const idanimal = await db.query("SELECT * FROM comments WHERE id_animal = ?", [
-      req.params.idAnimal,
-    ]);
+    const idanimal = await db.query(
+      "SELECT comments.comment, comments.id AS commentId"+
+      ",users.id AS userId, users.name, users.lastname, users.username"+
+      ",users.photo AS userPhoto FROM (comments INNER JOIN users ON comments.id_users = users.id)"+
+      "WHERE id_animal = ?",
+      [req.params.id]
+    );
     res.status(200).json(idanimal);
   } catch (error) {
     res.status(400).json({ message: error });
   }
 };
 
-commentsCtrl.getIdCommentUser = async (req, res) =>{
-    try {
-        const iduser = await db.query("SELECT * FROM comments WHERE id_users = ?", [
-          req.params.idUser,
-        ]);
-        res.status(200).json(iduser);
-      } catch (error) {
-        res.status(400).json({ message: error });
-      }
+commentsCtrl.getIdCommentUser = async (req, res) => {
+  try {
+    const iduser = await db.query("SELECT * FROM comments WHERE id_users = ?", [
+      req.params.id,
+    ]);
+    res.status(200).json(iduser);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
 };
 
 module.exports = commentsCtrl;

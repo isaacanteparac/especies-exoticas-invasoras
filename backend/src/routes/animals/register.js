@@ -8,6 +8,7 @@ const {
 } = require("../../controllers/animals/register.controller");
 
 
+
 router.route("/").post(postRegister);
 
 router.route("/:id").delete(deleteIdRegister);

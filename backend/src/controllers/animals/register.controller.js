@@ -32,10 +32,10 @@ newRegisterAnimalCtrl.postRegister = async (req, res) => {
     };
     console.log(newRegisterAnimal);
     await db.query("INSERT INTO animals set ?", [newRegisterAnimal]);
-    res.status(200).json({ message: true });
+    return res.status(200).json({ message: true });
   }
   catch(error){
-    res.status(400).json({message:error});
+    return res.status(400).json({message:error});
   }
   
 };
