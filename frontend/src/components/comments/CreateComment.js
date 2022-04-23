@@ -71,7 +71,7 @@ export default function CreateComment(props) {
           autoComplete="off"
           disableUnderline={true}
           value={comment}
-          sx={styles.addCommentTextField}
+          sx={styles.addCommentInput}
           onChange={(e) => {
             setComment(e.target.value);
           }}

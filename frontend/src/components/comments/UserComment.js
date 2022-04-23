@@ -5,17 +5,17 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Input from "@mui/material/Input";
 import Box from "@mui/material/Box";
-
+import TextField from '@mui/material/TextField';
 
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import EditIcon from "@mui/icons-material/Edit";
+import SaveAsIcon from '@mui/icons-material/SaveAs';
 
 import { red } from "@mui/material/colors";
 
@@ -36,8 +36,8 @@ export default function UserComment(props) {
   const [comment, setComment] = useState("");
 
   const data = {
-    comment
-  }
+    comment,
+  };
 
   const openOption = (e) => {
     setoption(e.currentTarget);
@@ -51,9 +51,9 @@ export default function UserComment(props) {
     setOptionUpdate(e.currentTarget);
   };
 
-  const closeViewUpdate = () =>{
+  const closeViewUpdate = () => {
     setOptionUpdate(null);
-  }
+  };
 
   const viewOption = () => {
     if (props.userId == user.id) {
@@ -63,16 +63,15 @@ export default function UserComment(props) {
   };
 
   const updateComment = async () => {
-    
     if (getOption) {
       closeViewUpdate();
+      closeOption();
       const putcomment = "comment/update/" + props.commentId;
       await yesToken(putcomment, data, "PUT");
     } else {
       alert("No se pudo actualizar");
     }
-    
-  }
+  };
 
   const deleteComment = async () => {
     if (getOption) {
@@ -86,7 +85,7 @@ export default function UserComment(props) {
 
   useEffect(() => {
     viewOption();
-  },[]);
+  }, []);
 
   return (
     <ListItem alignItems="flex-start" sx={styles.oneComment}>
@@ -101,9 +100,11 @@ export default function UserComment(props) {
         secondary={<React.Fragment>{props.comment_user}</React.Fragment>}
       />
 
-      {getOption? <IconButton onClick={openOption}>
-        <MoreVertIcon />
-      </IconButton> : null}
+      {getOption ? (
+        <IconButton onClick={openOption}>
+          <MoreVertIcon />
+        </IconButton>
+      ) : null}
       <Popover
         id={id_option}
         open={open}
@@ -115,17 +116,17 @@ export default function UserComment(props) {
         }}
       >
         <List component="nav" sx={styles.options}>
-          <ListItemButton sx={styles.contentOptionsBtn} onClick={openViewUpdate}>
-              <EditIcon sx={styles.iconsOptions}/>
-            <ListItemText primary="Editar" sx={styles.textOptionsItems}/>
-          </ListItemButton>
-
           <ListItemButton
             sx={styles.contentOptionsBtn}
-            onClick={deleteComment}
+            onClick={openViewUpdate}
           >
-            <DeleteIcon sx={styles.iconsOptions}/>
-            <ListItemText primary="Eliminar" sx={styles.textOptionsItems}/>
+            <EditIcon sx={styles.iconsOptions} />
+            <ListItemText primary="Editar" sx={styles.textOptionsItems} />
+          </ListItemButton>
+
+          <ListItemButton sx={styles.contentOptionsBtn} onClick={deleteComment}>
+            <DeleteIcon sx={styles.iconsOptions} />
+            <ListItemText primary="Eliminar" sx={styles.textOptionsItems} />
           </ListItemButton>
         </List>
       </Popover>
@@ -136,36 +137,47 @@ export default function UserComment(props) {
         anchorEl={optionUpdate}
         onClose={closeViewUpdate}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
+          vertical: "bottom",
+          horizontal: "center",
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
+          vertical: "top",
+          horizontal: "center",
         }}
       >
-        <Box sx={{ padding: "10px", background:"#000" }}>
-          <Input
+        <Box
+          sx={{
+            padding: "10px",
+            background: "#fff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            maxHeight:"200px",
+            width: "300px"
+          }}
+        >
+         <TextField
           placeholder="Comenta"
           name="comment"
           id="comment"
           type="text"
           autoFocus
           autoComplete="off"
-          disableUnderline={true}
           value={comment}
+          variant="standard"
+          multiline
+          fullWidth
           maxRows={3}
-          sx={{height:"50px", color:"#fff", borderBottom:"1px solid #999"}}
           onChange={(e) => {
             setComment(e.target.value);
-          }}
-        />
-        <IconButton sx={styles.buttonAddCommment} onClick={updateComment}>
-          <EditIcon sx={{ color: "#fff" }} />
-        </IconButton>
+          }}/>
+
+          <IconButton sx={styles.btnEditComment} onClick={updateComment}>
+            <SaveAsIcon sx={{ color: "#0cbe65", marginRight:"5px" }} /> Guardar
+          </IconButton>
         </Box>
       </Popover>
-
     </ListItem>
   );
 }

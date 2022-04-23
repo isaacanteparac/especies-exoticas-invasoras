@@ -30,7 +30,8 @@ export default function CardAnimal(props) {
         width: "90%",
         height: "455px",
         borderRadius: "20px",
-        backgroundColor: "#fafafa",
+        backgroundColor: "#F5f8fb",
+        boxShadow:"5px 5px 5px #ccc"
       }}
     >
       <CardHeader

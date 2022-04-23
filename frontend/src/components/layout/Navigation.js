@@ -98,12 +98,12 @@ function DashboardContent() {
         <CssBaseline />
         <AppBar
           open={open}
-          sx={{ boxShadow: "0 0 0", backgroundColor: "#fff" }}
+          sx={{ boxShadow: "0 0 0", backgroundColor: "#E3e3ec" }}
         >
           <Toolbar
             sx={{
               pr: "24px",
-              backgroundColor: "#D5DEE7",
+              backgroundColor: "#fff",
               borderTopLeftRadius: "30px",
             }}
           >
@@ -203,7 +203,7 @@ function DashboardContent() {
         <Box
           component="main"
           sx={{
-            backgroundColor: "#D5DEE7",
+            backgroundColor: "#fff",
             flexGrow: 1,
             height: "100vh",
             overflow: "auto",

@@ -36,7 +36,7 @@ export default function Search() {
 
   return (
     <Box sx={styles.boxSearch}>
-      <Button sx={styles.btnSearch} onClick={openOption}>
+      <Button sx={styles.btnSearch} variant="contained" onClick={openOption}>
         <SearchIcon sx={styles.iconSearch} />
         {search}
       </Button>
