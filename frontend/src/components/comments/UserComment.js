@@ -114,27 +114,21 @@ export default function UserComment(props) {
           horizontal: "left",
         }}
       >
-        <List component="nav" sx={{ padding: "5px" }}>
-          <ListItemButton sx={styles.iconItemsListItemButton} onClick={openViewUpdate}>
-            <ListItemIcon>
-              <EditIcon />
-            </ListItemIcon>
-            <ListItemText primary="Editar" />
+        <List component="nav" sx={styles.options}>
+          <ListItemButton sx={styles.contentOptionsBtn} onClick={openViewUpdate}>
+              <EditIcon sx={styles.iconsOptions}/>
+            <ListItemText primary="Editar" sx={styles.textOptionsItems}/>
           </ListItemButton>
 
           <ListItemButton
-            sx={styles.iconItemsListItemButton}
+            sx={styles.contentOptionsBtn}
             onClick={deleteComment}
           >
-            <ListItemIcon>
-              <DeleteIcon />
-            </ListItemIcon>
-            <ListItemText primary="Eliminar" />
+            <DeleteIcon sx={styles.iconsOptions}/>
+            <ListItemText primary="Eliminar" sx={styles.textOptionsItems}/>
           </ListItemButton>
         </List>
       </Popover>
-
-
 
       <Popover
         id={id_update}
@@ -150,7 +144,7 @@ export default function UserComment(props) {
           horizontal: 'center',
         }}
       >
-        <Box>
+        <Box sx={{ padding: "10px", background:"#000" }}>
           <Input
           placeholder="Comenta"
           name="comment"
@@ -161,7 +155,7 @@ export default function UserComment(props) {
           disableUnderline={true}
           value={comment}
           maxRows={3}
-          sx={{height:"50px", padding:"0 5px"}}
+          sx={{height:"50px", color:"#fff", borderBottom:"1px solid #999"}}
           onChange={(e) => {
             setComment(e.target.value);
           }}

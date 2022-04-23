@@ -9,7 +9,6 @@ import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -18,6 +17,7 @@ import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import PersonIcon from "@mui/icons-material/Person";
 import IconButton from "@mui/material/IconButton";
+
 
 //TITLE:ICONS
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
@@ -29,6 +29,8 @@ import { styles } from "../styles";
 import User from "../user/User";
 import RegisterAnimal from "../animal/RegisterAnimal";
 import Logo from "./Logo";
+import Search from "../home/Search";
+import { Input } from "@mui/material";
 
 const drawerWidth = 220;
 
@@ -115,26 +117,24 @@ function DashboardContent() {
                 ...(open && { display: "none" }),
               }}
             >
-            <MenuIcon sx={{ color: "#000",  }} />
+              <MenuIcon sx={{ color: "#000" }} />
             </IconButton>
 
             <Typography
-              component="h1"
               variant="h6"
               color="inherit"
               noWrap
               sx={{
                 flexGrow: 1,
-                fontSize: "25px",
+                fontSize: "30px",
                 fontWeight: "600",
                 color: "#000",
                 position: "relative",
-                top: "10px",
               }}
             >
               <Logo /> Natilus Zone
             </Typography>
-
+            <Search/>
             <RegisterAnimal />
             <User />
           </Toolbar>
@@ -168,21 +168,27 @@ function DashboardContent() {
             </Typography>*/}
             <IconButton
               onClick={toggleDrawer}
-              sx={{ position: "relative", top: "10px", left:"10px" }}
+              sx={{ position: "relative", top: "10px", left: "10px" }}
             >
-              <MenuOpenIcon sx={{color:"#000"}}/>
+              <MenuOpenIcon sx={{ color: "#000" }} />
             </IconButton>
           </Toolbar>
 
           <List component="nav" sx={{ padding: "0 5px" }}>
-            <ListItemButton sx={styles.iconItemsListItemButton} onClick={()=>setNameOptions("Home")}>
+            <ListItemButton
+              sx={styles.iconItemsListItemButton}
+              onClick={() => setNameOptions("Home")}
+            >
               <ListItemIcon>
                 <HomeIcon sx={styles.iconItems} />
               </ListItemIcon>
               <ListItemText primary="Home" sx={styles.iconItemsListItemText} />
             </ListItemButton>
 
-            <ListItemButton sx={styles.iconItemsListItemButton} onClick={()=>setNameOptions("Perfil")}>
+            <ListItemButton
+              sx={styles.iconItemsListItemButton}
+              onClick={() => setNameOptions("Perfil")}
+            >
               <ListItemIcon>
                 <PersonIcon sx={styles.iconItems} />
               </ListItemIcon>
@@ -192,7 +198,6 @@ function DashboardContent() {
               />
             </ListItemButton>
           </List>
-          
         </Drawer>
 
         <Box
@@ -208,7 +213,6 @@ function DashboardContent() {
           <Toolbar />
           <ContentComponent />
         </Box>
-    
       </Box>
     </ThemeProvider>
   );

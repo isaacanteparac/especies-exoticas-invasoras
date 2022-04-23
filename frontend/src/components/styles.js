@@ -1,12 +1,14 @@
 export const styles = {
   buttonRegisterAnimal: {
-    backgroundColor: "#e6e6e6",
+    backgroundColor: "#5d49ff",
     borderRadius: "20px",
-    color: "#000",
+    color: "#fff",
     marginRight: "15px",
+    boxShadow:"0 0 0",
     "&:hover": {
-      backgroundColor: "#fff",
-      color: "#000",
+      boxShadow:"0 0 0",
+      backgroundColor: "#2f2580",
+      color: "#fff",
       fontWeight: 600,
     },
   },
@@ -101,6 +103,51 @@ export const styles = {
   cardBoxDescription: {
     height: "71px",
     overflow: "hidden",
-  
   },
+  searchTextField:{
+    backgroundColor:"#fff",
+    width: "230px",
+    borderRadius:"10px 10px 0 0",
+    border:"none",
+    outline: "none",
+    float: "left",
+  },
+  iconSearch:{
+    color:"#fff",
+    fontSize:"35px",
+    float: "left",
+  },
+  btnSearch:{
+    color:"#fff",
+    fontWeight: 600,
+    border:"none",
+    width: "300px",
+    height: "40px",
+    borderRadius:"15px",
+    backgroundColor:"#000",
+    overflow: "hidden",
+    "&:hover": {
+      boxShadow:"0 0 0",
+      backgroundColor:"#000"
+    },
+  },
+  boxSearch:{
+    marginRight:"125px",
+  },
+  options:{
+    padding: "5px",
+    background:"#000"
+  },
+  contentOptionsBtn:{
+    "&:hover": {
+      borderRadius:"15px",
+      backgroundColor: "#2e2e2e",
+    },
+  },
+  textOptionsItems:{
+    color:"#fff"
+  },
+  iconsOptions:{
+    color:"#fff",marginRight:"5px"
+  }
 };
