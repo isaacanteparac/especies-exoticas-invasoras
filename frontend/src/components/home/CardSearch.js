@@ -19,18 +19,19 @@ import Comments from "../comments/Comments";
 
 export default function CardSearch(props) {
   const fullname = props.nameUser + " " + props.lastName;
-  const imagen =
-    "https://media.vogue.mx/photos/6243293341ab39375529a6a1/2:3/w_1600,c_limit/Billie-Eilish-botas-go%CC%81ticas-oscars-2022.jpg";
+  const imagen ="https://media.vogue.mx/photos/6243293341ab39375529a6a1/2:3/w_1600,c_limit/Billie-Eilish-botas-go%CC%81ticas-oscars-2022.jpg";
+
 
   return (
     <Card sx={styles.cardSearch}>
       <Box sx={styles.boxImagenSearch}>
         <CardMedia
           component="img"
-          sx={{ width: "100%", borderRadius: "10px", maxHeight: "200px" }}
+          sx={{ width: "100%", borderRadius: "10px", maxHeight: "250px", cursor:"pointer" }}
           image={imagen}
         />
       </Box>
+      
 
       <Box
         sx={{
@@ -42,7 +43,7 @@ export default function CardSearch(props) {
       >
         <Box>
           <Typography component="div" variant="h5" sx={styles.textTypoCard}>
-            {props.name}
+            {props.animalName}
           </Typography>
         </Box>
         <Box>
@@ -95,13 +96,13 @@ export default function CardSearch(props) {
         <Divider sx={{margin:"5px 0"}}/>
         <Comments
           id_animal={props.id_animal}
-          animalName={props.nameAnimal}
+          animalName={props.animalName}
           scientificName={props.scientificName}
           typeSpecie={props.typeSpecie}
           location={props.location}
           description={props.description}
-          nameUser={props.name}
-          lastnameUser={props.lastname}
+          nameUser={props.nameUser}
+          lastnameUser={props.lastName}
           usernameUser={props.username}
         />
       </Box>

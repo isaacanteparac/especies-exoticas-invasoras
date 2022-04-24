@@ -14,7 +14,7 @@ import {AuthContext} from "../../auth/Context";
 import { styles } from "../styles";
 import {yesToken} from "../../helpers/crud_fetch";
 
-export default function BasicModal() {
+export default function RegsiterAnimal() {
   const {auth} = useContext(AuthContext);
   const {user} = auth;
   const [open, setOpen] = React.useState(false);
@@ -100,6 +100,7 @@ export default function BasicModal() {
               label="Nombre comun"
               name="name"
               autoFocus
+              autoComplete="off"
               id="name"
               margin="dense"
               fullWidth
@@ -150,6 +151,7 @@ export default function BasicModal() {
                 multiline
                 required
                 label="Descripcion"
+                autoComplete="off"
                 margin="dense"
                 value={description}
                 fullWidth
@@ -162,6 +164,7 @@ export default function BasicModal() {
                 id="location"
                 label="Ubicacion"
                 margin="dense"
+                autoComplete="off"
                 value={location}
                 fullWidth
                 onChange={(e) => {

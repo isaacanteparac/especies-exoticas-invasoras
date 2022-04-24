@@ -19,7 +19,6 @@ import PersonIcon from "@mui/icons-material/Person";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-
 import Popover from "@mui/material/Popover";
 
 //TITLE:ICONS
@@ -32,7 +31,7 @@ import { styles } from "../styles";
 import User from "../user/User";
 import RegisterAnimal from "../animal/RegisterAnimal";
 import Logo from "./Logo";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
 
 import { Input } from "@mui/material";
@@ -88,10 +87,20 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const searchSuggestion = [
-  { id: 1, name: "ubication", urlChip:""},
-  { id: 2, name: "nombre cientifico", urlChip: "ctlg/scientific-name", url:"animal/scientific-name/" },
-  { id: 3, name: "tipo de especie" , urlChip: "ctlg/types-specie", url:"animal/type-specie/"},
-  { id: 4, name: "nivel de peligrosidad", urlChip: "ctlg/danger-level" }
+  { id: 1, name: "ubication", urlChip: "" },
+  {
+    id: 2,
+    name: "nombre cientifico",
+    urlChip: "ctlg/scientific-name",
+    url: "animal/scientific-name/",
+  },
+  {
+    id: 3,
+    name: "tipo de especie",
+    urlChip: "ctlg/types-specie",
+    url: "animal/type-specie/",
+  },
+  { id: 4, name: "nivel de peligrosidad", urlChip: "ctlg/danger-level" },
 ];
 
 const mdTheme = createTheme();
@@ -99,14 +108,14 @@ const mdTheme = createTheme();
 function DashboardContent() {
   const [open, setOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [getComponent, setGetComponent] = useState({home:true, search:false});
-  const [search,setSearch] = useState({ id: 0, name: ""});
+  const [getComponent, setGetComponent] = useState({
+    home: true,
+    search: false,
+  });
+  const [search, setSearch] = useState({ id: 0, name: "" });
   const [option, setoption] = useState(null);
   const open_search = Boolean(option);
   const id_option = open_search ? "simple-popover" : undefined;
-
-  
-
 
   const openOption = (e) => {
     setoption(e.currentTarget);
@@ -133,7 +142,7 @@ function DashboardContent() {
             sx={{
               pr: "24px",
               backgroundColor: "#fff",
-              border:"1px solid #ccc",
+              border: "1px solid #ccc",
               borderTopLeftRadius: "30px",
             }}
           >
@@ -164,7 +173,7 @@ function DashboardContent() {
               }}
               onClick={() => {
                 setSearchInput("");
-                setGetComponent({home:true, search:false});
+                setGetComponent({ home: true, search: false });
               }}
             >
               <Logo /> Natilus Zone
@@ -177,16 +186,22 @@ function DashboardContent() {
                 placeholder="busca..."
                 value={searchInput}
                 onClick={openOption}
-                sx={{ width: "84%", height: "60px", color:"#fff" }}
+                autoComplete="off"
+                onChange={(e) => setSearchInput(e.target.value)}
+                sx={{ width: "84%", height: "60px", color: "#fff" }}
               />
-              <CloseIcon sx={{color:"#999",
-              fontSize:"18px",
-              marginLeft:"1px",
-            position:"relative",
-          bottom:"5px"}}
-              onClick={()=>{setSearchInput("")}}
+              <CloseIcon
+                sx={{
+                  color: "#999",
+                  fontSize: "18px",
+                  marginLeft: "1px",
+                  position: "relative",
+                  bottom: "5px",
+                }}
+                onClick={() => {
+                  setSearchInput("");
+                }}
               />
-
 
               <Popover
                 id={id_option}
@@ -214,13 +229,13 @@ function DashboardContent() {
                       onClick={() => {
                         setSearchInput(suggestion.name);
                         setSearch(suggestion);
-                        setGetComponent({home:false, search:true});
+                        setGetComponent({ home: false, search: true });
                         closeOption();
                       }}
                     >
                       <ListItemText
                         primary={suggestion.name}
-                        sx={{ textTransform: "capitalize"}}
+                        sx={{ textTransform: "capitalize" }}
                       />
                     </ListItemButton>
                   ))}

@@ -33,11 +33,13 @@ export default function Home(props) {
               description={animal.description}
               location={animal.location}
               name={animal.name}
+              lastname={animal.lastname}
               username={animal.username}
               photo={animal.photo}
               animalPhoto = {animal.animalPhoto}
               typeSpecie = {animal.typeSpecie}
               id_animal = {animal.id}
+              userId={animal.userId}
             />
           </Grid>
         ))}

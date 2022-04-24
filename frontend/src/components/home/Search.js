@@ -77,7 +77,7 @@ export default function Search(props) {
         {searchContent?.map((animal) => (
           <CardSearch
             key={animal.id}
-            name={animal.nameAnimal}
+            animalName={animal.nameAnimal}
             scientificName={animal.scientificName}
             typeSpecie={animal.typeSpecie}
             location={animal.location}

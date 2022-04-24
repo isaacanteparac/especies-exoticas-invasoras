@@ -206,9 +206,11 @@ export const styles = {
   },
   cardAnimal: {
     width: "90%",
-    height: "400px",
-    borderRadius: "20px",
+    maxHeight: "550px",
+    borderRadius: "15px",
     backgroundColor: "#F5f8fb",
     boxShadow: "5px 5px 5px #ccc",
+    border:"1px solid #ccc",
+    textTransform:"capitalize"
   },
 };

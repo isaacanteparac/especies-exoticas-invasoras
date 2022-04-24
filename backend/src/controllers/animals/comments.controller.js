@@ -13,16 +13,16 @@ commentsCtrl.addComment = async (req, res) => {
     await db.query("INSERT INTO comments set ?", [newComment]);
     res.status(200).json({ message: true });
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ message: false });
   }
 };
 
 commentsCtrl.deleteComment = async (req, res) => {
   try {
     await db.query("DELETE FROM comments WHERE id = ?", [req.params.id]);
-    res.status(200).json({ message: true });
+    res.status(200).json({ ok: true });
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ ok: false, message:error });
   }
 };
 
@@ -31,7 +31,7 @@ commentsCtrl.getAllComments = async (req, res) => {
     const allanimal = await db.query("SELECT * FROM comments");
     res.status(200).json(allanimal);
   } catch (error) {
-    res.status(400), json({ message: error });
+    res.status(400), json({ ok: false, message:error });
   }
 };
 
@@ -46,7 +46,7 @@ commentsCtrl.getIdCommentAnimal = async (req, res) => {
     );
     res.status(200).json(idanimal);
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ ok:false, message: error });
   }
 };
 
@@ -57,7 +57,7 @@ commentsCtrl.getIdCommentUser = async (req, res) => {
     ]);
     res.status(200).json(iduser);
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ ok:false,message: error });
   }
 };
 
@@ -66,9 +66,9 @@ commentsCtrl.putIdCommentUser = async (req, res) =>{
   const id = req.params.id;
   try {
     await db.query("UPDATE comments SET comment = ? WHERE id = ?",[comment, id]);
-    return res.status(200).json({ message: true });
+    return res.status(200).json({ ok: true });
   } catch (error) {
-    res.status(400).json({ message: error });
+    res.status(400).json({ ok: false, message:error });
   }
 }
 

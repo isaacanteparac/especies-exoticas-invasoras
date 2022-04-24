@@ -44,7 +44,7 @@ export default function Comments(props) {
       <Modal open={open} onClose={handleClose}>
         <Box sx={styles.commentsModal}>
           <Box sx={styles.boxComment}>
-            <Typography gutterBottom variant="h5" sx={{ fontWeight: "600" }}>
+            <Typography gutterBottom variant="h5" sx={{ fontWeight: "600", textTransform:"capitalize" }}>
               {props.animalName}
             </Typography>
             <Typography
