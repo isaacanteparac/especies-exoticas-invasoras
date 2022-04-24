@@ -114,7 +114,7 @@ export const styles = {
   iconSearch: {
     color: "#0055ff",
     fontSize: "35px",
-    float: "left",
+    marginRight: "5px",
   },
   boxSearch: {
     marginRight: "15%",
@@ -123,7 +123,7 @@ export const styles = {
     height: "40px",
     borderRadius: "15px",
     backgroundColor: "#F5f8fb",
-    boxShadow: "5px 5px 5px #ccc",
+
     display: "blockInline",
     padding: "0 5px",
     border: "1px solid #ccc",
@@ -180,28 +180,35 @@ export const styles = {
   },
   cardSearch: {
     display: "flex",
-    height: "220px",
-    width: "45%",
-    margin: "0 1%",
-    marginBottom:"20px",
+    width: "100%",
+    marginBottom: "20px",
     backgroundColor: "#F5f8fb",
     boxShadow: "5px 5px 5px #ccc",
-    border:"1px solid #ccc",
-    borderRadius:"20px"
+    border: "1px solid #ccc",
+    borderRadius: "20px",
   },
-  iconItemSearch:{
+  iconItemSearch: {
+    position: "relative",
+    top: "5px",
+    marginRight: "4px",
+  },
+  boxImagenSearch: {
+    width: "25%",
+    padding: "5px 2px 5px 10px",
     position:"relative",
-    top:"5px",
-    marginRight:"4px",
+    marginTop:"10px"
   },
-  boxImagenSearch:{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width:"40%",
-    padding: "5px 2px 5px 10px"
+  textTypoCard: {
+    textTransform: "capitalize",
+    cursor: "default",
+    display: "inline",
+    marginRight:"15px"
   },
-  textTypoCard:{
-    textTransform: "capitalize", cursor:"default",
-  }
+  cardAnimal: {
+    width: "90%",
+    height: "400px",
+    borderRadius: "20px",
+    backgroundColor: "#F5f8fb",
+    boxShadow: "5px 5px 5px #ccc",
+  },
 };

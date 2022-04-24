@@ -133,6 +133,7 @@ function DashboardContent() {
             sx={{
               pr: "24px",
               backgroundColor: "#fff",
+              border:"1px solid #ccc",
               borderTopLeftRadius: "30px",
             }}
           >
@@ -176,11 +177,13 @@ function DashboardContent() {
                 placeholder="busca..."
                 value={searchInput}
                 onClick={openOption}
-                sx={{ width: "80%", height: "40px" }}
+                sx={{ width: "84%", height: "60px", color:"#fff" }}
               />
               <CloseIcon sx={{color:"#999",
               fontSize:"18px",
-              marginTop:"10px"}}
+              marginLeft:"1px",
+            position:"relative",
+          bottom:"5px"}}
               onClick={()=>{setSearchInput("")}}
               />
 
@@ -201,7 +204,7 @@ function DashboardContent() {
               >
                 <List
                   component="nav"
-                  sx={{ padding: "5px", width: "270px", background: "#F5f8fb" }}
+                  sx={{ padding: "5px", width: "310px", background: "#F5f8fb" }}
                 >
                   {searchSuggestion?.map((suggestion) => (
                     <ListItemButton

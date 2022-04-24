@@ -11,13 +11,16 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ScienceIcon from "@mui/icons-material/Science";
 import PetsIcon from "@mui/icons-material/Pets";
 import Chip from "@mui/material/Chip";
+import ModeCommentIcon from "@mui/icons-material/ModeComment";
 
 import { AuthContext } from "../../auth/Context";
 import CreateComment from "./CreateComment";
+import CardSearch from "../home/CardSearch";
 import { styles } from "../styles";
 
+
 export default function Comments(props) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const { auth } = useContext(AuthContext);
   const { user } = auth;
 
@@ -26,12 +29,18 @@ export default function Comments(props) {
     setOpen(false);
   };
 
-  /*useEffect(() => {
-    setOpen(props.openComponent)
-});*/
+
+
 
   return (
-    <div>
+
+    <Box>
+    
+      <IconButton aria-label="comentarios" onClick={handleOpen} sx={{position:"relative"}}>
+        <ModeCommentIcon />
+      </IconButton>
+
+
       <Modal open={open} onClose={handleClose}>
         <Box sx={styles.commentsModal}>
           <Box sx={styles.boxComment}>
@@ -81,6 +90,6 @@ export default function Comments(props) {
           <CreateComment id_animal={props.id_animal} />
         </Box>
       </Modal>
-    </div>
+    </Box>
   );
 }

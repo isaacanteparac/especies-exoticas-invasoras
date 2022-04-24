@@ -11,30 +11,19 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import ModeCommentIcon from "@mui/icons-material/ModeComment";
+
 import Box from "@mui/material/Box";
 
 import Comments from "../comments/Comments";
 
-
 export default function CardAnimal(props) {
   const [expanded, setExpanded] = useState(false);
-  const [commentComponent, setCommentComponent] = useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-
   return (
-    <Card
-      sx={{
-        width: "90%",
-        height: "455px",
-        borderRadius: "20px",
-        backgroundColor: "#F5f8fb",
-        boxShadow: "5px 5px 5px #ccc",
-      }}
-    >
+    <Card sx={styles.cardAnimal}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -57,35 +46,23 @@ export default function CardAnimal(props) {
         <Typography variant="body1" color="text.primary">
           {props.typeSpecie} ({props.scientificName})
         </Typography>
-        <Box
-          sx={styles.cardBoxDescription}
-          onClick={() =>  {setCommentComponent(true);}}
-        >
+        {/*<Box sx={styles.cardBoxDescription}>
           <Typography variant="body2" color="text.secondary">
             {props.description}
           </Typography>
-        </Box>
-        <IconButton
-          aria-label="comentarios"
-          onClick={() => {setCommentComponent(true);}}
-        >
-          <ModeCommentIcon />
-        </IconButton>
+      </Box>*/}
 
-        {commentComponent ? (
-          <Comments
-            id_animal={props.id_animal}
-            animalName={props.nameAnimal}
-            scientificName={props.scientificName}
-            typeSpecie={props.typeSpecie}
-            location={props.location}
-            description={props.description}
-            nameUser={props.name}
-            lastnameUser={props.lastname}
-            usernameUser={props.username}
-           
-          />
-        ) : null}
+        <Comments
+          id_animal={props.id_animal}
+          animalName={props.nameAnimal}
+          scientificName={props.scientificName}
+          typeSpecie={props.typeSpecie}
+          location={props.location}
+          description={props.description}
+          nameUser={props.name}
+          lastnameUser={props.lastname}
+          usernameUser={props.username}
+        />
       </CardContent>
     </Card>
   );

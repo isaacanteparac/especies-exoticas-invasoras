@@ -9,7 +9,7 @@ import Grid from "@mui/material/Grid";
 
 import { styles } from "../styles";
 import { yesToken } from "../../helpers/crud_fetch";
-
+import Comments from "../comments/Comments";
 
 export default function Search(props) {
   const [chipsSuggestions, setChipsSuggestions] = useState([]);
@@ -76,6 +76,7 @@ export default function Search(props) {
       <Grid container spacing={2}>
         {searchContent?.map((animal) => (
           <CardSearch
+            key={animal.id}
             name={animal.nameAnimal}
             scientificName={animal.scientificName}
             typeSpecie={animal.typeSpecie}
@@ -83,7 +84,10 @@ export default function Search(props) {
             username={animal.username}
             nameUser={animal.name}
             lastName={animal.lastname}
+            id_animal={animal.id}
+            description={animal.description}
           />
+          
         ))}
       </Grid>
     </Box>
