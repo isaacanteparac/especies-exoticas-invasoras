@@ -142,7 +142,7 @@ function DashboardContent() {
             sx={{
               pr: "24px",
               backgroundColor: "#fff",
-              border: "1px solid #ccc",
+             
               borderTopLeftRadius: "30px",
             }}
           >

@@ -193,7 +193,7 @@ export const styles = {
     marginRight: "4px",
   },
   boxImagenSearch: {
-    width: "25%",
+    width: "200px",
     padding: "5px 2px 5px 10px",
     position:"relative",
     marginTop:"10px"
@@ -213,4 +213,15 @@ export const styles = {
     border:"1px solid #ccc",
     textTransform:"capitalize"
   },
+  modalImagen:{
+    position: "absolute",
+    top: "5%",
+    left: "35%",
+    transform: "translate(-50%, -50%)",
+    width: "auto",
+    backgroundColor: "#fff",
+    borderRadius: "15px",
+    color: "#000",
+    p: 1,
+  }
 };

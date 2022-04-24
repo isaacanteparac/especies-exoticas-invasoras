@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
+
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import Divider from "@mui/material/Divider";
@@ -16,21 +16,19 @@ import PersonIcon from "@mui/icons-material/Person";
 
 import { styles } from "../styles";
 import Comments from "../comments/Comments";
+import ViewImagen from "./ViewImagen";
+import Zoom from '@mui/material/Zoom';
+
 
 export default function CardSearch(props) {
   const fullname = props.nameUser + " " + props.lastName;
   const imagen ="https://media.vogue.mx/photos/6243293341ab39375529a6a1/2:3/w_1600,c_limit/Billie-Eilish-botas-go%CC%81ticas-oscars-2022.jpg";
-
+  const [checked, setChecked] = useState(true);
 
   return (
+    <Zoom in={checked}>
     <Card sx={styles.cardSearch}>
-      <Box sx={styles.boxImagenSearch}>
-        <CardMedia
-          component="img"
-          sx={{ width: "100%", borderRadius: "10px", maxHeight: "250px", cursor:"pointer" }}
-          image={imagen}
-        />
-      </Box>
+      <ViewImagen viewImageSearch={true} image={imagen} animalName={props.animalName}/>
       
 
       <Box
@@ -107,5 +105,6 @@ export default function CardSearch(props) {
         />
       </Box>
     </Card>
+    </Zoom>
   );
 }

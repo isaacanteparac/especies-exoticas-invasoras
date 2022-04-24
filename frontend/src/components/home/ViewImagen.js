@@ -1,65 +1,62 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from "react";
+
+import CardMedia from "@mui/material/CardMedia";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Tooltip from "@mui/material/Tooltip";
+import Zoom from "@mui/material/Zoom";
+
+import { styles } from "../styles";
 
 export default function ViewImagen(props) {
+  const [viewImageSearch, setViewImageSearch] = useState(false);
+  const [viewZoom, setViewZoom] = React.useState(true);
+  const [open, setOpen] = useState(false);
 
-    return (
-        <Box>
-    
-        <IconButton aria-label="comentarios" onClick={handleOpen} sx={{position:"relative"}}>
-          <ModeCommentIcon />
-        </IconButton>
-  
-  
-        <Modal open={open} onClose={handleClose}>
-          <Box sx={styles.commentsModal}>
-            <Box sx={styles.boxComment}>
-              <Typography gutterBottom variant="h5" sx={{ fontWeight: "600", textTransform:"capitalize" }}>
-                {props.animalName}
-              </Typography>
-              <Typography
-                sx={{
-                  color: "#999",
-                }}
-              >
-                {props.nameUser} {props.lastnameUser} ({props.usernameUser})
-              </Typography>
-              <CardMedia component="img" height="250" image={props.animalPhoto} />
-              <Box
-                sx={{
-                  margin: "5px 0",
-                }}
-              >
-                <Chip
-                  label={props.typeSpecie}
-                  icon={<PetsIcon />}
-                  sx={styles.chipComment}
-                  size="small"
-                />
-  
-                <Chip
-                  icon={<LocationOnIcon />}
-                  sx={styles.chipComment}
-                  label={props.location}
-                  size="small"
-                />
-  
-                <Chip
-                  icon={<ScienceIcon />}
-                  sx={styles.chipComment}
-                  label={props.scientificName}
-                  size="small"
-                />
-              </Box>
-              <Box sx={styles.boxDescription}>
-                <Typography variant="body1" color="text.primary">
-                  {props.description}
-                </Typography>
-              </Box>
-            </Box>
-            <CreateComment id_animal={props.id_animal} />
+  const handleOpen = () => {
+    setOpen(true);
+    setViewZoom(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    setViewZoom(false);
+  };
+  useEffect(() => {
+    setViewImageSearch(props.viewImageSearch);
+  });
+
+  return (
+    <Box>
+      {viewImageSearch ? (
+        <Box sx={styles.boxImagenSearch} onClick={handleOpen}>
+          <CardMedia
+            component="img"
+            sx={{
+              width: "100%",
+              borderRadius: "10px",
+              maxHeight: "250px",
+              cursor: "pointer",
+            }}
+            image={props.image}
+          />
+        </Box>
+      ) : null}
+
+      <Modal open={open} onClose={handleClose}>
+        <Zoom in={viewZoom}>
+          <Box sx={styles.modalImagen}>
+            <CardMedia
+              component="img"
+              sx={{
+                width: "100%",
+                borderRadius: "10px",
+                maxHeight: "550px",
+              }}
+              image={props.image}
+            />
           </Box>
-        </Modal>
-      </Box>
-    )
-  
+        </Zoom>
+      </Modal>
+    </Box>
+  );
 }
