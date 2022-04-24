@@ -22,7 +22,7 @@ import Zoom from '@mui/material/Zoom';
 
 export default function CardSearch(props) {
   const fullname = props.nameUser + " " + props.lastName;
-  const imagen ="https://media.vogue.mx/photos/6243293341ab39375529a6a1/2:3/w_1600,c_limit/Billie-Eilish-botas-go%CC%81ticas-oscars-2022.jpg";
+  const imagen ="https://upload.wikimedia.org/wikipedia/commons/3/33/Haeckel_Bryozoa.jpg";
   const [checked, setChecked] = useState(true);
 
   return (
