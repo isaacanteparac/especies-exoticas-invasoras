@@ -30,7 +30,7 @@ animalCtrl.getIdAnimal = async (req, res) => {
   }
 };
 
-animalCtrl.getLocation = async (req, res) => {
+animalCtrl.getIdLocation = async (req, res) => {
   try {
     const animalsLocation = await db.query(
       "SELECT * FROM animals WHERE location = ?",
@@ -42,7 +42,7 @@ animalCtrl.getLocation = async (req, res) => {
   }
 };
 
-animalCtrl.getTypeSpecie = async (req, res) => {
+animalCtrl.getIdTypeSpecie = async (req, res) => {
   try {
     const animalTypeSpecie = await db.query(
       "SELECT * FROM animals WHERE id_ctlg_types_specie = ?",
@@ -54,7 +54,7 @@ animalCtrl.getTypeSpecie = async (req, res) => {
   }
 };
 
-animalCtrl.getScientificName = async (req, res) => {
+animalCtrl.getIdScientificName = async (req, res) => {
   try {
     const animalScientific = await db.query(
       "SELECT * FROM animals WHERE id_ctlg_scientic_name = ?",

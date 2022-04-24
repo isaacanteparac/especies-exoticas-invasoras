@@ -1,72 +1,76 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Box from "@mui/material/Box";
 
-import SearchIcon from "@mui/icons-material/Search";
-import Button from "@mui/material/Button";
-
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Popover from "@mui/material/Popover";
-
+import Typography from "@mui/material/Typography";
+import Chip from '@mui/material/Chip';
 import { styles } from "../styles";
+import { yesToken } from "../../helpers/crud_fetch";
+import CardSearch from "./CardSearch";
 
-const searchSuggestion = [
-  { id: 1, name: "ubication" },
-  { id: 2, name: "nombre cientifico" },
-  { id: 3, name: "tipo de especie" },
-  { id: 4, name: "tipo de peligrosidad" }
-];
+export default function Search(props) {
+  const [chipsSuggestions, setChipsSuggestions] = useState([]);
+  const [searchContent, setSearchContent] = useState([]);
+  const [idChip, setIdChip] = useState(0);
 
-export default function Search() {
-  const [search, setSearch] = useState("busca...");
-  const [option, setoption] = useState(null);
-  const open = Boolean(option);
-  const id_option = open ? "simple-popover" : undefined;
+  const addChips = async () =>{
+    const chipData = await yesToken(props.urlChip);
+    setChipsSuggestions(chipData);
 
-  const openOption = (e) => {
-    setoption(e.currentTarget);
-  };
+  }
 
-  const closeOption = () => {
-    setoption(null);
-  };
+  const content = async () =>{
+    const idUrl = props.url + idChip;
+    const data = await yesToken(idUrl);
+    setSearchContent(data);
+  }
+
+  useEffect(() => {
+    addChips();
+    content();
+  });
 
   return (
-    <Box sx={styles.boxSearch}>
-      <Button sx={styles.btnSearch} variant="contained" onClick={openOption}>
-        <SearchIcon sx={styles.iconSearch} />
-        {search}
-      </Button>
-      <Popover
-        id={id_option}
-        open={open}
-        anchorEl={option}
-        onClose={closeOption}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <List component="nav" sx={{ padding: "5px", width: "270px", background:"#000" }}>
-          {searchSuggestion?.map((suggestion) => (
-            <ListItemButton
-              sx={styles.contentOptionsBtn}
-              key={suggestion.id}
-              value={suggestion.id}
-              onClick={()=>{setSearch(suggestion.name); closeOption();}}
-            >
-              <ListItemText primary={suggestion.name} sx={styles.textOptionsItems}/>
-            </ListItemButton>
+    <Box
+      sx={{
+        flexGrow: 1,
+        alignItems: "center",
+      }}
+    >
+      <Box>
+        <Typography
+          variant="h5"
+          sx={{
+            textTransform: "capitalize",
+            color: "#0ed671",
+            fontWeight: "600",
+          }}
+        >
+          {props.title}
+        </Typography>
+        <Box
+          sx={{
+            margin: "10px 0",
+            widht:"100%",
+            height:"40px",
+            overflowX: "scroll",
+          }}
+        >
+          {chipsSuggestions?.map((chip) => (
+          <Chip key={chip.id} 
+          value={chip.id} 
+          label={chip.name} 
+          sx={styles.chipSearch} 
+          onClick={()=>{setIdChip(chip.id)}}
+          />
           ))}
-        </List>
-      </Popover>
+        </Box>
+      </Box>
+      <Box>
+        {searchContent?.map((animal)=>(
+          <CardSearch name={animal.name}/>
+        ))}
+      </Box>
     </Box>
   );
 }

@@ -59,9 +59,11 @@ export const styles = {
     float: "left",
   },
   chipComment: {
-    backgroundColor: "#A477cb",
-    marginRight: "3px",
-    color: "#fff",
+    margin: "3px",
+    color: "#000",
+    backgroundColor: "#F5f8fb",
+    border:"1px solid #999",
+    boxShadow: "3px 3px 3px #999",
   },
   boxContentComment: {
     height: "450px",
@@ -80,14 +82,14 @@ export const styles = {
     boxShadow: "3px 3px 3px #ccc",
   },
   buttonAddCommment: {
-    backgroundColor: "#065dfd",
+    backgroundColor: "#0055ff",
     height: "35px",
     width: "35px",
     marginLeft: "5px",
     border:"none",
     boxShadow: "3px 3px 3px #999",
     "&:hover": {
-      backgroundColor: "#043898",
+      backgroundColor: "#065dfd",
      
     },
   },
@@ -97,6 +99,7 @@ export const styles = {
     marginBottom: "10px",
     overflow: "hidden", 
     boxShadow: "3px 3px 3px #ccc",
+    border:"1px solid #ccc"
   },
   boxDescription: {
     height: "150px",
@@ -110,26 +113,21 @@ export const styles = {
     overflow: "hidden",
   },
   iconSearch: {
-    color: "#000",
+    color: "#0055ff",
     fontSize: "35px",
     float: "left",
   },
-  btnSearch: {
-    color: "#000",
-    fontWeight: 600,
-    border: "none",
-    width: "300px",
+  boxSearch: {
+    marginRight: "15%",
+    background: "red",
+    width:"30%",
     height: "40px",
     borderRadius: "15px",
     backgroundColor: "#F5f8fb",
-    overflow: "hidden",
     boxShadow: "5px 5px 5px #ccc",
-    "&:hover": {
-      backgroundColor: "#F5f8fb",
-    },
-  },
-  boxSearch: {
-    marginRight: "15%",
+    display:"blockInline",
+    padding:"0 5px",
+    border:"1px solid #ccc" 
   },
   options: {
     padding: "5px",
@@ -161,5 +159,23 @@ export const styles = {
       color: "#000",
       border:"3px solid #5414d4",
     },
+  },
+  chipSearch: {
+    color: "#fff",
+    border:"none",
+    boxShadow: "3px 3px 3px #ccc",
+    fontSize:"18px",
+    height: "20px",
+    textTransform: "capitalize",
+    margin:"0 4px",
+    display:"inline",
+
+    backgroundColor: "#710ed6",
+    "&:hover": {
+      fontWeight: "600"
+    },
+    "&:active":{
+      backgroundColor: "#440881"
+    }
   },
 };
