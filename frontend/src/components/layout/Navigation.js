@@ -90,7 +90,7 @@ const Drawer = styled(MuiDrawer, {
 const searchSuggestion = [
   { id: 1, name: "ubication", urlChip:""},
   { id: 2, name: "nombre cientifico", urlChip: "ctlg/scientific-name", url:"animal/scientific-name/" },
-  { id: 3, name: "tipo de especie" , urlChip: "ctlg/types-specie"},
+  { id: 3, name: "tipo de especie" , urlChip: "ctlg/types-specie", url:"animal/type-specie/"},
   { id: 4, name: "nivel de peligrosidad", urlChip: "ctlg/danger-level" }
 ];
 

@@ -15,8 +15,8 @@ router.route("/:id").get(getIdAnimal);
 
 router.route("/location/:location").get(getIdLocation);
 
-router.route("/type-specie/:typeSpecie").get(getIdTypeSpecie);
+router.route("/type-specie/:id").get(getIdTypeSpecie);
 
-router.route("/scientific-name/:scientificName").get(getIdScientificName);
+router.route("/scientific-name/:id").get(getIdScientificName);
 
 module.exports = router;

@@ -30,7 +30,7 @@ export const styles = {
     width: "30px",
     height: "30px",
     padding: "2px",
-    backgroundColor: "#ccc" /*262323 */,
+    backgroundColor: "#ccc",
   },
   iconItemsListItemText: {
     color: "#504b4a",
@@ -62,7 +62,7 @@ export const styles = {
     margin: "3px",
     color: "#000",
     backgroundColor: "#F5f8fb",
-    border:"1px solid #999",
+    border: "1px solid #999",
     boxShadow: "3px 3px 3px #999",
   },
   boxContentComment: {
@@ -78,7 +78,7 @@ export const styles = {
     color: "#000",
     width: "88%",
     backgroundColor: "#F5f8fb",
-    border:"1px solid #ccc",
+    border: "1px solid #ccc",
     boxShadow: "3px 3px 3px #ccc",
   },
   buttonAddCommment: {
@@ -86,20 +86,19 @@ export const styles = {
     height: "35px",
     width: "35px",
     marginLeft: "5px",
-    border:"none",
+    border: "none",
     boxShadow: "3px 3px 3px #999",
     "&:hover": {
       backgroundColor: "#065dfd",
-     
     },
   },
   oneComment: {
     backgroundColor: "#F5f8fb",
     borderRadius: "15px",
     marginBottom: "10px",
-    overflow: "hidden", 
+    overflow: "hidden",
     boxShadow: "3px 3px 3px #ccc",
-    border:"1px solid #ccc"
+    border: "1px solid #ccc",
   },
   boxDescription: {
     height: "150px",
@@ -120,14 +119,14 @@ export const styles = {
   boxSearch: {
     marginRight: "15%",
     background: "red",
-    width:"30%",
+    width: "30%",
     height: "40px",
     borderRadius: "15px",
     backgroundColor: "#F5f8fb",
     boxShadow: "5px 5px 5px #ccc",
-    display:"blockInline",
-    padding:"0 5px",
-    border:"1px solid #ccc" 
+    display: "blockInline",
+    padding: "0 5px",
+    border: "1px solid #ccc",
   },
   options: {
     padding: "5px",
@@ -157,25 +156,52 @@ export const styles = {
     "&:hover": {
       backgroundColor: "#fff",
       color: "#000",
-      border:"3px solid #5414d4",
+      border: "3px solid #5414d4",
     },
   },
   chipSearch: {
     color: "#fff",
-    border:"none",
+    border: "none",
     boxShadow: "3px 3px 3px #ccc",
-    fontSize:"18px",
+    fontSize: "18px",
     height: "20px",
     textTransform: "capitalize",
-    margin:"0 4px",
-    display:"inline",
+    margin: "0 4px",
+    display: "inline",
 
     backgroundColor: "#710ed6",
     "&:hover": {
-      fontWeight: "600"
+      backgroundColor: "#710ed6",
+      fontWeight: "600",
     },
-    "&:active":{
-      backgroundColor: "#440881"
-    }
+    "&:active": {
+      backgroundColor: "#440881",
+    },
   },
+  cardSearch: {
+    display: "flex",
+    height: "220px",
+    width: "45%",
+    margin: "0 1%",
+    marginBottom:"20px",
+    backgroundColor: "#F5f8fb",
+    boxShadow: "5px 5px 5px #ccc",
+    border:"1px solid #ccc",
+    borderRadius:"20px"
+  },
+  iconItemSearch:{
+    position:"relative",
+    top:"5px",
+    marginRight:"4px",
+  },
+  boxImagenSearch:{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width:"40%",
+    padding: "5px 2px 5px 10px"
+  },
+  textTypoCard:{
+    textTransform: "capitalize", cursor:"default",
+  }
 };

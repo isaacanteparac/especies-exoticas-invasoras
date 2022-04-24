@@ -123,7 +123,7 @@ export default function BasicModal() {
             >
               {allScientificName?.map((scientificName) => (
                 <MenuItem key={scientificName.id} value={scientificName.id}>
-                  {scientificName.scientific_name}
+                  {scientificName.name}
                 </MenuItem>
               ))}
             </TextField>

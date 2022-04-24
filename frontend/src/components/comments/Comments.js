@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 import CardMedia from "@mui/material/CardMedia";
 
-import ModeCommentIcon from "@mui/icons-material/ModeComment";
+
 import IconButton from "@mui/material/IconButton";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ScienceIcon from "@mui/icons-material/Science";
@@ -17,7 +17,7 @@ import CreateComment from "./CreateComment";
 import { styles } from "../styles";
 
 export default function Comments(props) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const { auth } = useContext(AuthContext);
   const { user } = auth;
 
@@ -26,20 +26,12 @@ export default function Comments(props) {
     setOpen(false);
   };
 
+  /*useEffect(() => {
+    setOpen(props.openComponent)
+});*/
+
   return (
     <div>
-      <Box sx={styles.cardBoxDescription}>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          onClick={handleOpen}
-        >
-          {props.description}
-        </Typography>
-      </Box>
-      <IconButton aria-label="comentarios" onClick={handleOpen}>
-        <ModeCommentIcon />
-      </IconButton>
       <Modal open={open} onClose={handleClose}>
         <Box sx={styles.commentsModal}>
           <Box sx={styles.boxComment}>
