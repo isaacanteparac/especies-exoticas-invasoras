@@ -4,7 +4,8 @@ const {fileUpload} = require('../../helpers/fileProcessing')
 
 const {
   postRegister,
-  deleteIdRegister
+  deleteIdRegister,
+  putRegister
 } = require("../../controllers/animals/register.controller");
 
 
@@ -12,6 +13,8 @@ const {
 router.route("/").post(postRegister);
 
 router.route("/:id").delete(deleteIdRegister);
+
+router.route("/update/:id").put(putRegister);
 
 
 

@@ -25,12 +25,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import { red } from "@mui/material/colors";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
-
-
 import Comments from "../comments/Comments";
 import { AuthContext } from "../../auth/Context";
 import { yesToken } from "../../helpers/crud_fetch";
 import { Box } from "@mui/system";
+import RegsiterAnimal from "./RegisterAnimal";
 
 export default function CardAnimal(props) {
   const { auth } = useContext(AuthContext);
@@ -39,9 +38,11 @@ export default function CardAnimal(props) {
   const open = Boolean(option);
   const id_option = open ? "simple-popover" : undefined;
   const [getOption, setGetOption] = useState(false);
-  const [openAlert, setOpenAlert] = React.useState({open:false, text:"", icon:"info"});
-
-  
+  const [openAlert, setOpenAlert] = React.useState({
+    open: false,
+    text: "",
+    icon: "info",
+  });
 
   const viewOption = () => {
     if (props.userId == user.id) {
@@ -62,16 +63,16 @@ export default function CardAnimal(props) {
       closeOption();
       const urlDelete = "animal/register/" + props.id_animal;
       const resp = await yesToken(urlDelete, "", "DELETE");
-      if(resp.ok){
-        setOpenAlert({open:true, text:"Se elimino correctamente", icon:"success"});
+      if (resp.ok) {
+        setOpenAlert({
+          open: true,
+          text: "Se elimino correctamente",
+          icon: "success",
+        });
+      } else {
+        setOpenAlert({ open: true, text: "Error al eliminar", icon: "error" });
       }
-      else{
-        setOpenAlert({open:true, text:"Error al eliminar", icon:"error"});
-      }
-      
     }
-      
-    
   };
 
   useEffect(() => {
@@ -80,58 +81,69 @@ export default function CardAnimal(props) {
 
   return (
     <Card sx={styles.cardAnimal}>
-    
-        <Collapse in={openAlert.open}>
-          <Alert
-            variant="filled"
-            severity={openAlert.icon}
-            action={
-              <IconButton
-                aria-label="close"
-                color="inherit"
-                size="small"
-                onClick={() => {
-                  setOpenAlert({open:false, text:openAlert.text, icon:openAlert.icon});
-                }}
-                sx={{ color: "#fff" }}
-              >
-                <CloseIcon fontSize="inherit" />
-              </IconButton>
-            }
-            sx={{
-              mb: 2,
-              fontWeight: "600",
-              color: "#fff",
-              textTransform:"capitalize"
-            }}
-          >
-            {openAlert.text}
-          </Alert>
-        </Collapse>
-
-
-      <Box sx={{margin:"10px 5px"}}>
-        <Avatar
-          sx={{ bgcolor: red[500],float:"left" }}
-          aria-label="recipe"
+      <Collapse in={openAlert.open}>
+        <Alert
+          variant="filled"
+          severity={openAlert.icon}
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setOpenAlert({
+                  open: false,
+                  text: openAlert.text,
+                  icon: openAlert.icon,
+                });
+              }}
+              sx={{ color: "#fff" }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{
+            mb: 2,
+            fontWeight: "600",
+            color: "#fff",
+            textTransform: "capitalize",
+          }}
         >
+          {openAlert.text}
+        </Alert>
+      </Collapse>
+
+      <Box sx={{ margin: "10px 5px" }}>
+        <Avatar sx={{ bgcolor: red[500], float: "left" }} aria-label="recipe">
           I
         </Avatar>
 
-          <Box sx={{ display: "flex", flexDirection: "column", float:"left", margin:"0 10px" }}>
-            <Typography component="div" variant="h6">
-              {props.name} {props.lastname}
-            </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            float: "left",
+            margin: "0 10px",
+          }}
+        >
+          <Typography component="div" variant="h6">
+            {props.name} {props.lastname}
+          </Typography>
 
-            <Typography component="div"  variant="subtitle1"
-            color="text.secondary">
-              {props.username}
-            </Typography>
-          </Box>
-     
+          <Typography
+            component="div"
+            variant="subtitle1"
+            color="text.secondary"
+          >
+            {props.username}
+          </Typography>
+        </Box>
 
         {getOption ? (
-          <IconButton onClick={openOption} sx={{position:"relative", left:"70px", bottom:"5px"}}>
+          <IconButton
+            onClick={openOption}
+            sx={{ position: "relative", left: "70px", bottom: "5px" }}
+          >
             <MoreVertIcon />
           </IconButton>
         ) : null}
@@ -148,10 +160,13 @@ export default function CardAnimal(props) {
         }}
       >
         <List component="nav" sx={styles.options}>
-          <ListItemButton sx={styles.contentOptionsBtn}>
-            <EditIcon sx={styles.iconsOptions} />
-            <ListItemText primary="Editar" sx={styles.textOptionsItems} />
-          </ListItemButton>
+          <RegsiterAnimal
+            btnRegister={false}
+            btnEdit={true}
+            nameAnimal={props.nameAnimal}
+            location={props.location}
+            description={props.description}
+          />
 
           <ListItemButton sx={styles.contentOptionsBtn} onClick={deleteAnimal}>
             <DeleteIcon sx={styles.iconsOptions} />

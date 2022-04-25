@@ -243,7 +243,7 @@ function DashboardContent() {
               </Popover>
             </Box>
 
-            <RegisterAnimal />
+            <RegisterAnimal btnRegister={true} btnEdit={false}/>
 
             <User />
           </Toolbar>

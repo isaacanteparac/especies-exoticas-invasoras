@@ -8,18 +8,27 @@ import MenuItem from "@mui/material/MenuItem";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+import ListItemButton from "@mui/material/ListItemButton";
+import EditIcon from "@mui/icons-material/Edit";
+import ListItemText from "@mui/material/ListItemText";
+
 
 
 import {AuthContext} from "../../auth/Context";
 import { styles } from "../styles";
 import {yesToken} from "../../helpers/crud_fetch";
 
-export default function RegsiterAnimal() {
-  const {auth} = useContext(AuthContext);
-  const {user} = auth;
+export default function RegsiterAnimal(props) {
   const [open, setOpen] = React.useState(false);
+  const [viewBtn, setViewButton] = useState({register:true, edit:false});
+
   const [allTypesSpecie, setAllTypesSpecie] = useState([]);
   const [allScientificName, setAllScientificName] = useState([]);
+ 
+
+  const {auth} = useContext(AuthContext);
+  const {user} = auth;
+
 
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
@@ -53,12 +62,25 @@ export default function RegsiterAnimal() {
   };
 
   const addAnimal = async () => {
-    await yesToken("animal/register", data, "POST");
     setOpen(false);
-    AllClear();
+    await yesToken("animal/register", data, "POST");
+    clearData();
 
   };
-  const AllClear = () =>{
+
+  const updateData = () =>{
+    setName(props.nameAnimal);
+    setDescription(props.description);
+    setLocation(props.location);
+    setId_ctlg_type_specie(1);
+    setId_ctlg_scientic_name(1);
+    setPhoto("");
+    setSound("");
+    
+  }
+
+
+  const clearData = () =>{
     setName("");
     setDescription("");
     setLocation("");
@@ -68,13 +90,20 @@ export default function RegsiterAnimal() {
     setId_ctlg_scientic_name("");
   }
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    if(viewBtn.edit){
+      updateData();
+    }
+  };
+
   const handleClose = () => {
     setOpen(false); 
-    AllClear();
+    clearData();
   };
 
   useEffect(() => {
+    setViewButton({register:props.btnRegister, edit:props.btnEdit})
     setId_users(user.id);
     getTypesSpecie();
     getScientificName();
@@ -82,9 +111,18 @@ export default function RegsiterAnimal() {
 
   return (
     <div>
+      {viewBtn.register?(
       <Button variant="contained" sx={styles.buttonRegisterAnimal} onClick={handleOpen}>
-      <PlaylistAddIcon />Registrar Animal
+        <PlaylistAddIcon />Registrar Animal
       </Button>
+      ):null}
+      {viewBtn.edit?(
+        <ListItemButton sx={styles.contentOptionsBtn} onClick={handleOpen}>
+          <EditIcon sx={styles.iconsOptions} />
+          <ListItemText primary="Editar" sx={styles.textOptionsItems} />
+        </ListItemButton>
+      ): null}
+
       <Modal
         open={open}
         onClose={handleClose}

@@ -47,4 +47,40 @@ newRegisterAnimalCtrl.deleteIdRegister = async (req, res) => {
   }
 };
 
+
+newRegisterAnimalCtrl.putRegister = async (req, res) => {
+  const {
+    name,
+    photo,
+    location,
+    sound,
+    description,
+    id_ctlg_scientic_name,
+    id_ctlg_type_specie,
+    id_users,
+  } = req.body;
+  try{
+    const id = req.params.id;
+    const putRegisterAnimal = {
+      name,
+      photo,
+      location,
+      sound,
+      description,
+      id_ctlg_scientic_name,
+      id_ctlg_type_specie,
+      id_users,
+    };
+    console.log(newRegisterAnimal);
+    await db.query("UPDATE comments SET comment = ? WHERE id = ?", [putRegisterAnimal, id]);
+    return res.status(200).json({ ok: true });
+  }
+  catch(error){
+    return res.status(400).json({ok: false, message:error});
+  }
+  
+};
+
+
+
 module.exports = newRegisterAnimalCtrl;
