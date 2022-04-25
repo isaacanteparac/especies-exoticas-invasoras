@@ -7,8 +7,10 @@ import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
+
 import ListItemButton from "@mui/material/ListItemButton";
+
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import EditIcon from "@mui/icons-material/Edit";
 import ListItemText from "@mui/material/ListItemText";
 
@@ -72,8 +74,8 @@ export default function RegsiterAnimal(props) {
     setName(props.nameAnimal);
     setDescription(props.description);
     setLocation(props.location);
-    setId_ctlg_type_specie(1);
-    setId_ctlg_scientic_name(1);
+    setId_ctlg_type_specie("");
+    setId_ctlg_scientic_name("");
     setPhoto("");
     setSound("");
     
@@ -113,7 +115,7 @@ export default function RegsiterAnimal(props) {
     <div>
       {viewBtn.register?(
       <Button variant="contained" sx={styles.buttonRegisterAnimal} onClick={handleOpen}>
-        <PlaylistAddIcon />Registrar Animal
+        <AddBoxIcon />Registrar Animal
       </Button>
       ):null}
       {viewBtn.edit?(

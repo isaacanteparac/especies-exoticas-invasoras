@@ -62,7 +62,7 @@ export default function CreateComment(props) {
         ))}
       </Box>
 
-      <Box sx={{marginTop:"15px", padding:"0 5px"}}>
+      <Box sx={{marginTop:"10px"}}>
         <Input
           placeholder="Comenta"
           name="comment"

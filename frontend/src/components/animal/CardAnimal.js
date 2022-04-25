@@ -142,7 +142,7 @@ export default function CardAnimal(props) {
         {getOption ? (
           <IconButton
             onClick={openOption}
-            sx={{ position: "relative", left: "70px", bottom: "5px" }}
+            sx={{ position: "relative", left: "20%", bottom: "5px" }}
           >
             <MoreVertIcon />
           </IconButton>

@@ -21,7 +21,7 @@ export const styles = {
     backgroundColor: "#fff",
     borderRadius: "20px",
     color: "#000",
-    p: 4,
+    p: 2,
   },
   iconItems: {
     color: "#504b4a",
@@ -49,12 +49,11 @@ export const styles = {
     backgroundColor: "#fff",
     borderRadius: "20px",
     color: "#000",
-    p: 4,
+    p: 2,
   },
   boxComment: {
     borderRadius: "10px",
     width: "50%",
-    height: "400px",
     padding: "5px",
     float: "left",
   },
@@ -66,9 +65,9 @@ export const styles = {
     boxShadow: "3px 3px 3px #999",
   },
   boxContentComment: {
-    height: "450px",
+    height: "470px",
     overflowY: "scroll",
-    padding: "0 5px",
+    padding: "0 8px",
     borderRadius: "15px",
   },
   addCommentInput: {
@@ -85,7 +84,7 @@ export const styles = {
     backgroundColor: "#0055ff",
     height: "35px",
     width: "35px",
-    marginLeft: "5px",
+    marginLeft: "8px",
     border: "none",
     boxShadow: "3px 3px 3px #999",
     "&:hover": {
@@ -101,10 +100,10 @@ export const styles = {
     border: "1px solid #ccc",
   },
   boxDescription: {
-    height: "150px",
+    height: "200px",
     marginTop: "10px",
     padding: "3px 5px",
-    borderRadius: "15px",
+    borderRadius: "10px",
     overflowY: "scroll",
   },
   cardBoxDescription: {

@@ -136,7 +136,7 @@ function DashboardContent() {
 
         <AppBar
           open={open}
-          sx={{ boxShadow: "0 0 0", backgroundColor: "#E3e3ec" }}
+          sx={{ boxShadow: "0 0 0", backgroundColor: "#fff" }}
         >
           <Toolbar
             sx={{
@@ -146,7 +146,7 @@ function DashboardContent() {
               borderTopLeftRadius: "30px",
             }}
           >
-            {/*<IconButton
+            <IconButton
               edge="start"
               color="inherit"
               aria-label="open drawer"
@@ -157,7 +157,7 @@ function DashboardContent() {
               }}
             >
               <MenuIcon sx={{ color: "#000" }} />
-            </IconButton>*/}
+            </IconButton>
 
             <Typography
               variant="h6"
@@ -249,7 +249,7 @@ function DashboardContent() {
           </Toolbar>
         </AppBar>
 
-        {/*<Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
               display: "flex",
@@ -274,7 +274,7 @@ function DashboardContent() {
               }}
             >
               <Logo /> Natilus Zone
-            </Typography>
+            </Typography>*/}
             <IconButton
               onClick={toggleDrawer}
               sx={{ position: "relative", top: "10px", left: "10px" }}
@@ -307,7 +307,7 @@ function DashboardContent() {
               />
             </ListItemButton>
           </List>
-        </Drawer>*/}
+        </Drawer>
 
         <Box
           component="main"
