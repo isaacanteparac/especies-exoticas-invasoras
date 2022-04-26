@@ -166,6 +166,9 @@ export default function CardAnimal(props) {
             nameAnimal={props.nameAnimal}
             location={props.location}
             description={props.description}
+            id_ctlg_type_specie = {props.id_ctlg_type_specie}
+            id_ctlg_scientic_name = {props.id_ctlg_scientic_name}
+            id_animal = {props.id_animal}
           />
 
           <ListItemButton sx={styles.contentOptionsBtn} onClick={deleteAnimal}>

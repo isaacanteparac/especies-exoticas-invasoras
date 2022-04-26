@@ -10,27 +10,23 @@ import MusicNoteIcon from "@mui/icons-material/MusicNote";
 
 import ListItemButton from "@mui/material/ListItemButton";
 
-import AddBoxIcon from '@mui/icons-material/AddBox';
+import AddBoxIcon from "@mui/icons-material/AddBox";
 import EditIcon from "@mui/icons-material/Edit";
 import ListItemText from "@mui/material/ListItemText";
 
-
-
-import {AuthContext} from "../../auth/Context";
+import { AuthContext } from "../../auth/Context";
 import { styles } from "../styles";
-import {yesToken} from "../../helpers/crud_fetch";
+import { yesToken } from "../../helpers/crud_fetch";
 
 export default function RegsiterAnimal(props) {
   const [open, setOpen] = React.useState(false);
-  const [viewBtn, setViewButton] = useState({register:true, edit:false});
+  const [viewBtn, setViewButton] = useState({ register: true, edit: false });
 
   const [allTypesSpecie, setAllTypesSpecie] = useState([]);
   const [allScientificName, setAllScientificName] = useState([]);
- 
 
-  const {auth} = useContext(AuthContext);
-  const {user} = auth;
-
+  const { auth } = useContext(AuthContext);
+  const { user } = auth;
 
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
@@ -50,7 +46,7 @@ export default function RegsiterAnimal(props) {
     description,
     id_ctlg_scientic_name,
     id_ctlg_type_specie,
-    id_users
+    id_users,
   };
 
   const getTypesSpecie = async () => {
@@ -63,26 +59,30 @@ export default function RegsiterAnimal(props) {
     setAllScientificName(dataScientificName);
   };
 
-  const addAnimal = async () => {
+  const add_putAnimal = async () => {
     setOpen(false);
-    await yesToken("animal/register", data, "POST");
+    if(viewBtn.register){
+      await yesToken("animal/register", data, "POST");
+    }
+    else{
+      console.log(data);
+      const urlId = "animal/register/update/"+props.id_animal;
+      await yesToken(urlId, data, "PUT");
+    }
     clearData();
-
   };
 
-  const updateData = () =>{
+  const updateData = () => {
     setName(props.nameAnimal);
     setDescription(props.description);
     setLocation(props.location);
-    setId_ctlg_type_specie("");
-    setId_ctlg_scientic_name("");
+    setId_ctlg_type_specie(props.id_ctlg_type_specie);
+    setId_ctlg_scientic_name(props.id_ctlg_scientic_name);
     setPhoto("");
     setSound("");
-    
-  }
+  };
 
-
-  const clearData = () =>{
+  const clearData = () => {
     setName("");
     setDescription("");
     setLocation("");
@@ -90,22 +90,22 @@ export default function RegsiterAnimal(props) {
     setPhoto("");
     setSound("");
     setId_ctlg_scientic_name("");
-  }
+  };
 
   const handleOpen = () => {
     setOpen(true);
-    if(viewBtn.edit){
+    if (viewBtn.edit) {
       updateData();
     }
   };
 
   const handleClose = () => {
-    setOpen(false); 
+    setOpen(false);
     clearData();
   };
 
   useEffect(() => {
-    setViewButton({register:props.btnRegister, edit:props.btnEdit})
+    setViewButton({ register: props.btnRegister, edit: props.btnEdit });
     setId_users(user.id);
     getTypesSpecie();
     getScientificName();
@@ -113,17 +113,22 @@ export default function RegsiterAnimal(props) {
 
   return (
     <div>
-      {viewBtn.register?(
-      <Button variant="contained" sx={styles.buttonRegisterAnimal} onClick={handleOpen}>
-        <AddBoxIcon />Registrar Animal
-      </Button>
-      ):null}
-      {viewBtn.edit?(
+      {viewBtn.register ? (
+        <Button
+          variant="contained"
+          sx={styles.buttonRegisterAnimal}
+          onClick={handleOpen}
+        >
+          <AddBoxIcon />
+          Registra
+        </Button>
+      ) : null}
+      {viewBtn.edit ? (
         <ListItemButton sx={styles.contentOptionsBtn} onClick={handleOpen}>
           <EditIcon sx={styles.iconsOptions} />
           <ListItemText primary="Editar" sx={styles.textOptionsItems} />
         </ListItemButton>
-      ): null}
+      ) : null}
 
       <Modal
         open={open}
@@ -187,57 +192,93 @@ export default function RegsiterAnimal(props) {
               ))}
             </TextField>
             <TextField
-                id="description"
-                multiline
-                required
-                label="Descripcion"
-                autoComplete="off"
-                margin="dense"
-                value={description}
-                fullWidth
-                maxRows={3}
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-              />
+              id="description"
+              multiline
+              required
+              label="Descripcion"
+              autoComplete="off"
+              margin="dense"
+              value={description}
+              fullWidth
+              maxRows={3}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+            />
             <TextField
-                id="location"
-                label="Ubicacion"
-                margin="dense"
-                autoComplete="off"
-                value={location}
-                fullWidth
-                onChange={(e) => {
-                  setLocation(e.target.value);
+              id="location"
+              label="Ubicacion"
+              margin="dense"
+              autoComplete="off"
+              value={location}
+              fullWidth
+              onChange={(e) => {
+                setLocation(e.target.value);
+              }}
+            />
+            <Box
+              direction="row"
+              fullWidth
+              sx={{
+                marginTop: "10px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Button
+                variant="contained"
+                component="label"
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  borderRadius: "20px",
+                  marginRight: "3px",
                 }}
-              />
-              <Box direction="row" fullWidth sx={{marginTop:"10px",display: "flex",alignItems: "center", justifyContent: "center"}}>
-               <Button variant="contained" component="label" 
-               sx={{fontSize:"13px", fontWeight:"600",borderRadius:"20px", marginRight:"3px"}}>
-               <AddPhotoAlternateIcon/>Agregar Foto
-                <input type="file" accept="image/png, image/jpeg, image/jpg" hidden
-                onChange={(e) => {
-                  setPhoto(e.target.files[0]);
-                }}/>
+              >
+                <AddPhotoAlternateIcon />
+                Agregar Foto
+                <input
+                  type="file"
+                  accept="image/png, image/jpeg, image/jpg"
+                  hidden
+                  onChange={(e) => {
+                    setPhoto(e.target.files[0]);
+                  }}
+                />
               </Button>
-  
-              <Button variant="contained" component="label" sx={{fontSize:"13px", fontWeight:"600", borderRadius:"20px"}}>
-              <MusicNoteIcon/>Agregar Sonido
-                <input type="file" accept="audio/mp3" hidden onChange={(e) => {
-                  setSound(e.target.files[0]);
-                }}/>
+
+              <Button
+                variant="contained"
+                component="label"
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  borderRadius: "20px",
+                }}
+              >
+                <MusicNoteIcon />
+                Agregar Sonido
+                <input
+                  type="file"
+                  accept="audio/mp3"
+                  hidden
+                  onChange={(e) => {
+                    setSound(e.target.files[0]);
+                  }}
+                />
               </Button>
             </Box>
 
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                onClick={addAnimal}
-                sx={{ mt: 3, mb: 2, background: "orange", fontWeight: "600" }}
-              >
-                Registrar
-              </Button>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              onClick={add_putAnimal}
+              sx={{ mt: 3, mb: 2, background: "orange", fontWeight: "600" }}
+            >
+              Registrar
+            </Button>
           </Box>
         </Box>
       </Modal>

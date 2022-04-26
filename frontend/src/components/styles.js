@@ -1,14 +1,14 @@
 export const styles = {
   buttonRegisterAnimal: {
-    backgroundColor: "#F5f8fb",
-    borderRadius: "15px",
-    color: "#5d49ff",
+    backgroundColor: "#0086ff",
+    borderRadius: "10px",
+    color: "#fff",
     marginRight: "15px",
-    boxShadow: "5px 5px 5px #ccc",
+    fontWeight: 600,
+    textTransform:"capitalize",
     "&:hover": {
-      backgroundColor: "#F5f8fb",
-      color: "#5d49ff",
-      fontWeight: 600,
+      backgroundColor: "#0086ff",
+      boxShadow: "3px 3px 3px #999",
     },
   },
 
@@ -161,21 +161,19 @@ export const styles = {
   chipSearch: {
     color: "#fff",
     border: "none",
-    boxShadow: "3px 3px 3px #ccc",
     fontSize: "18px",
     height: "20px",
     textTransform: "capitalize",
     margin: "0 4px",
     display: "inline",
-
+    fontWeight: "600",
     backgroundColor: "#710ed6",
     "&:hover": {
       backgroundColor: "#710ed6",
       fontWeight: "600",
+      boxShadow: "4px 4px 4px #ccc",
     },
-    "&:active": {
-      backgroundColor: "#440881",
-    },
+
   },
   cardSearch: {
     display: "flex",
@@ -208,9 +206,13 @@ export const styles = {
     maxHeight: "550px",
     borderRadius: "15px",
     backgroundColor: "#F5f8fb",
-    boxShadow: "5px 5px 5px #ccc",
-    border:"1px solid #ccc",
-    textTransform:"capitalize"
+    textTransform:"capitalize",
+    "&:hover": {
+      boxShadow: "5px 5px 5px #ccc",
+    },
+    
+
+    
   },
   modalImagen:{
     position: "absolute",

@@ -10,15 +10,16 @@ import Grid from "@mui/material/Grid";
 import { styles } from "../styles";
 import { yesToken } from "../../helpers/crud_fetch";
 
-import Zoom from '@mui/material/Zoom';
 
 export default function Search(props) {
   const [chipsSuggestions, setChipsSuggestions] = useState([]);
   const [searchContent, setSearchContent] = useState([]);
+  const [titleSearch, setTitleSearch] = useState("");
   const [idChip, setIdChip] = useState(0);
  
 
   const addChips = async () => {
+    setTitleSearch(props.title);
     const chipData = await yesToken(props.urlChip);
     setChipsSuggestions(chipData);
   };
@@ -50,7 +51,7 @@ export default function Search(props) {
             fontWeight: "600",
           }}
         >
-          {props.title}
+          {titleSearch}
         </Typography>
         <Box
           sx={{

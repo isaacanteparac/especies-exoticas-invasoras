@@ -34,7 +34,7 @@ import Logo from "./Logo";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
 
-import { Input } from "@mui/material";
+
 
 const drawerWidth = 220;
 
@@ -176,7 +176,7 @@ function DashboardContent() {
                 setGetComponent({ home: true, search: false });
               }}
             >
-              <Logo /> Natilus Zone
+              <Logo /> Ibug
             </Typography>
 
             <Box sx={styles.boxSearch}>

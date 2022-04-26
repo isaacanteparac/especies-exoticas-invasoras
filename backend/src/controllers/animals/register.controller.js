@@ -57,7 +57,6 @@ newRegisterAnimalCtrl.putRegister = async (req, res) => {
     description,
     id_ctlg_scientic_name,
     id_ctlg_type_specie,
-    id_users,
   } = req.body;
   try{
     const id = req.params.id;
@@ -69,10 +68,9 @@ newRegisterAnimalCtrl.putRegister = async (req, res) => {
       description,
       id_ctlg_scientic_name,
       id_ctlg_type_specie,
-      id_users,
     };
-    console.log(newRegisterAnimal);
-    await db.query("UPDATE comments SET comment = ? WHERE id = ?", [putRegisterAnimal, id]);
+    console.log(putRegisterAnimal);
+    await db.query("UPDATE animals SET ? WHERE id = ?", [putRegisterAnimal, id]);
     return res.status(200).json({ ok: true });
   }
   catch(error){

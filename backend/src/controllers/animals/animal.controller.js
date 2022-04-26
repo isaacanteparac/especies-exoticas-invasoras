@@ -6,7 +6,7 @@ const db = require("../../../database");
 animalCtrl.getAllAnimals = async (req, res) => {
   try {
     const allanimal = await db.query(
-      "SELECT animals.name AS nameAnimal, animals.location, animals.id, users.id AS userId"+
+      "SELECT animals.name AS nameAnimal, animals.location, animals.id, users.id AS userId, animals.id_ctlg_type_specie, animals.id_ctlg_scientic_name "+
       ",animals.description, animals.photo AS animalPhoto, animals.sound AS animalSound,"+
       "ctlg_type_specie.name AS typeSpecie, ctlg_scientific_name_animal.name AS scientificName "+
       ",users.name, users.lastname,users.username, users.photo FROM (((animals INNER JOIN users ON animals.id_users = users.id)"+
