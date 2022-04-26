@@ -11,11 +11,10 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ScienceIcon from "@mui/icons-material/Science";
 import PetsIcon from "@mui/icons-material/Pets";
 import Chip from "@mui/material/Chip";
-import ModeCommentIcon from "@mui/icons-material/ModeComment";
+import ForumIcon from '@mui/icons-material/Forum';
 
 import { AuthContext } from "../../auth/Context";
 import CreateComment from "./CreateComment";
-import CardSearch from "../home/CardSearch";
 import { styles } from "../styles";
 
 
@@ -29,6 +28,7 @@ export default function Comments(props) {
     setOpen(false);
   };
 
+  const imagen = "https://cf.ltkcdn.net/ninos/images/orig/240406-1600x1030-caracol.jpg"
 
 
 
@@ -37,7 +37,7 @@ export default function Comments(props) {
     <Box>
     
       <IconButton aria-label="comentarios" onClick={handleOpen} sx={{position:"relative"}}>
-        <ModeCommentIcon />
+        <ForumIcon />
       </IconButton>
 
 
@@ -54,7 +54,7 @@ export default function Comments(props) {
             >
               {props.nameUser} {props.lastnameUser} ({props.usernameUser})
             </Typography>
-            <CardMedia component="img" height="250" image={props.animalPhoto} />
+            <CardMedia component="img" height="250" image={imagen} sx={{borderRadius:"15px"}}/>
             <Box
               sx={{
                 margin: "5px 0",

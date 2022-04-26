@@ -100,7 +100,7 @@ export const styles = {
     border: "1px solid #ccc",
   },
   boxDescription: {
-    height: "200px",
+    height: "150px",
     marginTop: "10px",
     padding: "3px 5px",
     borderRadius: "10px",
@@ -188,6 +188,7 @@ export const styles = {
     position: "relative",
     top: "5px",
     marginRight: "4px",
+    color:"#E2ba15"
   },
   boxImagenSearch: {
     width: "200px",
@@ -199,7 +200,9 @@ export const styles = {
     textTransform: "capitalize",
     cursor: "default",
     display: "inline",
-    marginRight:"15px"
+    marginRight:"15px",
+    color:"#E2ba15",
+    fontWeight:"600"
   },
   cardAnimal: {
     width: "90%",
@@ -207,17 +210,12 @@ export const styles = {
     borderRadius: "15px",
     backgroundColor: "#F5f8fb",
     textTransform:"capitalize",
-    "&:hover": {
-      boxShadow: "5px 5px 5px #ccc",
-    },
-    
-
-    
+    boxShadow: "5px 5px 5px #ccc",
   },
   modalImagen:{
     position: "absolute",
     top: "5%",
-    left: "35%",
+    left: "20%",
     transform: "translate(-50%, -50%)",
     width: "auto",
     backgroundColor: "#fff",

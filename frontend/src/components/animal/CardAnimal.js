@@ -44,6 +44,8 @@ export default function CardAnimal(props) {
     icon: "info",
   });
 
+  const imagen = "https://cf.ltkcdn.net/ninos/images/orig/240406-1600x1030-caracol.jpg"
+
   const viewOption = () => {
     if (props.userId == user.id) {
       setGetOption(true);
@@ -178,7 +180,7 @@ export default function CardAnimal(props) {
         </List>
       </Popover>
 
-      <CardMedia component="img" height="250px" image={props.animalPhoto} />
+      <CardMedia component="img" height="250px" image={imagen} />
       <CardContent sx={{ maxheight: "200px" }}>
         <Typography gutterBottom variant="h5" component="div">
           {props.nameAnimal}

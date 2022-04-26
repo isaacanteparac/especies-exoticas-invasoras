@@ -96,7 +96,7 @@ const searchSuggestion = [
   },
   {
     id: 3,
-    name: "tipo de especie",
+    name: "Clasificacion de especie",
     urlChip: "ctlg/types-specie",
     url: "animal/type-specie/",
   },
@@ -142,11 +142,10 @@ function DashboardContent() {
             sx={{
               pr: "24px",
               backgroundColor: "#fff",
-             
               borderTopLeftRadius: "30px",
             }}
           >
-            <IconButton
+            {/*<IconButton
               edge="start"
               color="inherit"
               aria-label="open drawer"
@@ -157,7 +156,7 @@ function DashboardContent() {
               }}
             >
               <MenuIcon sx={{ color: "#000" }} />
-            </IconButton>
+            </IconButton>*/}
 
             <Typography
               variant="h6"
@@ -176,7 +175,7 @@ function DashboardContent() {
                 setGetComponent({ home: true, search: false });
               }}
             >
-              <Logo /> Ibug
+              <Logo /> Inatilus
             </Typography>
 
             <Box sx={styles.boxSearch}>
@@ -249,7 +248,7 @@ function DashboardContent() {
           </Toolbar>
         </AppBar>
 
-        <Drawer variant="permanent" open={open}>
+        {/*<Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
               display: "flex",
@@ -274,7 +273,9 @@ function DashboardContent() {
               }}
             >
               <Logo /> Natilus Zone
-            </Typography>*/}
+            </Typography>
+
+
             <IconButton
               onClick={toggleDrawer}
               sx={{ position: "relative", top: "10px", left: "10px" }}
@@ -307,7 +308,7 @@ function DashboardContent() {
               />
             </ListItemButton>
           </List>
-        </Drawer>
+        </Drawer>*/}
 
         <Box
           component="main"

@@ -10,8 +10,9 @@ import Divider from "@mui/material/Divider";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ScienceIcon from "@mui/icons-material/Science";
 import PetsIcon from "@mui/icons-material/Pets";
-import BarChartIcon from "@mui/icons-material/BarChart";
+
 import PersonIcon from "@mui/icons-material/Person";
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 
 import { styles } from "../styles";
@@ -22,8 +23,8 @@ import Zoom from '@mui/material/Zoom';
 
 export default function CardSearch(props) {
   const fullname = props.nameUser + " " + props.lastName;
-  const imagen ="https://upload.wikimedia.org/wikipedia/commons/3/33/Haeckel_Bryozoa.jpg";
   const [checked, setChecked] = useState(true);
+  const imagen = "https://cf.ltkcdn.net/ninos/images/orig/240406-1600x1030-caracol.jpg"
 
   return (
     <Zoom in={checked}>
@@ -40,7 +41,7 @@ export default function CardSearch(props) {
         }}
       >
         <Box>
-          <Typography component="div" variant="h5" sx={styles.textTypoCard}>
+          <Typography component="div" variant="h5" sx={{color:"#1cc996",  textTransform: "capitalize",fontWeight:"600"}}>
             {props.animalName}
           </Typography>
         </Box>
@@ -68,8 +69,8 @@ export default function CardSearch(props) {
 
           <Tooltip title="Nivel de amenaza" placement="bottom">
             <Typography component="div" sx={styles.textTypoCard}>
-              <BarChartIcon sx={styles.iconItemSearch} />
-              {props.dangerLevel}
+              <ReportProblemIcon sx={styles.iconItemSearch} />
+              {/*props.dangerLevel*/}cercanamente amenaza
             </Typography>
           </Tooltip>
 
