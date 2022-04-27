@@ -23,6 +23,10 @@
     "passport": "^0.5.2"
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.15"
+    
+  DATABASE
+     mysql
+     xampp    
 
 
 # RUN
