@@ -28,7 +28,7 @@ export default function Home(props) {
     >
       <Grid container spacing={1}>
         {allAnimal?.map((animal) => (
-          <Zoom in={checked}>
+          <Zoom in={checked} key={animal.id}>
             <Grid item xs={4} sx={{ margin: "10px 0" }} key={animal.id}>
               <CardAnimal
                 key={animal.id}

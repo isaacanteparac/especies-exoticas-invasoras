@@ -26,7 +26,7 @@
     
   DATABASE
      mysql
-     xampp    
+     xampp v7.4.12-0
 
 
 # RUN
