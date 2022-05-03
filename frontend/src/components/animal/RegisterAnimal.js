@@ -24,6 +24,7 @@ export default function RegsiterAnimal(props) {
 
   const [allTypesSpecie, setAllTypesSpecie] = useState([]);
   const [allScientificName, setAllScientificName] = useState([]);
+  const [allDangerLevel, setAllDangerLevel] = useState([]);
 
   const { auth } = useContext(AuthContext);
   const { user } = auth;
@@ -34,8 +35,10 @@ export default function RegsiterAnimal(props) {
   const [sound, setSound] = useState("");
   const [description, setDescription] = useState("");
 
-  const [id_ctlg_scientic_name, setId_ctlg_scientic_name] = useState("");
+  const [id_ctlg_scientific_name, setId_ctlg_scientific_name] = useState("");
   const [id_ctlg_type_specie, setId_ctlg_type_specie] = useState("");
+  const [id_ctlg_danger_level, setId_ctlg_danger_level] = useState("");
+
   const [id_users, setId_users] = useState("");
 
   const data = {
@@ -44,9 +47,10 @@ export default function RegsiterAnimal(props) {
     location,
     sound,
     description,
-    id_ctlg_scientic_name,
+    id_ctlg_scientific_name,
     id_ctlg_type_specie,
     id_users,
+    id_ctlg_danger_level
   };
 
   const getTypesSpecie = async () => {
@@ -58,6 +62,11 @@ export default function RegsiterAnimal(props) {
     const dataScientificName = await yesToken("ctlg/scientific-name");
     setAllScientificName(dataScientificName);
   };
+
+  const getDangerLevel = async () =>{
+    const dataDangerLevel = await yesToken("ctlg/danger-level");
+    setAllDangerLevel(dataDangerLevel);
+  }
 
   const add_putAnimal = async () => {
     setOpen(false);
@@ -77,7 +86,8 @@ export default function RegsiterAnimal(props) {
     setDescription(props.description);
     setLocation(props.location);
     setId_ctlg_type_specie(props.id_ctlg_type_specie);
-    setId_ctlg_scientic_name(props.id_ctlg_scientic_name);
+    setId_ctlg_scientific_name(props.id_ctlg_scientic_name);
+    setId_ctlg_danger_level(props.id_ctlg_danger_level);
     setPhoto("");
     setSound("");
   };
@@ -89,7 +99,8 @@ export default function RegsiterAnimal(props) {
     setId_ctlg_type_specie("");
     setPhoto("");
     setSound("");
-    setId_ctlg_scientic_name("");
+    setId_ctlg_scientific_name("");
+    setId_ctlg_danger_level("");
   };
 
   const handleOpen = () => {
@@ -104,11 +115,16 @@ export default function RegsiterAnimal(props) {
     clearData();
   };
 
+  const getCtlg = () =>{
+    getTypesSpecie();
+    getScientificName();
+    getDangerLevel();
+  };
+
   useEffect(() => {
     setViewButton({ register: props.btnRegister, edit: props.btnEdit });
     setId_users(user.id);
-    getTypesSpecie();
-    getScientificName();
+    getCtlg();
   }, []);
 
   return (
@@ -160,9 +176,9 @@ export default function RegsiterAnimal(props) {
               id="id_ctlg_scientic_name"
               select
               label="Nombre cientifico"
-              value={id_ctlg_scientic_name}
+              value={id_ctlg_scientific_name}
               onChange={(e) => {
-                setId_ctlg_scientic_name(e.target.value);
+                setId_ctlg_scientific_name(e.target.value);
               }}
               margin="dense"
               fullWidth
@@ -191,6 +207,24 @@ export default function RegsiterAnimal(props) {
                 </MenuItem>
               ))}
             </TextField>
+            <TextField
+              id="id_ctlg_danger_level"
+              select
+              margin="dense"
+              label="Nivel de peligrosidad"
+              value={id_ctlg_danger_level}
+              onChange={(e) => {
+                setId_ctlg_danger_level(e.target.value);
+              }}
+              fullWidth
+            >
+              {allDangerLevel?.map((dangerLevel) => (
+                <MenuItem key={dangerLevel.id} value={dangerLevel.id}>
+                  {dangerLevel.name}
+                </MenuItem>
+              ))}
+            </TextField>
+
             <TextField
               id="description"
               multiline

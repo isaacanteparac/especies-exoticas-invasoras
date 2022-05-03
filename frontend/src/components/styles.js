@@ -1,15 +1,21 @@
 export const styles = {
   buttonRegisterAnimal: {
-    backgroundColor: "#0086ff",
+    backgroundColor: "#0063ff",
     borderRadius: "10px",
     color: "#fff",
     marginRight: "15px",
     fontWeight: 600,
-    textTransform:"capitalize",
+    textTransform: "capitalize",
     "&:hover": {
-      backgroundColor: "#0086ff",
-      boxShadow: "3px 3px 3px #999",
+      backgroundColor: "#004fcc",
     },
+  },
+  mainComponent: {
+    backgroundColor: "#F0F2F5",
+    flexGrow: 1,
+    height: "100vh",
+    overflow: "auto",
+    borderBottomLeftRadius: "15px",
   },
 
   regiserModal: {
@@ -173,7 +179,6 @@ export const styles = {
       fontWeight: "600",
       boxShadow: "4px 4px 4px #ccc",
     },
-
   },
   cardSearch: {
     display: "flex",
@@ -188,31 +193,31 @@ export const styles = {
     position: "relative",
     top: "5px",
     marginRight: "4px",
-    color:"#E2ba15"
+    color: "#E2ba15",
   },
   boxImagenSearch: {
     width: "200px",
     padding: "5px 2px 5px 10px",
-    position:"relative",
-    marginTop:"10px"
+    position: "relative",
+    marginTop: "10px",
   },
   textTypoCard: {
     textTransform: "capitalize",
     cursor: "default",
     display: "inline",
-    marginRight:"15px",
-    color:"#E2ba15",
-    fontWeight:"600"
+    marginRight: "15px",
+    color: "#E2ba15",
+    fontWeight: "600",
   },
   cardAnimal: {
     width: "90%",
     maxHeight: "550px",
     borderRadius: "15px",
     backgroundColor: "#F5f8fb",
-    textTransform:"capitalize",
+    textTransform: "capitalize",
     boxShadow: "5px 5px 5px #ccc",
   },
-  modalImagen:{
+  modalImagen: {
     position: "absolute",
     top: "5%",
     left: "20%",
@@ -222,5 +227,5 @@ export const styles = {
     borderRadius: "15px",
     color: "#000",
     p: 1,
-  }
+  },
 };

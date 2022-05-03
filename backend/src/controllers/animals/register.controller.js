@@ -12,9 +12,10 @@ newRegisterAnimalCtrl.postRegister = async (req, res) => {
     location,
     sound,
     description,
-    id_ctlg_scientic_name,
+    id_ctlg_scientific_name,
     id_ctlg_type_specie,
     id_users,
+    id_ctlg_danger_level
   } = req.body;
   try{
     const newRegisterAnimal = {
@@ -23,9 +24,10 @@ newRegisterAnimalCtrl.postRegister = async (req, res) => {
       location,
       sound,
       description,
-      id_ctlg_scientic_name,
+      id_ctlg_scientific_name,
       id_ctlg_type_specie,
       id_users,
+      id_ctlg_danger_level
     };
     console.log(newRegisterAnimal);
     await db.query("INSERT INTO animals set ?", [newRegisterAnimal]);
