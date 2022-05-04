@@ -100,18 +100,6 @@ function DashboardContent() {
               borderTopLeftRadius: "30px",
             }}
           >
-            {/*<IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: "36px",
-                ...(open && { display: "none" }),
-              }}
-            >
-              <MenuIcon sx={{ color: "#000" }} />
-            </IconButton>*/}
 
             <Typography
               variant="h6"
@@ -130,7 +118,7 @@ function DashboardContent() {
                 setGetComponent({ home: true, search: false });
               }}
             >
-              <Logo /> Inatilus
+              <Logo /> Ibug
             </Typography>
 
             <Box sx={styles.boxSearch}>

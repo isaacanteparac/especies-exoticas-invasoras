@@ -7,7 +7,6 @@ import Zoom from "@mui/material/Zoom";
 import { yesToken } from "../../helpers/crud_fetch";
 
 export default function Home(props) {
-  const [checked, setChecked] = useState(true);
   const [allAnimal, setAllAnimal] = useState([]);
 
   const viewAnimal = async () => {
@@ -26,10 +25,9 @@ export default function Home(props) {
         alignItems: "center",
       }}
     >
-      <Grid container spacing={1}>
         {allAnimal?.map((animal) => (
-          <Zoom in={checked} key={animal.id}>
-            <Grid item xs={4} sx={{ margin: "10px 0" }} key={animal.id}>
+          <Zoom in={true} key={animal.id}>
+            <Grid key={animal.id}>
               <CardAnimal
                 key={animal.id}
                 nameAnimal={animal.nameAnimal}
@@ -45,12 +43,12 @@ export default function Home(props) {
                 id_animal={animal.id}
                 userId={animal.userId}
                 id_ctlg_type_specie={animal.id_ctlg_type_specie}
-                id_ctlg_scientic_name={animal.id_ctlg_scientic_name}
+                id_ctlg_scientic_name={animal.id_ctlg_scientific_name}
+                id_ctlg_danger_level={animal.dangerLevelId}
               />
             </Grid>
           </Zoom>
         ))}
-      </Grid>
     </Box>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
@@ -13,15 +13,12 @@ import PetsIcon from "@mui/icons-material/Pets";
 import Chip from "@mui/material/Chip";
 import ForumIcon from '@mui/icons-material/Forum';
 
-import { AuthContext } from "../../auth/Context";
 import CreateComment from "./CreateComment";
 import { styles } from "../styles";
 
 
 export default function Comments(props) {
   const [open, setOpen] = useState(false);
-  const { auth } = useContext(AuthContext);
-  const { user } = auth;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {

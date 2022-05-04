@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { styles } from "../styles";
 
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 
@@ -15,7 +14,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 
-import EditIcon from "@mui/icons-material/Edit";
 import ListItemText from "@mui/material/ListItemText";
 
 import Collapse from "@mui/material/Collapse";
@@ -47,7 +45,7 @@ export default function CardAnimal(props) {
   const imagen = "https://cf.ltkcdn.net/ninos/images/orig/240406-1600x1030-caracol.jpg"
 
   const viewOption = () => {
-    if (props.userId == user.id) {
+    if (props.userId === user.id) {
       setGetOption(true);
     }
   };
@@ -144,7 +142,7 @@ export default function CardAnimal(props) {
         {getOption ? (
           <IconButton
             onClick={openOption}
-            sx={{ position: "relative", left: "20%", bottom: "5px" }}
+            sx={{ position: "relative", left: "60%", bottom: "5px" }}
           >
             <MoreVertIcon />
           </IconButton>
@@ -169,7 +167,8 @@ export default function CardAnimal(props) {
             location={props.location}
             description={props.description}
             id_ctlg_type_specie = {props.id_ctlg_type_specie}
-            id_ctlg_scientic_name = {props.id_ctlg_scientic_name}
+            id_ctlg_scientific_name = {props.id_ctlg_scientic_name}
+            id_ctlg_danger_level = {props.id_ctlg_danger_level}
             id_animal = {props.id_animal}
           />
 
@@ -180,7 +179,7 @@ export default function CardAnimal(props) {
         </List>
       </Popover>
 
-      <CardMedia component="img" height="250px" image={imagen} />
+      <CardMedia component="img" sx={styles.imagenCardAnimal} image={imagen} />
       <CardContent sx={{ maxheight: "200px" }}>
         <Typography gutterBottom variant="h5" component="div">
           {props.nameAnimal}

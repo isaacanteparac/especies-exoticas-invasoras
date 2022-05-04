@@ -86,7 +86,7 @@ export default function RegsiterAnimal(props) {
     setDescription(props.description);
     setLocation(props.location);
     setId_ctlg_type_specie(props.id_ctlg_type_specie);
-    setId_ctlg_scientific_name(props.id_ctlg_scientic_name);
+    setId_ctlg_scientific_name(props.id_ctlg_scientific_name);
     setId_ctlg_danger_level(props.id_ctlg_danger_level);
     setPhoto("");
     setSound("");

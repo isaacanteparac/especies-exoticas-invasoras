@@ -185,9 +185,8 @@ export const styles = {
     width: "100%",
     marginBottom: "20px",
     backgroundColor: "#F5f8fb",
-    boxShadow: "5px 5px 5px #ccc",
     border: "1px solid #ccc",
-    borderRadius: "20px",
+    borderRadius: "15px",
   },
   iconItemSearch: {
     position: "relative",
@@ -210,12 +209,17 @@ export const styles = {
     fontWeight: "600",
   },
   cardAnimal: {
-    width: "90%",
-    maxHeight: "550px",
-    borderRadius: "15px",
+    width: "60%",
+    height: "685px",
+    borderRadius: "10px",
     backgroundColor: "#F5f8fb",
     textTransform: "capitalize",
-    boxShadow: "5px 5px 5px #ccc",
+    margin:"10px auto",
+    border:"1px solid #ccc"
+  },
+  imagenCardAnimal:{
+    height:"500px",
+    
   },
   modalImagen: {
     position: "absolute",

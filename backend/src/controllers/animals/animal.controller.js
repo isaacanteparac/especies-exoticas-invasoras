@@ -8,10 +8,11 @@ animalCtrl.getAllAnimals = async (req, res) => {
     const allanimal = await db.query(
       "SELECT animals.name AS nameAnimal, animals.location, animals.id, users.id AS userId, animals.id_ctlg_type_specie, animals.id_ctlg_scientific_name "+
       ",animals.description, animals.photo AS animalPhoto, animals.sound AS animalSound,"+
-      "ctlg_type_specie.name AS typeSpecie, ctlg_scientific_name_animal.name AS scientificName "+
-      ",users.name, users.lastname,users.username, users.photo FROM (((animals INNER JOIN users ON animals.id_users = users.id)"+
+      "ctlg_type_specie.name AS typeSpecie, ctlg_scientific_name_animal.name AS scientificName, ctlg_danger_level.name AS dangerLevel, ctlg_danger_level.id AS dangerLevelId"+
+      ",users.name, users.lastname,users.username, users.photo FROM ((((animals INNER JOIN users ON animals.id_users = users.id)"+
       "INNER JOIN ctlg_type_specie  ON animals.id_ctlg_type_specie  = ctlg_type_specie.id)"+
-      "INNER JOIN ctlg_scientific_name_animal ON animals.id_ctlg_scientific_name   = ctlg_scientific_name_animal.id)"
+      "INNER JOIN ctlg_scientific_name_animal ON animals.id_ctlg_scientific_name   = ctlg_scientific_name_animal.id)"+
+      "INNER JOIN ctlg_danger_level ON animals.id_ctlg_danger_level = ctlg_danger_level.id)"
     );
     res.status(200).json(allanimal);
   } catch (error) {
@@ -45,11 +46,15 @@ animalCtrl.getIdLocation = async (req, res) => {
 animalCtrl.getIdTypeSpecie = async (req, res) => {
   try {
     const animalTypeSpecie = await db.query(
+
+
+      
       "SELECT animals.name AS nameAnimal, animals.location, animals.id, users.id AS userId"+
       ",animals.description, animals.photo AS animalPhoto, animals.sound AS animalSound,"+
-      "ctlg_type_specie.name AS typeSpecie, ctlg_scientific_name_animal.name AS scientificName "+
-      ",users.name, users.lastname,users.username, users.photo FROM (((animals INNER JOIN users ON animals.id_users = users.id)"+
+      "ctlg_type_specie.name AS typeSpecie, ctlg_scientific_name_animal.name AS scientificName, ctlg_danger_level.name AS dangerLevel"+
+      ",users.name, users.lastname,users.username, users.photo FROM ((((animals INNER JOIN users ON animals.id_users = users.id)"+
       "INNER JOIN ctlg_type_specie  ON animals.id_ctlg_type_specie  = ctlg_type_specie.id)"+
+      "INNER JOIN ctlg_danger_level ON animals.id_ctlg_danger_level = ctlg_danger_level.id)"+
       "INNER JOIN ctlg_scientific_name_animal ON animals.id_ctlg_scientific_name   = ctlg_scientific_name_animal.id) WHERE animals.id_ctlg_type_specie = ? ",
       [req.params.id]
     );
@@ -64,9 +69,10 @@ animalCtrl.getIdScientificName = async (req, res) => {
     const animalScientific = await db.query(
       "SELECT animals.name AS nameAnimal, animals.location, animals.id, users.id AS userId "+
       ",animals.description, animals.photo AS animalPhoto, animals.sound AS animalSound,"+
-      "ctlg_type_specie.name AS typeSpecie, ctlg_scientific_name_animal.name AS scientificName "+
+      "ctlg_type_specie.name AS typeSpecie, ctlg_scientific_name_animal.name AS scientificName, ctlg_danger_level.name AS dangerLevel"+
       ",users.name, users.lastname,users.username, users.photo FROM (((animals INNER JOIN users ON animals.id_users = users.id)"+
       "INNER JOIN ctlg_type_specie  ON animals.id_ctlg_type_specie  = ctlg_type_specie.id)"+
+      "INNER JOIN ctlg_danger_level ON animals.id_ctlg_danger_level = ctlg_danger_level.id)"+
       "INNER JOIN ctlg_scientific_name_animal ON animals.id_ctlg_scientific_name   = ctlg_scientific_name_animal.id) WHERE animals.id_ctlg_scientific_name = ? ",
       [req.params.id]
     );

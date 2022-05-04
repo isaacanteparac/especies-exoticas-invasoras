@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -23,11 +23,10 @@ import Zoom from '@mui/material/Zoom';
 
 export default function CardSearch(props) {
   const fullname = props.nameUser + " " + props.lastName;
-  const [checked, setChecked] = useState(true);
   const imagen = "https://cf.ltkcdn.net/ninos/images/orig/240406-1600x1030-caracol.jpg"
 
   return (
-    <Zoom in={checked}>
+    <Zoom in={true}>
     <Card sx={styles.cardSearch}>
       <ViewImagen viewImageSearch={true} image={imagen} animalName={props.animalName}/>
       
@@ -70,7 +69,7 @@ export default function CardSearch(props) {
           <Tooltip title="Nivel de amenaza" placement="bottom">
             <Typography component="div" sx={styles.textTypoCard}>
               <ReportProblemIcon sx={styles.iconItemSearch} />
-              {/*props.dangerLevel*/}cercanamente amenaza
+              {props.dangerLevel}
             </Typography>
           </Tooltip>
 

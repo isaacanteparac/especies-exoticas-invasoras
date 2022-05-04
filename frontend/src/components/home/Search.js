@@ -89,6 +89,7 @@ export default function Search(props) {
               lastName={animal.lastname}
               id_animal={animal.id}
               description={animal.description}
+              dangerLevel={animal.dangerLevel}
             />
           
         ))}
