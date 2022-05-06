@@ -6,7 +6,6 @@ import Modal from "@mui/material/Modal";
 
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import ViewImagen from "./ViewImagen";
 
 import { AuthContext } from "../../auth/Context";
 import { styles } from "../styles";
@@ -21,6 +20,8 @@ export default function User() {
   const [photo, setPhoto] = useState("");
 
   const [open, setOpen] = useState(false);
+
+  const imagen = ""
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -47,11 +48,6 @@ export default function User() {
       </Button>
       <Modal open={open} onClose={handleClose}>
         <Box sx={styles.commentsModal}>
-          <ViewImagen
-            viewImageSearch={true}
-            image={imagen}
-            animalName={props.animalName}
-          />
           <Box>
             <TextField
               id="name"
