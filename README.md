@@ -1,5 +1,4 @@
 # especies-exoticas-invasoras
-# Requerimientos
 
    FRONTEND
     "react": "^17.0.2",
