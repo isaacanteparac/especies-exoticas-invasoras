@@ -34,15 +34,6 @@
     FRONTEND
         npm start
      
-# Screenshot
-![image](https://user-images.githubusercontent.com/69361351/165849118-ae519aab-4018-459d-b4b0-6668464661a7.png)
-*cambiar el titulo del modal por editar animal usar useState
-![image](https://user-images.githubusercontent.com/69361351/165849529-e89b8c87-73ee-4364-94ab-422b8deecfb6.png)
-![image](https://user-images.githubusercontent.com/69361351/165849658-4a33a2a8-bd9e-46bb-a060-84147078c290.png)
-![image](https://user-images.githubusercontent.com/69361351/165849192-170580b4-963d-4078-92c0-fb59ad8d28e0.png)
-![image](https://user-images.githubusercontent.com/69361351/165849250-4b8b5a32-ddc0-488b-a761-78efdfda9cfa.png)
-![image](https://user-images.githubusercontent.com/69361351/165849789-34ce2c94-4202-4641-9d70-4e7c468df4e0.png)
-
 
 
 
