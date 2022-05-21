@@ -25,7 +25,7 @@ export default function Login() {
 
   const verifyUser = async (e) => {
     e.preventDefault();
-		const ok = await login(username, password);
+		const ok = await login(data.username, data.password);
 		if (!ok) {
 			alert("Verifique el usuario y contraseña");
 		}

@@ -266,12 +266,13 @@ export default function RegsiterAnimal(props) {
                 sx={{
                   fontSize: "13px",
                   fontWeight: "600",
-                  borderRadius: "20px",
+                  borderRadius: "15px",
                   marginRight: "3px",
+                  height: "50px"
                 }}
               >
                 <AddPhotoAlternateIcon />
-                Agregar Foto
+                Agregar Foto o Video
                 <input
                   type="file"
                   accept="image/png, image/jpeg, image/jpg"
@@ -282,26 +283,7 @@ export default function RegsiterAnimal(props) {
                 />
               </Button>
 
-              <Button
-                variant="contained"
-                component="label"
-                sx={{
-                  fontSize: "13px",
-                  fontWeight: "600",
-                  borderRadius: "20px",
-                }}
-              >
-                <MusicNoteIcon />
-                Agregar Sonido
-                <input
-                  type="file"
-                  accept="audio/mp3"
-                  hidden
-                  onChange={(e) => {
-                    setSound(e.target.files[0]);
-                  }}
-                />
-              </Button>
+             
             </Box>
 
             <Button
